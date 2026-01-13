@@ -42,11 +42,49 @@ typedef struct
 }_UART0_STRUCT;
 
 //-----------------------------------------------------------------------------
+// 温度数据存储（通过UART接收）
+extern float uart_env_temp;   // 环境温度
+extern float uart_self_temp;  // 自身温度
+
+//-----------------------------------------------------------------------------
 void UART0_Configuration(void);
 void UART0_init_buffer (void);
 void UART0_analyze_data(void);
 void UART0_tx_data(u8 *pt, u8 len);
 void UART0_test(void);
+void UART0_SendNumber(u32 num);
+void UART0_SendString(u8 *str); 
+
+//-----------------------------------------------------------------------------
+// 二进制协议相关定义
+//-----------------------------------------------------------------------------
+#define UART_FRAME_HEAD1      0x5A  // 帧头1
+#define UART_FRAME_HEAD2      0xA5  // 帧头2
+
+// 命令字定义
+#define CMD_DATA_QUERY        0x82  // 数据查询/上报
+#define CMD_CONTROL           0x83  // 控制命令
+
+// 子命令定义 (CMD_DATA_QUERY)
+#define SUBCMD_POWER          0x10  // 功率
+#define SUBCMD_TIME           0x20  // 时间
+#define SUBCMD_TEMP           0x30  // 温度
+
+// 温度类型
+#define TEMP_TYPE_ENV         0x20  // 环境温度（旁温）
+#define TEMP_TYPE_SELF        0x50  // 自身温度（杆温）
+
+// 控制子命令
+#define SUBCMD_MICROWAVE      0x10  // 微波控制
+
+// 全局变量 - 从UART接收的温度数据
+extern float uart_env_temp;   // 环境温度（旁温，接收）
+extern float uart_self_temp;  // 自身温度（杆温，接收）
+
+// 协议解析和发送函数
+void UART0_ParseProtocol(void);
+void UART0_SendPower(u16 power);      // 发送功率值
+void UART0_SendTime(u16 time_min);    // 发送时间值（分钟）
 
 //-----------------------------------------------------------------------------
 #endif

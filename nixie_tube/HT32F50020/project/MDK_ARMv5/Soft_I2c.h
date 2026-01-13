@@ -67,4 +67,6 @@ void TM1640_SetBrightness(u8 brightness); // 设置亮度 (1-8)
 void TM1640_DisplayNumber(u32 num, u8 digit_count); // 显示数字
 void TM1640_DisplayMultiData(float power, float time_min, float env_temp, float self_temp); // 显示4组数据
 
+extern unsigned char brightness;
+
 #endif

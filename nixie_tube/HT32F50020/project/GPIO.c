@@ -1,4 +1,4 @@
- /************************************************************************************************************
+/************************************************************************************************************
  * @attention
  *
  * Firmware Disclaimer Information
@@ -32,6 +32,39 @@ void GPIO_Configuration(void)
   CKCU_PeripClockConfig(CKCUClock, ENABLE);
 
 
+  AFIO_GPxConfig         (OUT_PB12_GPIO_ID, OUT_PB12_GPIO_PIN, AFIO_FUN_GPIO);
+
+  AFIO_GPxConfig         (OUT_PB13_GPIO_ID, OUT_PB13_GPIO_PIN, AFIO_FUN_GPIO);
+
+  AFIO_GPxConfig         (OUT_PB14_GPIO_ID, OUT_PB14_GPIO_PIN, AFIO_FUN_GPIO);
+
+  // 配置按键引脚AFIO功能
+  AFIO_GPxConfig         (IN_PB0_GPIO_ID, IN_PB0_GPIO_PIN, AFIO_FUN_GPIO);
+  AFIO_GPxConfig         (IN_PB1_GPIO_ID, IN_PB1_GPIO_PIN, AFIO_FUN_GPIO);
+  AFIO_GPxConfig         (IN_PB2_GPIO_ID, IN_PB2_GPIO_PIN, AFIO_FUN_GPIO);
+  AFIO_GPxConfig         (IN_PB3_GPIO_ID, IN_PB3_GPIO_PIN, AFIO_FUN_GPIO);
+  AFIO_GPxConfig         (IN_PB4_GPIO_ID, IN_PB4_GPIO_PIN, AFIO_FUN_GPIO);
+
+  GPIO_DirectionConfig    (IN_PB0_GPIO_PORT, IN_PB0_GPIO_PIN, GPIO_DIR_IN);
+  GPIO_InputConfig        (IN_PB0_GPIO_PORT, IN_PB0_GPIO_PIN, ENABLE);
+  GPIO_PullResistorConfig (IN_PB0_GPIO_PORT, IN_PB0_GPIO_PIN, GPIO_PR_UP);
+
+  GPIO_DirectionConfig    (IN_PB1_GPIO_PORT, IN_PB1_GPIO_PIN, GPIO_DIR_IN);
+  GPIO_InputConfig        (IN_PB1_GPIO_PORT, IN_PB1_GPIO_PIN, ENABLE);
+  GPIO_PullResistorConfig (IN_PB1_GPIO_PORT, IN_PB1_GPIO_PIN, GPIO_PR_UP);
+
+  GPIO_DirectionConfig    (IN_PB2_GPIO_PORT, IN_PB2_GPIO_PIN, GPIO_DIR_IN);
+  GPIO_InputConfig        (IN_PB2_GPIO_PORT, IN_PB2_GPIO_PIN, ENABLE);
+  GPIO_PullResistorConfig (IN_PB2_GPIO_PORT, IN_PB2_GPIO_PIN, GPIO_PR_UP);
+
+  GPIO_DirectionConfig    (IN_PB3_GPIO_PORT, IN_PB3_GPIO_PIN, GPIO_DIR_IN);
+  GPIO_InputConfig        (IN_PB3_GPIO_PORT, IN_PB3_GPIO_PIN, ENABLE);
+  GPIO_PullResistorConfig (IN_PB3_GPIO_PORT, IN_PB3_GPIO_PIN, GPIO_PR_UP);
+
+  GPIO_DirectionConfig    (IN_PB4_GPIO_PORT, IN_PB4_GPIO_PIN, GPIO_DIR_IN);
+  GPIO_InputConfig        (IN_PB4_GPIO_PORT, IN_PB4_GPIO_PIN, ENABLE);
+  GPIO_PullResistorConfig (IN_PB4_GPIO_PORT, IN_PB4_GPIO_PIN, GPIO_PR_UP);
+
 
   GPIO_SetOutBits         (SOFT_SDA_GPIO_PORT, SOFT_SDA_GPIO_PIN);
   GPIO_DirectionConfig    (SOFT_SDA_GPIO_PORT, SOFT_SDA_GPIO_PIN, GPIO_DIR_OUT);
@@ -43,8 +76,18 @@ void GPIO_Configuration(void)
   GPIO_DirectionConfig    (SOFT_SCL_GPIO_PORT, SOFT_SCL_GPIO_PIN, GPIO_DIR_OUT);
   GPIO_OpenDrainConfig    (SOFT_SCL_GPIO_PORT, SOFT_SCL_GPIO_PIN, ENABLE);
   GPIO_PullResistorConfig (SOFT_SCL_GPIO_PORT, SOFT_SCL_GPIO_PIN, GPIO_PR_UP);
+
+  GPIO_ClearOutBits       (OUT_PB12_GPIO_PORT, OUT_PB12_GPIO_PIN);
+  GPIO_DirectionConfig    (OUT_PB12_GPIO_PORT, OUT_PB12_GPIO_PIN, GPIO_DIR_OUT);
+
+  GPIO_ClearOutBits       (OUT_PB13_GPIO_PORT, OUT_PB13_GPIO_PIN);
+  GPIO_DirectionConfig    (OUT_PB13_GPIO_PORT, OUT_PB13_GPIO_PIN, GPIO_DIR_OUT);
+
+  GPIO_ClearOutBits       (OUT_PB14_GPIO_PORT, OUT_PB14_GPIO_PIN);
+  GPIO_DirectionConfig    (OUT_PB14_GPIO_PORT, OUT_PB14_GPIO_PIN, GPIO_DIR_OUT);
 }
 
 //-----------------------------------------------------------------------------
+
 
 
