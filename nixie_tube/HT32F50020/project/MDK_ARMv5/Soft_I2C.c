@@ -411,8 +411,9 @@ void TM1640_Init(void)
     I2C_Delay_us(10);
     
     TM1640_Clear();
-    TM1640_SetBrightness(4);
-    TM1640_WriteCmd(TM1640_DISP_ON);
+    TM1640_SetBrightness(brightness);  // 设置想要的亮度（1-8）
+// 删除或注释掉下面这行，因为SetBrightness已经包含了开启显示的功能
+// TM1640_WriteCmd(TM1640_DISP_ON);
 }
 
 //-----------------------------------------------------------------------------
@@ -441,14 +442,14 @@ void TM1640_Clear(void)
 // 参数: brightness - 亮度等级，范围 1-8 (1最暗，8最亮)
 // 说明: 如果传入的值超出范围，会自动限制在有效范围内
 //-----------------------------------------------------------------------------
-void TM1640_SetBrightness(u8 brightness)
+void TM1640_SetBrightness(u8 level)  // 改成 level 避免和全局变量 brightness 冲突
 {
     // 限制亮度范围在 1-8 之间
-    if(brightness < 1) brightness = 1;
-    if(brightness > 8) brightness = 8;
+    if(level < 1) level = 1;
+    if(level > 8) level = 8;
 
-    // 发送亮度控制命令 (0x88 + brightness - 1)
-    TM1640_WriteCmd(TM1640_BRIGHT_1 + brightness - 1);
+    // 发送亮度控制命令 (0x88 + level - 1)
+    TM1640_WriteCmd(TM1640_BRIGHT_1 + level - 1);
 }
 
 //-----------------------------------------------------------------------------
@@ -525,33 +526,35 @@ void TM1640_DisplayMultiData(float power, float time_min, float env_temp, float 
     if(env_temp > 999.9) env_temp = 999.9;
     if(self_temp > 999.9) self_temp = 999.9;
 
-    // 位0-2: 功率 (3位数码管，智能显示小数点)
-    if(power >= 100) {
-        // >= 100: 显示 xxx (无小数点，如 123)
-        data[0] = TM1640_DigitCode[(int)(power / 100) % 10];      // 百位
-        data[1] = TM1640_DigitCode[(int)(power / 10) % 10];       // 十位
-        data[2] = TM1640_DigitCode[(int)power % 10];              // 个位
-    } else if(power >= 10) {
-        // 10-99.9: 显示 xx.x (如 12.3)
-        data[0] = TM1640_DigitCode[(int)(power / 10) % 10];       // 十位
-        data[1] = TM1640_DigitCode[(int)power % 10] | 0x80;       // 个位 + 小数点
-        data[2] = TM1640_DigitCode[(int)(power * 10) % 10];       // 十分位
+    // 位0-2: 功率 (3位数码管，始终显示整数)
+    u16 power_int = (u16)power;  // 转换为整数
+    if(power_int >= 100) {
+        // >= 100: 显示 xxx (如 123)
+        data[0] = TM1640_DigitCode[power_int / 100 % 10];      // 百位
+        data[1] = TM1640_DigitCode[power_int / 10 % 10];       // 十位
+        data[2] = TM1640_DigitCode[power_int % 10];            // 个位
+    } else if(power_int >= 10) {
+        // 10-99: 显示 _xx (前导空格，如 _12)
+        data[0] = 0x00;                                         // 空白
+        data[1] = TM1640_DigitCode[power_int / 10 % 10];       // 十位
+        data[2] = TM1640_DigitCode[power_int % 10];            // 个位
     } else {
-        // < 10: 显示 x.xx (如 1.23)
-        data[0] = TM1640_DigitCode[(int)power % 10] | 0x80;       // 个位 + 小数点
-        data[1] = TM1640_DigitCode[(int)(power * 10) % 10];       // 十分位
-        data[2] = TM1640_DigitCode[(int)(power * 100) % 10];      // 百分位
+        // 0-9: 显示 __x (两个前导空格，如 __5)
+        data[0] = 0x00;                                         // 空白
+        data[1] = 0x00;                                         // 空白
+        data[2] = TM1640_DigitCode[power_int % 10];            // 个位
     }
 
-    // 位3-4: 时间 (2位数码管，智能显示小数点)
-    if(time_min >= 10) {
-        // >= 10: 显示 xx (无小数点，如 12)
-        data[3] = TM1640_DigitCode[(int)(time_min / 10) % 10];    // 十位
-        data[4] = TM1640_DigitCode[(int)time_min % 10];           // 个位
+    // 位3-4: 时间 (2位数码管，始终显示整数)
+    u16 time_int = (u16)time_min;  // 转换为整数
+    if(time_int >= 10) {
+        // >= 10: 显示 xx (如 12)
+        data[3] = TM1640_DigitCode[time_int / 10 % 10];        // 十位
+        data[4] = TM1640_DigitCode[time_int % 10];             // 个位
     } else {
-        // < 10: 显示 x.x (如 1.2)
-        data[3] = TM1640_DigitCode[(int)time_min % 10] | 0x80;    // 个位 + 小数点
-        data[4] = TM1640_DigitCode[(int)(time_min * 10) % 10];    // 十分位
+        // 0-9: 显示 _x (前导空格，如 _5)
+        data[3] = 0x00;                                         // 空白
+        data[4] = TM1640_DigitCode[time_int % 10];             // 个位
     }
 
     // 位5-7: 环境温度 (3位数码管，智能显示小数点)

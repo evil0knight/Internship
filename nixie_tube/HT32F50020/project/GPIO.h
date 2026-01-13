@@ -1,4 +1,4 @@
- /************************************************************************************************************
+/************************************************************************************************************
  * @attention
  *
  * Firmware Disclaimer Information
@@ -27,6 +27,51 @@
 #include "ht32.h"
 
 //-----------------------------------------------------------------------------
+#define IN_PB0_PORT           B
+#define IN_PB0_PIN            0
+#define IN_PB0_GPIO_CLK      STRCAT2(P,          IN_PB0_PORT)
+#define IN_PB0_GPIO_ID       STRCAT2(GPIO_P,     IN_PB0_PORT)
+#define IN_PB0_GPIO_PORT     STRCAT2(HT_GPIO,    IN_PB0_PORT)
+#define IN_PB0_GPIO_PIN      STRCAT2(GPIO_PIN_,  IN_PB0_PIN)
+#define IN_PB0_AFIO_MODE     (AFIO_MODE_GPIO)
+#define IN_PB0_STATE         (GPIO_ReadInBit(IN_PB0_GPIO_PORT, IN_PB0_GPIO_PIN))
+
+#define IN_PB1_PORT           B
+#define IN_PB1_PIN            1
+#define IN_PB1_GPIO_CLK      STRCAT2(P,          IN_PB1_PORT)
+#define IN_PB1_GPIO_ID       STRCAT2(GPIO_P,     IN_PB1_PORT)
+#define IN_PB1_GPIO_PORT     STRCAT2(HT_GPIO,    IN_PB1_PORT)
+#define IN_PB1_GPIO_PIN      STRCAT2(GPIO_PIN_,  IN_PB1_PIN)
+#define IN_PB1_AFIO_MODE     (AFIO_MODE_GPIO)
+#define IN_PB1_STATE         (GPIO_ReadInBit(IN_PB1_GPIO_PORT, IN_PB1_GPIO_PIN))
+
+#define IN_PB2_PORT           B
+#define IN_PB2_PIN            2
+#define IN_PB2_GPIO_CLK      STRCAT2(P,          IN_PB2_PORT)
+#define IN_PB2_GPIO_ID       STRCAT2(GPIO_P,     IN_PB2_PORT)
+#define IN_PB2_GPIO_PORT     STRCAT2(HT_GPIO,    IN_PB2_PORT)
+#define IN_PB2_GPIO_PIN      STRCAT2(GPIO_PIN_,  IN_PB2_PIN)
+#define IN_PB2_AFIO_MODE     (AFIO_MODE_GPIO)
+#define IN_PB2_STATE         (GPIO_ReadInBit(IN_PB2_GPIO_PORT, IN_PB2_GPIO_PIN))
+
+#define IN_PB3_PORT           B
+#define IN_PB3_PIN            3
+#define IN_PB3_GPIO_CLK      STRCAT2(P,          IN_PB3_PORT)
+#define IN_PB3_GPIO_ID       STRCAT2(GPIO_P,     IN_PB3_PORT)
+#define IN_PB3_GPIO_PORT     STRCAT2(HT_GPIO,    IN_PB3_PORT)
+#define IN_PB3_GPIO_PIN      STRCAT2(GPIO_PIN_,  IN_PB3_PIN)
+#define IN_PB3_AFIO_MODE     (AFIO_MODE_GPIO)
+#define IN_PB3_STATE         (GPIO_ReadInBit(IN_PB3_GPIO_PORT, IN_PB3_GPIO_PIN))
+
+#define IN_PB4_PORT           B
+#define IN_PB4_PIN            4
+#define IN_PB4_GPIO_CLK      STRCAT2(P,          IN_PB4_PORT)
+#define IN_PB4_GPIO_ID       STRCAT2(GPIO_P,     IN_PB4_PORT)
+#define IN_PB4_GPIO_PORT     STRCAT2(HT_GPIO,    IN_PB4_PORT)
+#define IN_PB4_GPIO_PIN      STRCAT2(GPIO_PIN_,  IN_PB4_PIN)
+#define IN_PB4_AFIO_MODE     (AFIO_MODE_GPIO)
+#define IN_PB4_STATE         (GPIO_ReadInBit(IN_PB4_GPIO_PORT, IN_PB4_GPIO_PIN))
+
 
 
 //-----------------------------------------------------------------------------
@@ -76,10 +121,59 @@
 #define SOFT_SCL_LOW           SOFT_SCL_GPIO_PORT->RR     = SOFT_SCL_GPIO_PIN
 #define SOFT_SCL_XOR           SOFT_SCL_GPIO_PORT->DOUTR ^= SOFT_SCL_GPIO_PIN
 
+#define OUT_PB12_PORT           B
+#define OUT_PB12_PIN            12
+#define OUT_PB12_GPIO_CLK      STRCAT2(P,          OUT_PB12_PORT)
+#define OUT_PB12_GPIO_ID       STRCAT2(GPIO_P,     OUT_PB12_PORT)
+#define OUT_PB12_GPIO_PORT     STRCAT2(HT_GPIO,    OUT_PB12_PORT)
+#define OUT_PB12_GPIO_PIN      STRCAT2(GPIO_PIN_,  OUT_PB12_PIN)
+#define OUT_PB12_AFIO_MODE     (AFIO_MODE_GPIO)
+#define OUT_PB12_HIGH          OUT_PB12_GPIO_PORT->SRR    = OUT_PB12_GPIO_PIN
+#define OUT_PB12_LOW           OUT_PB12_GPIO_PORT->RR     = OUT_PB12_GPIO_PIN
+#define OUT_PB12_XOR           OUT_PB12_GPIO_PORT->DOUTR ^= OUT_PB12_GPIO_PIN
+
+#define OUT_PB13_PORT           B
+#define OUT_PB13_PIN            13
+#define OUT_PB13_GPIO_CLK      STRCAT2(P,          OUT_PB13_PORT)
+#define OUT_PB13_GPIO_ID       STRCAT2(GPIO_P,     OUT_PB13_PORT)
+#define OUT_PB13_GPIO_PORT     STRCAT2(HT_GPIO,    OUT_PB13_PORT)
+#define OUT_PB13_GPIO_PIN      STRCAT2(GPIO_PIN_,  OUT_PB13_PIN)
+#define OUT_PB13_AFIO_MODE     (AFIO_MODE_GPIO)
+#define OUT_PB13_HIGH          OUT_PB13_GPIO_PORT->SRR    = OUT_PB13_GPIO_PIN
+#define OUT_PB13_LOW           OUT_PB13_GPIO_PORT->RR     = OUT_PB13_GPIO_PIN
+#define OUT_PB13_XOR           OUT_PB13_GPIO_PORT->DOUTR ^= OUT_PB13_GPIO_PIN
+
+#define OUT_PB14_PORT           B
+#define OUT_PB14_PIN            14
+#define OUT_PB14_GPIO_CLK      STRCAT2(P,          OUT_PB14_PORT)
+#define OUT_PB14_GPIO_ID       STRCAT2(GPIO_P,     OUT_PB14_PORT)
+#define OUT_PB14_GPIO_PORT     STRCAT2(HT_GPIO,    OUT_PB14_PORT)
+#define OUT_PB14_GPIO_PIN      STRCAT2(GPIO_PIN_,  OUT_PB14_PIN)
+#define OUT_PB14_AFIO_MODE     (AFIO_MODE_GPIO)
+#define OUT_PB14_HIGH          OUT_PB14_GPIO_PORT->SRR    = OUT_PB14_GPIO_PIN
+#define OUT_PB14_LOW           OUT_PB14_GPIO_PORT->RR     = OUT_PB14_GPIO_PIN
+#define OUT_PB14_XOR           OUT_PB14_GPIO_PORT->DOUTR ^= OUT_PB14_GPIO_PIN
+
+//-----------------------------------------------------------------------------
+// LED控制宏 (低电平点亮，高电平熄灭)
+//-----------------------------------------------------------------------------
+// 错误指示灯 (PB12)
+#define LED_ERROR_ON          OUT_PB12_LOW      // 点亮错误灯
+#define LED_ERROR_OFF         OUT_PB12_HIGH     // 熄灭错误灯
+#define LED_ERROR_TOGGLE      OUT_PB12_XOR      // 翻转错误灯
+
+// 状态1指示灯 (PB13)
+#define LED_STATUS1_ON        OUT_PB13_LOW      // 点亮状态1灯
+#define LED_STATUS1_OFF       OUT_PB13_HIGH     // 熄灭状态1灯
+#define LED_STATUS1_TOGGLE    OUT_PB13_XOR      // 翻转状态1灯
+
+// 状态2指示灯 (PB14)
+#define LED_STATUS2_ON        OUT_PB14_LOW      // 点亮状态2灯
+#define LED_STATUS2_OFF       OUT_PB14_HIGH     // 熄灭状态2灯
+#define LED_STATUS2_TOGGLE    OUT_PB14_XOR      // 翻转状态2灯
 
 
 //-----------------------------------------------------------------------------
 void GPIO_Configuration(void);
 
 #endif
-

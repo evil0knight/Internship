@@ -417,6 +417,16 @@
               <FileType>5</FileType>
               <FilePath>.\Soft_I2c.h</FilePath>
             </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Key.c</FilePath>
+            </File>
+            <File>
+              <FileName>Key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Key.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
