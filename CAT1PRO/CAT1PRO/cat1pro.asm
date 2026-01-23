@@ -1,0 +1,429 @@
+//Deviec:FT61FC4X
+//-----------------------Variable---------------------------------
+		_receivedata		EQU		5CH
+		_senddat		EQU		48H
+		_toSend		EQU		34H
+		_toSendA		EQU		20H
+		_toSenda		EQU		A0H
+		_i		EQU		76H
+		_mmm		EQU		75H
+		_PC1		EQU		0EH
+		_PORTCbits...RC0		EQU		0EH
+		_PORTCbits...RC1		EQU		0EH
+		_PORTCbits..		EQU		0EH
+		_PORTCbits...PC0		EQU		0EH
+		_PORTCbits...PC1		EQU		0EH
+		_PORTCbits..		EQU		0EH
+		_PORTCbits		EQU		0EH
+		_ODCON0		EQU		21FH
+		_URRXNE		EQU		48EH
+		_RXNEF		EQU		492H
+		_TXEF		EQU		492H
+		_TCF		EQU		49CH
+//		DelayMs@Time		EQU		72H
+//		DelayMs@b		EQU		74H
+//		DelayMs@a		EQU		73H
+//		DelayMs@Time		EQU		72H
+//		DelayMs@Time		EQU		72H
+//		DelayUs@Time		EQU		70H
+//		DelayUs@a		EQU		71H
+//		DelayUs@Time		EQU		70H
+//		DelayUs@Time		EQU		70H
+//-----------------------Variable END---------------------------------
+
+		MOVLP 	0H 			//0000 	0180
+		LJUMP 	18H 			//0001 	3818
+		ORG		0004H
+		BSR 	7EH, 0H 			//0004 	247E
+		MOVLP 	0H 			//0005 	0180
+
+		//;CAT1PRO.C: 58: if(URRXNE && RXNEF)
+		MOVLB 	9H 			//0006 	1029
+		BTSC 	EH, 0H 			//0007 	280E
+		BTSS 	12H, 0H 		//0008 	2C12
+		LJUMP 	16H 			//0009 	3816
+
+		//;CAT1PRO.C: 59: {
+		//;CAT1PRO.C: 60: receivedata[mmm++] =URDATAL;
+		LDR 	75H, 0H 			//000A 	1875
+		ADDWI 	5CH 			//000B 	0E5C
+		STR 	6H 			//000C 	1086
+		CLRF 	7H 			//000D 	1187
+		LDR 	CH, 0H 			//000E 	180C
+		STR 	1H 			//000F 	1081
+		LDWI 	14H 			//0010 	0014
+		INCR 	75H, 1H 		//0011 	1AF5
+
+		//;CAT1PRO.C: 62: if(mmm>=20)
+		SUBWR 	75H, 0H 		//0012 	1275
+		BTSC 	3H, 0H 			//0013 	2803
+
+		//;CAT1PRO.C: 63: {
+		//;CAT1PRO.C: 64: mmm=0;
+		CLRF 	75H 			//0014 	11F5
+
+		//;CAT1PRO.C: 65: }
+		//;CAT1PRO.C: 66: __nop();
+		NOP 					//0015 	1000
+		BCR 	7EH, 0H 			//0016 	207E
+		RETI 					//0017 	1009
+		MOVLP 	0H 			//0018 	0180
+		LJUMP 	1AH 			//0019 	381A
+		LDWI 	A8H 			//001A 	00A8
+		STR 	4H 			//001B 	1084
+		LDWI 	80H 			//001C 	0080
+		STR 	5H 			//001D 	1085
+		LDWI 	20H 			//001E 	0020
+		STR 	6H 			//001F 	1086
+		LDWI 	0H 			//0020 	0000
+		STR 	7H 			//0021 	1087
+		LDWI 	50H 			//0022 	0050
+		MOVLP 	1H 			//0023 	0181
+		LCALL 	113H 			//0024 	3113
+		MOVLP 	0H 			//0025 	0180
+		LDWI 	F8H 			//0026 	00F8
+		STR 	4H 			//0027 	1084
+		LDWI 	80H 			//0028 	0080
+		STR 	5H 			//0029 	1085
+		LDWI 	A0H 			//002A 	00A0
+		STR 	6H 			//002B 	1086
+		LDWI 	0H 			//002C 	0000
+		STR 	7H 			//002D 	1087
+		LDWI 	14H 			//002E 	0014
+		MOVLP 	1H 			//002F 	0181
+		LCALL 	113H 			//0030 	3113
+		MOVLP 	0H 			//0031 	0180
+		CLRF 	75H 			//0032 	11F5
+		CLRF 	76H 			//0033 	11F6
+		BCR 	7EH, 0H 			//0034 	207E
+		MOVLB 	0H 			//0035 	1020
+		LJUMP 	37H 			//0036 	3837
+
+		//;CAT1PRO.C: 184: POWER_INITIAL();
+		LCALL 	6DH 			//0037 	306D
+		MOVLP 	0H 			//0038 	0180
+
+		//;CAT1PRO.C: 185: UART_INITIAL();
+		LCALL 	95H 			//0039 	3095
+		MOVLP 	0H 			//003A 	0180
+
+		//;CAT1PRO.C: 186: DelayMs(100);
+		LDWI 	64H 			//003B 	0064
+		LCALL 	53H 			//003C 	3053
+		MOVLP 	0H 			//003D 	0180
+
+		//;CAT1PRO.C: 187: PC1=0;
+		MOVLB 	0H 			//003E 	1020
+		BCR 	EH, 1H 			//003F 	208E
+
+		//;CAT1PRO.C: 189: PORTCbits.PC1 = 0;
+		BCR 	EH, 1H 			//0040 	208E
+
+		//;CAT1PRO.C: 192: for(i=0;i<11;i++)
+		CLRF 	76H 			//0041 	11F6
+
+		//;CAT1PRO.C: 193: {
+		//;CAT1PRO.C: 194: TXEF=0;
+		MOVLB 	9H 			//0042 	1029
+		BCR 	12H, 5H 			//0043 	2292
+
+		//;CAT1PRO.C: 195: URDATAL=toSend[i];
+		LDR 	76H, 0H 			//0044 	1876
+		ADDWI 	34H 			//0045 	0E34
+		STR 	6H 			//0046 	1086
+		CLRF 	7H 			//0047 	1187
+		LDR 	1H, 0H 			//0048 	1801
+		STR 	CH 			//0049 	108C
+
+		//;CAT1PRO.C: 197: {
+		BTSS 	1CH, 0H 		//004A 	2C1C
+		LJUMP 	4AH 			//004B 	384A
+		LDWI 	BH 			//004C 	000B
+		INCR 	76H, 1H 		//004D 	1AF6
+		SUBWR 	76H, 0H 		//004E 	1276
+		BTSS 	3H, 0H 			//004F 	2C03
+		LJUMP 	42H 			//0050 	3842
+
+		//;CAT1PRO.C: 198: }
+		//;CAT1PRO.C: 204: }
+		//;CAT1PRO.C: 214: while(1)
+		//;CAT1PRO.C: 215: {
+		//;CAT1PRO.C: 216: __nop();
+		NOP 					//0051 	1000
+		LJUMP 	51H 			//0052 	3851
+		STR 	72H 			//0053 	10F2
+
+		//;CAT1PRO.C: 142: unsigned char a,b;
+		//;CAT1PRO.C: 143: for(a=0;a<Time;a++)
+		CLRF 	73H 			//0054 	11F3
+		LDR 	72H, 0H 			//0055 	1872
+		SUBWR 	73H, 0H 		//0056 	1273
+		BTSC 	3H, 0H 			//0057 	2803
+		RET 					//0058 	1008
+
+		//;CAT1PRO.C: 144: {
+		//;CAT1PRO.C: 145: for(b=0;b<5;b++)
+		CLRF 	74H 			//0059 	11F4
+
+		//;CAT1PRO.C: 146: {
+		//;CAT1PRO.C: 147: DelayUs(197);
+		LDWI 	C5H 			//005A 	00C5
+		LCALL 	64H 			//005B 	3064
+		MOVLP 	0H 			//005C 	0180
+		LDWI 	5H 			//005D 	0005
+		INCR 	74H, 1H 		//005E 	1AF4
+		SUBWR 	74H, 0H 		//005F 	1274
+		BTSS 	3H, 0H 			//0060 	2C03
+		LJUMP 	5AH 			//0061 	385A
+		INCR 	73H, 1H 		//0062 	1AF3
+		LJUMP 	55H 			//0063 	3855
+		STR 	70H 			//0064 	10F0
+
+		//;CAT1PRO.C: 128: unsigned char a;
+		//;CAT1PRO.C: 129: for(a=0;a<Time;a++)
+		CLRF 	71H 			//0065 	11F1
+		LDR 	70H, 0H 			//0066 	1870
+		SUBWR 	71H, 0H 		//0067 	1271
+		BTSC 	3H, 0H 			//0068 	2803
+		RET 					//0069 	1008
+
+		//;CAT1PRO.C: 130: {
+		//;CAT1PRO.C: 131: __nop();
+		NOP 					//006A 	1000
+		INCR 	71H, 1H 		//006B 	1AF1
+		LJUMP 	66H 			//006C 	3866
+
+		//;CAT1PRO.C: 92: OSCCON = 0B01110001;
+		LDWI 	71H 			//006D 	0071
+		MOVLB 	1H 			//006E 	1021
+		STR 	19H 			//006F 	1099
+
+		//;CAT1PRO.C: 93: INTCON = 0B10000000;
+		LDWI 	80H 			//0070 	0080
+		STR 	BH 			//0071 	108B
+
+		//;CAT1PRO.C: 95: PORTA = 0B00000000;
+		MOVLB 	0H 			//0072 	1020
+		CLRF 	CH 			//0073 	118C
+
+		//;CAT1PRO.C: 96: TRISA = 0B10010000;
+		LDWI 	90H 			//0074 	0090
+		MOVLB 	1H 			//0075 	1021
+		STR 	CH 			//0076 	108C
+
+		//;CAT1PRO.C: 97: PORTB = 0B00000000;
+		MOVLB 	0H 			//0077 	1020
+		CLRF 	DH 			//0078 	118D
+
+		//;CAT1PRO.C: 98: TRISB = 0B10000101;
+		LDWI 	85H 			//0079 	0085
+		MOVLB 	1H 			//007A 	1021
+		STR 	DH 			//007B 	108D
+
+		//;CAT1PRO.C: 99: PORTC = 0B00000000;
+		MOVLB 	0H 			//007C 	1020
+		CLRF 	EH 			//007D 	118E
+
+		//;CAT1PRO.C: 100: TRISC = 0B00000001;
+		LDWI 	1H 			//007E 	0001
+		MOVLB 	1H 			//007F 	1021
+		STR 	EH 			//0080 	108E
+
+		//;CAT1PRO.C: 102: WPUA = 0B00000000;
+		MOVLB 	3H 			//0081 	1023
+		CLRF 	CH 			//0082 	118C
+
+		//;CAT1PRO.C: 103: WPUB = 0B10000101;
+		LDWI 	85H 			//0083 	0085
+		STR 	DH 			//0084 	108D
+
+		//;CAT1PRO.C: 104: WPUC = 0B00000000;
+		CLRF 	EH 			//0085 	118E
+
+		//;CAT1PRO.C: 106: WPDA = 0B00000000;
+		MOVLB 	4H 			//0086 	1024
+		CLRF 	CH 			//0087 	118C
+
+		//;CAT1PRO.C: 107: WPDB = 0B00000000;
+		CLRF 	DH 			//0088 	118D
+
+		//;CAT1PRO.C: 108: WPDC = 0B00000000;
+		CLRF 	EH 			//0089 	118E
+
+		//;CAT1PRO.C: 110: PSRC0 = 0B11111111;
+		LDWI 	FFH 			//008A 	00FF
+		MOVLB 	2H 			//008B 	1022
+		STR 	1AH 			//008C 	109A
+
+		//;CAT1PRO.C: 111: PSRC1 = 0B11111111;
+		STR 	1BH 			//008D 	109B
+
+		//;CAT1PRO.C: 112: PSRC2 = 0B11111111;
+		STR 	1CH 			//008E 	109C
+
+		//;CAT1PRO.C: 114: PSINK0 = 0B11111111;
+		MOVLB 	3H 			//008F 	1023
+		STR 	1AH 			//0090 	109A
+
+		//;CAT1PRO.C: 115: PSINK1 = 0B11111111;
+		STR 	1BH 			//0091 	109B
+
+		//;CAT1PRO.C: 116: PSINK2 = 0B11111111;
+		STR 	1CH 			//0092 	109C
+
+		//;CAT1PRO.C: 118: ANSELA = 0B00000000;
+		CLRF 	17H 			//0093 	1197
+		RET 					//0094 	1008
+
+		//;CAT1PRO.C: 159: PCKEN |=0B00100000;
+		MOVLB 	1H 			//0095 	1021
+		BSR 	1AH, 5H 			//0096 	269A
+
+		//;CAT1PRO.C: 161: URIER =0B00000001;
+		LDWI 	1H 			//0097 	0001
+		MOVLB 	9H 			//0098 	1029
+		STR 	EH 			//0099 	108E
+
+		//;CAT1PRO.C: 162: URLCR =0B00000001;
+		STR 	FH 			//009A 	108F
+
+		//;CAT1PRO.C: 163: URMCR =0B00011000;
+		LDWI 	18H 			//009B 	0018
+		STR 	11H 			//009C 	1091
+
+		//;CAT1PRO.C: 165: URDLL =104;
+		LDWI 	68H 			//009D 	0068
+		STR 	14H 			//009E 	1094
+
+		//;CAT1PRO.C: 166: URDLH =0;
+		CLRF 	15H 			//009F 	1195
+
+		//;CAT1PRO.C: 167: TCF=1;
+		BSR 	1CH, 0H 			//00A0 	241C
+
+		//;CAT1PRO.C: 168: AFP1=0;
+		MOVLB 	3H 			//00A1 	1023
+		CLRF 	1FH 			//00A2 	119F
+
+		//;CAT1PRO.C: 169: ODCON0=0B00000000;
+		MOVLB 	4H 			//00A3 	1024
+		CLRF 	1FH 			//00A4 	119F
+
+		//;CAT1PRO.C: 170: INTCON=0B11000000;
+		LDWI 	C0H 			//00A5 	00C0
+		STR 	BH 			//00A6 	108B
+		RET 					//00A7 	1008
+		RETW 	41H 			//00A8 	0441
+		RETW 	54H 			//00A9 	0454
+		RETW 	DH 			//00AA 	040D
+		RETW 	AH 			//00AB 	040A
+		RETW 	0H 			//00AC 	0400
+		RETW 	0H 			//00AD 	0400
+		RETW 	0H 			//00AE 	0400
+		RETW 	0H 			//00AF 	0400
+		RETW 	0H 			//00B0 	0400
+		RETW 	0H 			//00B1 	0400
+		RETW 	0H 			//00B2 	0400
+		RETW 	0H 			//00B3 	0400
+		RETW 	0H 			//00B4 	0400
+		RETW 	0H 			//00B5 	0400
+		RETW 	0H 			//00B6 	0400
+		RETW 	0H 			//00B7 	0400
+		RETW 	0H 			//00B8 	0400
+		RETW 	0H 			//00B9 	0400
+		RETW 	0H 			//00BA 	0400
+		RETW 	0H 			//00BB 	0400
+		RETW 	41H 			//00BC 	0441
+		RETW 	54H 			//00BD 	0454
+		RETW 	2BH 			//00BE 	042B
+		RETW 	50H 			//00BF 	0450
+		RETW 	57H 			//00C0 	0457
+		RETW 	52H 			//00C1 	0452
+		RETW 	3DH 			//00C2 	043D
+		RETW 	32H 			//00C3 	0432
+		RETW 	39H 			//00C4 	0439
+		RETW 	DH 			//00C5 	040D
+		RETW 	AH 			//00C6 	040A
+		RETW 	0H 			//00C7 	0400
+		RETW 	0H 			//00C8 	0400
+		RETW 	0H 			//00C9 	0400
+		RETW 	0H 			//00CA 	0400
+		RETW 	0H 			//00CB 	0400
+		RETW 	0H 			//00CC 	0400
+		RETW 	0H 			//00CD 	0400
+		RETW 	0H 			//00CE 	0400
+		RETW 	0H 			//00CF 	0400
+		RETW 	41H 			//00D0 	0441
+		RETW 	54H 			//00D1 	0454
+		RETW 	DH 			//00D2 	040D
+		RETW 	AH 			//00D3 	040A
+		RETW 	0H 			//00D4 	0400
+		RETW 	0H 			//00D5 	0400
+		RETW 	0H 			//00D6 	0400
+		RETW 	0H 			//00D7 	0400
+		RETW 	0H 			//00D8 	0400
+		RETW 	0H 			//00D9 	0400
+		RETW 	0H 			//00DA 	0400
+		RETW 	0H 			//00DB 	0400
+		RETW 	0H 			//00DC 	0400
+		RETW 	0H 			//00DD 	0400
+		RETW 	0H 			//00DE 	0400
+		RETW 	0H 			//00DF 	0400
+		RETW 	0H 			//00E0 	0400
+		RETW 	0H 			//00E1 	0400
+		RETW 	0H 			//00E2 	0400
+		RETW 	0H 			//00E3 	0400
+		RETW 	0H 			//00E4 	0400
+		RETW 	AH 			//00E5 	040A
+		RETW 	0H 			//00E6 	0400
+		RETW 	AH 			//00E7 	040A
+		RETW 	0H 			//00E8 	0400
+		RETW 	AH 			//00E9 	040A
+		RETW 	0H 			//00EA 	0400
+		RETW 	AH 			//00EB 	040A
+		RETW 	0H 			//00EC 	0400
+		RETW 	0H 			//00ED 	0400
+		RETW 	0H 			//00EE 	0400
+		RETW 	0H 			//00EF 	0400
+		RETW 	0H 			//00F0 	0400
+		RETW 	0H 			//00F1 	0400
+		RETW 	0H 			//00F2 	0400
+		RETW 	0H 			//00F3 	0400
+		RETW 	0H 			//00F4 	0400
+		RETW 	0H 			//00F5 	0400
+		RETW 	0H 			//00F6 	0400
+		RETW 	0H 			//00F7 	0400
+		RETW 	41H 			//00F8 	0441
+		RETW 	54H 			//00F9 	0454
+		RETW 	2BH 			//00FA 	042B
+		RETW 	55H 			//00FB 	0455
+		RETW 	41H 			//00FC 	0441
+		RETW 	52H 			//00FD 	0452
+		RETW 	54H 			//00FE 	0454
+		RETW 	3DH 			//00FF 	043D
+		RETW 	33H 			//0100 	0433
+		RETW 	2CH 			//0101 	042C
+		RETW 	30H 			//0102 	0430
+		RETW 	DH 			//0103 	040D
+		RETW 	AH 			//0104 	040A
+		RETW 	55H 			//0105 	0455
+		RETW 	66H 			//0106 	0466
+		RETW 	77H 			//0107 	0477
+		RETW 	88H 			//0108 	0488
+		RETW 	99H 			//0109 	0499
+		RETW 	AAH 			//010A 	04AA
+		RETW 	0H 			//010B 	0400
+		RETW 	41H 			//010C 	0441
+		RETW 	42H 			//010D 	0442
+		RETW 	43H 			//010E 	0443
+		RETW 	44H 			//010F 	0444
+		RETW 	DH 			//0110 	040D
+		RETW 	AH 			//0111 	040A
+		RETW 	0H 			//0112 	0400
+		STR 	7EH 			//0113 	10FE
+		MOVIW 	FSR0++ 		//0114 	1012
+		MOVWI 	FSR1++ 		//0115 	101E
+		DECRSZ 	7EH, 1H 		//0116 	1BFE
+		LJUMP 	114H 			//0117 	3914
+		RETW 	0H 			//0118 	0400
+			END

@@ -1,0 +1,159 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC RSC14 RSC14E SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip FT61F14X ]
+[d frameptr 6 ]
+"56 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _ISR ISR `II(v  1 e 1 0 ]
+"90
+[v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
+"126
+[v _DelayUs DelayUs `(v  1 e 1 0 ]
+"140
+[v _DelayMs DelayMs `(v  1 e 1 0 ]
+"157
+[v _UART_INITIAL UART_INITIAL `(v  1 e 1 0 ]
+"182
+[v _main main `(v  1 e 1 0 ]
+"62 E:\FMDprogrammer\Compiler\data\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 E:\FMDprogrammer\Compiler\data\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"39 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _receivedata receivedata `VE[20]uc  1 e 20 0 ]
+"40
+[v _senddat senddat `VE[20]uc  1 e 20 0 ]
+"42
+[v _toSend toSend `VE[20]uc  1 e 20 0 ]
+"43
+[v _toSendA toSendA `VE[20]uc  1 e 20 0 ]
+"45
+[v _toSenda toSenda `VE[20]uc  1 e 20 0 ]
+"46
+[v _i i `uc  1 e 1 0 ]
+"47
+[v _mmm mmm `uc  1 e 1 0 ]
+"97 E:\FMDprogrammer\Compiler\data\include\FT61F14X.h
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"123
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"168
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+"213
+[v _PORTC PORTC `VEuc  1 e 1 @14 ]
+"219
+[v _PC1 PC1 `VEb  1 e 0 @113 ]
+[s S95 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+]
+"230
+[s S98 . 1 `uc 1 PC0 1 0 :1:0 
+`uc 1 PC1 1 0 :1:1 
+]
+[u S101 . 1 `S95 1 . 1 0 `S98 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES101  1 e 1 @14 ]
+"262
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"289
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"316
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"475
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"506
+[v _PCKEN PCKEN `VEuc  1 e 1 @154 ]
+"821
+[v _PSRC0 PSRC0 `VEuc  1 e 1 @282 ]
+"826
+[v _PSRC1 PSRC1 `VEuc  1 e 1 @283 ]
+"831
+[v _PSRC2 PSRC2 `VEuc  1 e 1 @284 ]
+"869
+[v _WPUA WPUA `VEuc  1 e 1 @396 ]
+"873
+[v _WPUB WPUB `VEuc  1 e 1 @397 ]
+"877
+[v _WPUC WPUC `VEuc  1 e 1 @398 ]
+"966
+[v _ANSELA ANSELA `VEuc  1 e 1 @407 ]
+"1001
+[v _PSINK0 PSINK0 `VEuc  1 e 1 @410 ]
+"1005
+[v _PSINK1 PSINK1 `VEuc  1 e 1 @411 ]
+"1008
+[v _PSINK2 PSINK2 `VEuc  1 e 1 @412 ]
+"1036
+[v _AFP1 AFP1 `VEuc  1 e 1 @415 ]
+"1043
+[v _WPDA WPDA `VEuc  1 e 1 @524 ]
+"1070
+[v _WPDB WPDB `VEuc  1 e 1 @525 ]
+"1096
+[v _WPDC WPDC `VEuc  1 e 1 @526 ]
+"1580
+[v _ODCON0 ODCON0 `VEuc  1 e 1 @543 ]
+"2264
+[v _URDATAL URDATAL `VEuc  1 e 1 @1164 ]
+"2283
+[v _URIER URIER `VEuc  1 e 1 @1166 ]
+"2285
+[v _URRXNE URRXNE `VEb  1 e 0 @9328 ]
+"2305
+[v _URLCR URLCR `VEuc  1 e 1 @1167 ]
+"2343
+[v _URMCR URMCR `VEuc  1 e 1 @1169 ]
+"2368
+[v _RXNEF RXNEF `VEb  1 e 0 @9360 ]
+"2373
+[v _TXEF TXEF `VEb  1 e 0 @9365 ]
+"2416
+[v _URDLL URDLL `VEuc  1 e 1 @1172 ]
+"2421
+[v _URDLH URDLH `VEuc  1 e 1 @1173 ]
+"2568
+[v _TCF TCF `VEb  1 e 0 @9440 ]
+"182 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _main main `(v  1 e 1 0 ]
+{
+"219
+} 0
+"157
+[v _UART_INITIAL UART_INITIAL `(v  1 e 1 0 ]
+{
+"175
+} 0
+"90
+[v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
+{
+"119
+} 0
+"140
+[v _DelayMs DelayMs `(v  1 e 1 0 ]
+{
+[v DelayMs@Time Time `uc  1 a 1 wreg ]
+"142
+[v DelayMs@b b `uc  1 a 1 4 ]
+[v DelayMs@a a `uc  1 a 1 3 ]
+"140
+[v DelayMs@Time Time `uc  1 a 1 wreg ]
+"143
+[v DelayMs@Time Time `uc  1 a 1 2 ]
+"150
+} 0
+"126
+[v _DelayUs DelayUs `(v  1 e 1 0 ]
+{
+[v DelayUs@Time Time `uc  1 a 1 wreg ]
+"128
+[v DelayUs@a a `uc  1 a 1 1 ]
+"126
+[v DelayUs@Time Time `uc  1 a 1 wreg ]
+"129
+[v DelayUs@Time Time `uc  1 a 1 0 ]
+"133
+} 0
+"56
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"83
+} 0
