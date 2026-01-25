@@ -1,11 +1,11 @@
 // Project:  FT61FC4X_UART.prj
 // Device:   FT61FC4X
-// Memory:   PROM=4Kx14, SRAM=0.5KB, EEPROM=128 
-// Description: 串口上电发送10个字符，然后等待接收10个字节数据（通过串口助手发送接收）
+// Memory:   PROM=4Kx14, SRAM=0.5KB, EEPROM=128
+// Description: UART communication with CAT1 module
 
 // RELEASE HISTORY
 // VERSION DATE     DESCRIPTION
-// 1.1     24-2-2   修改文件头
+// 1.1     24-2-2   Modified file header
 //OPENP-----PB2
 //OPENS----PB1
 //CLOSEP----PB0
@@ -15,8 +15,8 @@
 //TX----PA6
 //*********************************************************
 #include "SYSCFG.h"
-//***********************宏定义****************************
-#define  unchar     unsigned char 
+//***********************Macro Definitions****************************
+#define  unchar     unsigned char
 
 #define OPENP       PORTBbits.PB2
 #define OPENS       PORTBbits.PB1
@@ -29,11 +29,12 @@
 
 
 
-#define LED_OFF     PORTBbits.PA1 = 0
-#define LED_ON      PORTBbits.PA1 = 1
+#define LED_OFF     PORTAbits.PA1 = 0
+#define LED_ON      PORTAbits.PA1 = 1
+#define LED_TOGGLE  PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1)
 
 #define WAKE_UP     PORTCbits.PC1 = 0
-#define SLEEP_DN    PORTBbits.PC1 = 1
+#define SLEEP_DN    PORTCbits.PC1 = 1
 
 //const char Freq[]={0x41, 0x54, 0x2B, 0x46, 0x45, 0x51, 0x3D, 0x34, 0x33, 0x34, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x0D, 0x0A, 0x00};
 volatile  unchar	receivedata[20]={0x00,0x0a,0x00,0x0a,0x00,0x0a,0x00,0x0a};
@@ -48,28 +49,29 @@ unchar    mmm=0;
 const  	char*   abc="ABCD\r\n";
 
 /*-------------------------------------------------
-* 函数名：interrupt ISR
-* 功能： 中断处理
-* 输入：  无
-* 输出：  无
+* Function: interrupt ISR
+* Purpose:  Interrupt handler
+* Input:    None
+* Output:   None
  --------------------------------------------------*/
-void interrupt ISR(void)            
-{ 
-	if(URRXNE && RXNEF)       //接收中断         	
+void interrupt ISR(void)
+{
+	if(URRXNE && RXNEF)       // Receive interrupt
 	{
-    	receivedata[mmm++] =URDATAL; 
-        
+        LED_TOGGLE;
+    	receivedata[mmm++] =URDATAL;
+
         if(mmm>=20)
         {
         	mmm=0;
-        } 
+        }
         NOP();
-	} 
+	}
     //----------------------------
-  /*  if(TCEN && TCF)          //发送中断
-    {	
-        TCF=1;       //写1清0
-        
+  /*  if(TCEN && TCF)          // Transmit interrupt
+    {
+        TCF=1;       // Write 1 to clear 0
+
     	if(i<5)
         {
     		URDATAL =toSend[i++];
@@ -78,50 +80,50 @@ void interrupt ISR(void)
         {
           i=0;
         }
-		NOP(); 
+		NOP();
      }  */
-}  
+}
 /*-------------------------------------------------
-* 函数名：POWER_INITIAL
-* 功能：  上电系统初始化
-* 输入：  无
-* 输出：  无
- --------------------------------------------------*/	
-void POWER_INITIAL (void) 
+* Function: POWER_INITIAL
+* Purpose:  Power-on system initialization
+* Input:    None
+* Output:   None
+ --------------------------------------------------*/
+void POWER_INITIAL (void)
 {
 	OSCCON = 0B01110001;	//16MHz 1:1
-	INTCON = 0B10000000;  			//暂禁止所有中断
-    
-	PORTA = 0B00000000;		
-	TRISA = 0B10010000;		//PA输入输出 0-输出 1-输入 PA6-输出 PA7-输入
-	PORTB = 0B00000000;		
-	TRISB = 0B10000101;		//PB输入输出 0-输出 1-输入							
-	PORTC = 0B00000000; 	
-	TRISC = 0B00000001;		//PC输入输出 0-输出 1-输入  	
-	
-	WPUA = 0B00000000;     	//PA端口上拉控制 1-开上拉 0-关上拉
-	WPUB = 0B10000101;     	//PB端口上拉控制 1-开上拉 0-关上拉
-	WPUC = 0B00000000;     	//PC端口上拉控制 1-开上拉 0-关上拉
-    
-    WPDA = 0B00000000;     	//PA端口下拉控制 1-开下拉 0-关下拉 PA7上拉
-	WPDB = 0B00000000;     	//PB端口下拉控制 1-开下拉 0-关下拉
-	WPDC = 0B00000000;     	//PC端口下拉控制 1-开下拉 0-关下拉
-    
-    PSRC0 = 0B11111111;  	//PORTA 源电流设置最大 0:最小，1:最大
-    PSRC1 = 0B11111111;     //PORTB 源电流设置最大 0:最小，1:最大
-    PSRC2 = 0B11111111;		//PORTC 源电流设置最大 00:最小 11:最大    
-    
-    PSINK0 = 0B11111111;  	//PORTA灌电流设置最大 0:最小，1:最大
-    PSINK1 = 0B11111111; 	//PORTB灌电流设置最大 0:最小，1:最大
-    PSINK2 = 0B11111111;	//PORTC灌电流设置最大 0:最小，1:最大
-	
-    ANSELA = 0B00000000;    //全为数字管脚
+	INTCON = 0B10000000;  			// Disable peripheral interrupt
+
+	PORTA = 0B00000000;
+	TRISA = 0B10010000;		// PA pin direction 0=output 1=input PA6=output PA7=input
+	PORTB = 0B00000000;
+	TRISB = 0B10000101;		// PB pin direction 0=output 1=input
+	PORTC = 0B00000000;
+	TRISC = 0B00000001;		// PC pin direction 0=output 1=input
+
+	WPUA = 0B00000000;     	// PA pull-up resistor 1=enabled 0=disabled
+	WPUB = 0B10000101;     	// PB pull-up resistor 1=enabled 0=disabled
+	WPUC = 0B00000000;     	// PC pull-up resistor 1=enabled 0=disabled
+
+    WPDA = 0B00000000;     	// PA pull-down resistor 1=enabled 0=disabled PA7 pull-down
+	WPDB = 0B00000000;     	// PB pull-down resistor 1=enabled 0=disabled
+	WPDC = 0B00000000;     	// PC pull-down resistor 1=enabled 0=disabled
+
+    PSRC0 = 0B11111111;  	// PORTA source current drive 0=small 1=large
+    PSRC1 = 0B11111111;     // PORTB source current drive 0=small 1=large
+    PSRC2 = 0B11111111;		// PORTC source current drive 00=small 11=large
+
+    PSINK0 = 0B11111111;  	// PORTA sink current drive 0=small 1=large
+    PSINK1 = 0B11111111; 	// PORTB sink current drive 0=small 1=large
+    PSINK2 = 0B11111111;	// PORTC sink current drive 0=small 1=large
+
+    ANSELA = 0B00000000;    // All digital I/O pins
 }
-/*------------------------------------------------- 
-* 函数名称：DelayUs
-* 功能：    短延时函数 --16M-2T--大概快1%左右.
-* 输入参数：Time延时时间长度 延时时长Time Us
-* 返回参数：无 
+/*-------------------------------------------------
+* Function: DelayUs
+* Purpose:  Microsecond delay - 16MHz 2T mode - about 1% error
+* Input:    Time - delay time in microseconds
+* Output:   None
  -------------------------------------------------*/
 void DelayUs(unsigned char Time)
 {
@@ -130,12 +132,12 @@ void DelayUs(unsigned char Time)
 	{
 		NOP();
 	}
-}                  
+}
 /*-------------------------------------------------
-* 函数名称：DelayMs
-* 功能：    短延时函数 快1%
-* 输入参数：Time延时时间长度 延时时长Time ms
-* 返回参数：无 
+* Function: DelayMs
+* Purpose:  Millisecond delay - about 1% error
+* Input:    Time - delay time in milliseconds
+* Output:   None
  -------------------------------------------------*/
 void DelayMs(unsigned char Time)
 {
@@ -149,71 +151,180 @@ void DelayMs(unsigned char Time)
 	}
 }
 /*-------------------------------------------------
-* 函数名: UART_INITIAL
-* 功能：  主函数
-* 输入：  无
-* 输出：  无
+* Function: UART_INITIAL
+* Purpose:  UART initialization
+* Input:    None
+* Output:   None
  --------------------------------------------------*/
 void UART_INITIAL(void)
 {
-	PCKEN |=0B00100000;	//打开UART时钟
-    
-    URIER =0B00000001;  //使能发送接收完成中断
-    URLCR =0B00000001;  //8位数据，停止位1，无奇偶校验
+	PCKEN |=0B00100000;	// Enable UART clock
+
+    URIER =0B00000001;  // Enable TX/RX interrupt
+    URLCR =0B00000001;  // 8-bit data, 1 stop bit, no parity
     URMCR =0B00011000;
-    
-    URDLL =104;         //9600波特率 = Fosc/16*[URDLH:URDLL]
+
+    URDLL =104;         // 9600 baud rate = Fosc/16*[URDLH:URDLL]
     URDLH =0;
     TCF=1;
     AFP1=0;
     ODCON0=0B00000000;
 	INTCON=0B11000000;
-    
-    //TCF: 发送完成标志
-    //TXEF:1发送寄存器为空
-    //RXNEF:1按收寄存器非空
+
+    // TCF: Transmit Complete Flag
+    // TXEF: 1=Transmit register empty
+    // RXNEF: 1=Receive register not empty
 }
 /*-------------------------------------------------
-* 函数名: main 
-* 功能：  主函数
-* 输入：  无
-* 输出：  无
+* Function: SendByte
+* Purpose:  Send a single byte via UART
+* Input:    data - byte to send
+* Output:   None
+ --------------------------------------------------*/
+void SendByte(unchar data)
+{
+    TXEF = 0;
+    URDATAL = data;
+    while(!TCF)
+    {
+    }
+}
+/*-------------------------------------------------
+* Function: SendString
+* Purpose:  Send a string via UART (without \r\n)
+* Input:    str - string to send
+* Output:   None
+ --------------------------------------------------*/
+void SendString(const char* str)
+{
+    unchar j = 0;
+    while(str[j] != '\0')
+    {
+        SendByte(str[j]);
+        j++;
+    }
+}
+/*-------------------------------------------------
+* Function: SendATCommand
+* Purpose:  Send AT command and automatically append \r\n
+* Input:    cmd - AT command string
+*           Example1: AT+PWR=29
+*           Example2: ATW
+* Output:   None
+* Note:     Automatically appends \r\n at the end
+ --------------------------------------------------*/
+void SendATCommand(const char* cmd)
+{
+    unchar j = 0;
+
+    // Send command string characters
+    while(cmd[j] != '\0')
+    {
+        SendByte(cmd[j]);
+        j++;
+    }
+
+    // Send \r (0x0D)
+    SendByte(0x0D);
+
+    // Send \n (0x0A)
+    SendByte(0x0A);
+}
+/*-------------------------------------------------
+* Function: CAT1_Init
+* Purpose:  CAT1 433MHz module initialization with AT commands
+* Input:    None
+* Output:   None
+* Note:     Configure power, baud rate, frequency, address, SF, BW, PB
+ --------------------------------------------------*/
+void CAT1_Init(void)
+{
+    // Set power
+    SendATCommand("AT+PWR=20");
+    DelayMs(50);
+
+    // Set UART baud rate 9600
+    SendATCommand("AT+UART=3,0");
+    DelayMs(50);
+
+    // Set frequency 434MHz
+    SendATCommand("AT+FEQ=434000000");
+    DelayMs(50);
+
+    // Set address
+    SendATCommand("AT+ADR=0");
+    DelayMs(50);
+
+    // Set spreading factor (7-12, higher=longer range)
+    SendATCommand("AT+SF=7");
+    DelayMs(50);
+
+    // Set bandwidth (6-9, lower=longer range)
+    SendATCommand("AT+BW=9");
+    DelayMs(50);
+
+    // Set preamble length (0-6)
+    SendATCommand("AT+PB=3");
+    DelayMs(50);
+
+    // Save all settings
+    SendATCommand("ATW");
+    DelayMs(50);
+
+    WAKE_UP;//鍞ら啋433
+}
+/*-------------------------------------------------
+* Function: main
+* Purpose:  Main function
+* Input:    None
+* Output:   None
  --------------------------------------------------*/
 void main(void)
 {
-	POWER_INITIAL();		//系统初始化
+	POWER_INITIAL();		// System initialization
     UART_INITIAL();
     DelayMs(100);
     PC1=0;
 
-    WAKE_UP;
-    
+    // Initialize CAT1 433MHz module with all AT commands
+    CAT1_Init();
+
+    // Add more commands if needed
+    // SendATCommand("AT+B=3");
+    //SendATCommand("Hello");
+
+    /* Old byte-by-byte send method, replaced by SendATCommand
     //i=0;
 	for(i=0;i<11;i++)
       {
-    	 TXEF=0;         
+    	 TXEF=0;
          URDATAL=toSend[i];
          while(!TCF)
          {
          }
-         //DelayUs(255);  
          //DelayUs(255);
          //DelayUs(255);
-                      
-           
-      }  
-      
+         //DelayUs(255);
+
+
+      }
+    */
         	//NOP();
-    
-    /*if(TXEF)                //上电发送10+1个数据
+
+    /*if(TXEF)                // Power-on send 10+1 bytes data
     {
-      URDATAL =0xaa;        
-    }  */ 
-      
+      URDATAL =0xaa;
+    }  */
+
 
 	while(1)
 	{
-		NOP();
-    }	
+		// Send "HELLO" every 1 second
+		SendString("HELLO");
+		DelayMs(250);  // Delay 1000ms = 1s (using 4x250ms)
+		DelayMs(250);
+		DelayMs(250);
+		DelayMs(250);
+    }
 
 }
