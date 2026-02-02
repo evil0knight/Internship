@@ -3,46 +3,150 @@
 [d edition pro ]
 [d chip FT61F14X ]
 [d frameptr 6 ]
-"56 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
+"382 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
+[e E2511 . `uc
+STATE_WAKE_INIT 0
+STATE_WORKING 1
+STATE_GO_SLEEP 2
+]
+"414
+[e E2441 . `uc
+MODE_NORMAL 0
+MODE_PAIRING 1
+]
+"4 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\duima.c
+[e E2441 . `uc
+MODE_NORMAL 0
+MODE_PAIRING 1
+]
+"63 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
 [v _ISR ISR `II(v  1 e 1 0 ]
-"90
+"108
 [v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
-"126
+"151
+[v _IO_INT_INITIAL IO_INT_INITIAL `(v  1 e 1 0 ]
+"173
 [v _DelayUs DelayUs `(v  1 e 1 0 ]
-"140
+"187
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
-"157
+"204
 [v _UART_INITIAL UART_INITIAL `(v  1 e 1 0 ]
-"182
+"224
+[v _SendByte SendByte `(v  1 e 1 0 ]
+"256
+[v _SendATCommand SendATCommand `(v  1 e 1 0 ]
+"281
+[v _CAT1_Init CAT1_Init `(v  1 e 1 0 ]
+"341
+[v _Sys_EnterSleep Sys_EnterSleep `(v  1 e 1 0 ]
+"369
 [v _main main `(v  1 e 1 0 ]
+"11 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\duima.c
+[v _Duima_Timer_Init Duima_Timer_Init `(v  1 e 1 0 ]
+"49
+[v _Duima_Init Duima_Init `(v  1 e 1 0 ]
+"72
+[v _Duima_StartPairing Duima_StartPairing `(v  1 e 1 0 ]
+"98
+[v _Duima_ProcessReceivedData Duima_ProcessReceivedData `(v  1 e 1 0 ]
+"156
+[v _Duima_Configure433Address Duima_Configure433Address `(v  1 e 1 0 ]
+"195
+[v _Duima_MainLoop Duima_MainLoop `(v  1 e 1 0 ]
+"252
+[v _Duima_EEPROM_ReadByte Duima_EEPROM_ReadByte `(uc  1 e 1 0 ]
+"274
+[v _Unlock_Flash Unlock_Flash `(v  1 e 1 0 ]
+"293
+[v _Duima_EEPROM_WriteByte Duima_EEPROM_WriteByte `(v  1 e 1 0 ]
+"326
+[v _Duima_EEPROM_ReadID Duima_EEPROM_ReadID `(ui  1 e 2 0 ]
+"340
+[v _Duima_EEPROM_WriteID Duima_EEPROM_WriteID `(v  1 e 1 0 ]
 "62 E:\FMDprogrammer\Compiler\data\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 E:\FMDprogrammer\Compiler\data\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"39 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
-[v _receivedata receivedata `VE[20]uc  1 e 20 0 ]
-"40
-[v _senddat senddat `VE[20]uc  1 e 20 0 ]
-"42
-[v _toSend toSend `VE[20]uc  1 e 20 0 ]
-"43
-[v _toSendA toSendA `VE[20]uc  1 e 20 0 ]
+"6 E:\FMDprogrammer\Compiler\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 E:\FMDprogrammer\Compiler\data\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"42 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _g_timer_ms g_timer_ms `VEui  1 e 2 0 ]
 "45
-[v _toSenda toSenda `VE[20]uc  1 e 20 0 ]
+[v _receivedata receivedata `VE[20]uc  1 e 20 0 ]
 "46
-[v _i i `uc  1 e 1 0 ]
-"47
+[v _senddat senddat `VE[20]uc  1 e 20 0 ]
+"48
+[v _toSend toSend `VE[20]uc  1 e 20 0 ]
+"49
+[v _toSendA toSendA `VE[20]uc  1 e 20 0 ]
+"51
+[v _toSenda toSenda `VE[20]uc  1 e 20 0 ]
+"53
 [v _mmm mmm `uc  1 e 1 0 ]
-"97 E:\FMDprogrammer\Compiler\data\include\FT61F14X.h
+"4 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\duima.c
+[v _current_mode current_mode `E2441  1 e 1 0 ]
+"5
+[v _local_paired_id local_paired_id `ui  1 e 2 0 ]
+"59 E:\FMDprogrammer\Compiler\data\include\FT61F14X.h
+[v _BSREG BSREG `VEuc  1 e 1 @8 ]
+"97
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"101
+[v _EEIF EEIF `VEb  1 e 0 @90 ]
+"105
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"106
+[v _GIE GIE `VEb  1 e 0 @95 ]
 "123
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
+[s S53 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"164
+[s S62 . 1 `uc 1 PA0 1 0 :1:0 
+`uc 1 PA1 1 0 :1:1 
+`uc 1 PA2 1 0 :1:2 
+`uc 1 PA3 1 0 :1:3 
+`uc 1 PA4 1 0 :1:4 
+`uc 1 PA5 1 0 :1:5 
+`uc 1 PA6 1 0 :1:6 
+`uc 1 PA7 1 0 :1:7 
+]
+[u S71 . 1 `S53 1 . 1 0 `S62 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES71  1 e 1 @12 ]
 "168
 [v _PORTB PORTB `VEuc  1 e 1 @13 ]
+[s S74 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"209
+[s S83 . 1 `uc 1 PB0 1 0 :1:0 
+`uc 1 PB1 1 0 :1:1 
+`uc 1 PB2 1 0 :1:2 
+`uc 1 PB3 1 0 :1:3 
+`uc 1 PB4 1 0 :1:4 
+`uc 1 PB5 1 0 :1:5 
+`uc 1 PB6 1 0 :1:6 
+`uc 1 PB7 1 0 :1:7 
+]
+[u S92 . 1 `S74 1 . 1 0 `S83 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES92  1 e 1 @13 ]
 "213
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
-"219
-[v _PC1 PC1 `VEb  1 e 0 @113 ]
 [s S95 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 ]
@@ -52,28 +156,76 @@
 ]
 [u S101 . 1 `S95 1 . 1 0 `S98 1 . 1 0 ]
 [v _PORTCbits PORTCbits `VES101  1 e 1 @14 ]
+"249
+[v _EPIF0 EPIF0 `VEuc  1 e 1 @20 ]
 "262
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "289
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
 "316
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"348
+[v _EPIE0 EPIE0 `VEuc  1 e 1 @148 ]
 "475
 [v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
 "506
 [v _PCKEN PCKEN `VEuc  1 e 1 @154 ]
+"718
+[v _TIM4CR1 TIM4CR1 `VEuc  1 e 1 @273 ]
+"743
+[v _TIM4IER TIM4IER `VEuc  1 e 1 @274 ]
+"745
+[v _T4UIE T4UIE `VEb  1 e 0 @2192 ]
+"755
+[v _TIM4SR TIM4SR `VEuc  1 e 1 @275 ]
+"757
+[v _T4UIF T4UIF `VEb  1 e 0 @2200 ]
+"768
+[v _TIM4EGR TIM4EGR `VEuc  1 e 1 @276 ]
+"781
+[v _TIM4CNTR TIM4CNTR `VEuc  1 e 1 @277 ]
+"786
+[v _TIM4PSCR TIM4PSCR `VEuc  1 e 1 @278 ]
+"806
+[v _TIM4ARR TIM4ARR `VEuc  1 e 1 @279 ]
+"811
+[v _EPS0 EPS0 `VEuc  1 e 1 @280 ]
+"816
+[v _EPS1 EPS1 `VEuc  1 e 1 @281 ]
 "821
 [v _PSRC0 PSRC0 `VEuc  1 e 1 @282 ]
 "826
 [v _PSRC1 PSRC1 `VEuc  1 e 1 @283 ]
 "831
 [v _PSRC2 PSRC2 `VEuc  1 e 1 @284 ]
+"853
+[v _ITYPE0 ITYPE0 `VEuc  1 e 1 @286 ]
+"859
+[v _ITYPE1 ITYPE1 `VEuc  1 e 1 @287 ]
 "869
 [v _WPUA WPUA `VEuc  1 e 1 @396 ]
 "873
 [v _WPUB WPUB `VEuc  1 e 1 @397 ]
 "877
 [v _WPUC WPUC `VEuc  1 e 1 @398 ]
+"881
+[v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
+"906
+[v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
+"928
+[v _EECON1 EECON1 `VEuc  1 e 1 @405 ]
+"930
+[v _RD RD `VEb  1 e 0 @3240 ]
+"931
+[v _WR WR `VEb  1 e 0 @3241 ]
+"932
+[v _WREN WREN `VEb  1 e 0 @3242 ]
+"935
+[v _CFGS CFGS `VEb  1 e 0 @3246 ]
+"936
+[v _EEPGD EEPGD `VEb  1 e 0 @3247 ]
+"962
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
 "966
 [v _ANSELA ANSELA `VEuc  1 e 1 @407 ]
 "1001
@@ -112,48 +264,210 @@
 [v _URDLH URDLH `VEuc  1 e 1 @1173 ]
 "2568
 [v _TCF TCF `VEb  1 e 0 @9440 ]
-"182 D:\information\circuit_board\nanjing_hosptial\bluetooth-controlled_valve\CAT1PRO\CAT1PRO\CAT1PRO.C
+"369 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
 [v _main main `(v  1 e 1 0 ]
 {
-"219
+"437
+[v main@k k `uc  1 a 1 57 ]
+"382
+[v main@sys_state sys_state `E2511  1 a 1 56 ]
+"449
 } 0
-"157
+"204
 [v _UART_INITIAL UART_INITIAL `(v  1 e 1 0 ]
 {
-"175
+"217
 } 0
-"90
+"341
+[v _Sys_EnterSleep Sys_EnterSleep `(v  1 e 1 0 ]
+{
+"368
+} 0
+"151
+[v _IO_INT_INITIAL IO_INT_INITIAL `(v  1 e 1 0 ]
+{
+"165
+} 0
+"108
 [v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
 {
-"119
+"142
 } 0
-"140
+"98 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\duima.c
+[v _Duima_ProcessReceivedData Duima_ProcessReceivedData `(v  1 e 1 0 ]
+{
+[v Duima_ProcessReceivedData@data data `*.4uc  1 a 1 wreg ]
+"145
+[v Duima_ProcessReceivedData@k k `uc  1 a 1 53 ]
+"125
+[v Duima_ProcessReceivedData@new_id new_id `ui  1 a 2 54 ]
+"98
+[v Duima_ProcessReceivedData@data data `*.4uc  1 a 1 wreg ]
+[v Duima_ProcessReceivedData@len len `uc  1 p 1 13 ]
+"103
+[v Duima_ProcessReceivedData@data data `*.4uc  1 a 1 52 ]
+"151
+} 0
+"340
+[v _Duima_EEPROM_WriteID Duima_EEPROM_WriteID `(v  1 e 1 0 ]
+{
+[v Duima_EEPROM_WriteID@id id `ui  1 p 2 3 ]
+[v Duima_EEPROM_WriteID@addr addr `uc  1 p 1 5 ]
+"346
+} 0
+"293
+[v _Duima_EEPROM_WriteByte Duima_EEPROM_WriteByte `(v  1 e 1 0 ]
+{
+[v Duima_EEPROM_WriteByte@data data `uc  1 a 1 wreg ]
+"295
+[v Duima_EEPROM_WriteByte@PEIE_1 PEIE_1 `uc  1 a 1 2 ]
+"293
+[v Duima_EEPROM_WriteByte@data data `uc  1 a 1 wreg ]
+[v Duima_EEPROM_WriteByte@addr addr `uc  1 p 1 0 ]
+"295
+[v Duima_EEPROM_WriteByte@data data `uc  1 a 1 1 ]
+"321
+} 0
+"274
+[v _Unlock_Flash Unlock_Flash `(v  1 e 1 0 ]
+{
+"287
+} 0
+"195
+[v _Duima_MainLoop Duima_MainLoop `(v  1 e 1 0 ]
+{
+"198
+[v Duima_MainLoop@key_state key_state `uc  1 s 1 key_state ]
+"199
+[v Duima_MainLoop@press_start_time press_start_time `ui  1 s 2 press_start_time ]
+"241
+} 0
+"72
+[v _Duima_StartPairing Duima_StartPairing `(v  1 e 1 0 ]
+{
+"93
+} 0
+"281 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _CAT1_Init CAT1_Init `(v  1 e 1 0 ]
+{
+"325
+} 0
+"49 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\duima.c
+[v _Duima_Init Duima_Init `(v  1 e 1 0 ]
+{
+"67
+} 0
+"11
+[v _Duima_Timer_Init Duima_Timer_Init `(v  1 e 1 0 ]
+{
+"43
+} 0
+"326
+[v _Duima_EEPROM_ReadID Duima_EEPROM_ReadID `(ui  1 e 2 0 ]
+{
+[v Duima_EEPROM_ReadID@addr addr `uc  1 a 1 wreg ]
+"328
+[v Duima_EEPROM_ReadID@id id `ul  1 a 4 1 ]
+"326
+[v Duima_EEPROM_ReadID@addr addr `uc  1 a 1 wreg ]
+[v Duima_EEPROM_ReadID@addr addr `uc  1 a 1 0 ]
+"335
+} 0
+"252
+[v _Duima_EEPROM_ReadByte Duima_EEPROM_ReadByte `(uc  1 e 1 0 ]
+{
+[v Duima_EEPROM_ReadByte@addr addr `uc  1 a 1 wreg ]
+"254
+[v Duima_EEPROM_ReadByte@data data `uc  1 a 1 1 ]
+"252
+[v Duima_EEPROM_ReadByte@addr addr `uc  1 a 1 wreg ]
+[v Duima_EEPROM_ReadByte@addr addr `uc  1 a 1 0 ]
+"273
+} 0
+"156
+[v _Duima_Configure433Address Duima_Configure433Address `(v  1 e 1 0 ]
+{
+"158
+[v Duima_Configure433Address@cmd_buffer cmd_buffer `[32]uc  1 a 32 14 ]
+"162
+[v Duima_Configure433Address@digits digits `[10]uc  1 a 10 4 ]
+"161
+[v Duima_Configure433Address@temp temp `ul  1 a 4 47 ]
+"160
+[v Duima_Configure433Address@digit_count digit_count `uc  1 a 1 51 ]
+"159
+[v Duima_Configure433Address@i i `uc  1 a 1 46 ]
+"156
+[v Duima_Configure433Address@addr addr `ui  1 p 2 0 ]
+"189
+} 0
+"6 E:\FMDprogrammer\Compiler\data\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+{
+"11
+[v ___llmod@counter counter `uc  1 a 1 8 ]
+"6
+[v ___llmod@divisor divisor `ul  1 p 4 0 ]
+[v ___llmod@dividend dividend `ul  1 p 4 4 ]
+"26
+} 0
+"6 E:\FMDprogrammer\Compiler\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"6
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"31
+} 0
+"256 D:\information\circuit_board\nanjing_hosptial\Internship\CAT1PRO\CAT1PRO\CAT1PRO.C
+[v _SendATCommand SendATCommand `(v  1 e 1 0 ]
+{
+"258
+[v SendATCommand@j j `uc  1 a 1 6 ]
+"256
+[v SendATCommand@cmd cmd `*.26DCuc  1 p 2 1 ]
+"272
+} 0
+"224
+[v _SendByte SendByte `(v  1 e 1 0 ]
+{
+[v SendByte@data data `uc  1 a 1 wreg ]
+[v SendByte@data data `uc  1 a 1 wreg ]
+"226
+[v SendByte@data data `uc  1 a 1 0 ]
+"231
+} 0
+"187
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
 {
 [v DelayMs@Time Time `uc  1 a 1 wreg ]
-"142
+"189
 [v DelayMs@b b `uc  1 a 1 4 ]
 [v DelayMs@a a `uc  1 a 1 3 ]
-"140
+"187
 [v DelayMs@Time Time `uc  1 a 1 wreg ]
-"143
+"190
 [v DelayMs@Time Time `uc  1 a 1 2 ]
-"150
+"197
 } 0
-"126
+"173
 [v _DelayUs DelayUs `(v  1 e 1 0 ]
 {
 [v DelayUs@Time Time `uc  1 a 1 wreg ]
-"128
+"175
 [v DelayUs@a a `uc  1 a 1 1 ]
-"126
+"173
 [v DelayUs@Time Time `uc  1 a 1 wreg ]
-"129
+"176
 [v DelayUs@Time Time `uc  1 a 1 0 ]
-"133
+"180
 } 0
-"56
+"63
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"83
+"101
 } 0

@@ -15,15 +15,16 @@
 //TX----PA6
 //*********************************************************
 #include "SYSCFG.h"
+#include "duima.h"
 //***********************Macro Definitions****************************
 #define  unchar     unsigned char
 
 #define OPENP       PORTBbits.PB2
 #define OPENS       PORTBbits.PB1
 #define CLOSEP       PORTBbits.PB0
-#define CLOSES       PORTBbits.PA0
+#define CLOSES       PORTBbits.PB0
 
-#define DATA_TRANS   PORTBbits.PA4
+#define DATA_TRANS   PORTAbits.PA4
 
 #define KEY          PORTBbits.PB7
 
@@ -36,6 +37,10 @@
 #define WAKE_UP     PORTCbits.PC1 = 0
 #define SLEEP_DN    PORTCbits.PC1 = 1
 
+//***********************Global Variables****************************
+// 定时器计数器（用于按键扫描）- 由TIM4中断每1ms递增
+volatile unsigned int g_timer_ms = 0;
+
 //const char Freq[]={0x41, 0x54, 0x2B, 0x46, 0x45, 0x51, 0x3D, 0x34, 0x33, 0x34, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x0D, 0x0A, 0x00};
 volatile  unchar	receivedata[20]={0x00,0x0a,0x00,0x0a,0x00,0x0a,0x00,0x0a};
 volatile  unchar	senddat[20]={'A','T',0x0d,0x0a};
@@ -47,6 +52,7 @@ volatile  unchar    toSenda[20]={'A','T','+','U','A','R','T','=','3',',','0',0x0
 unchar    i=0;
 unchar    mmm=0;
 const  	char*   abc="ABCD\r\n";
+//int last_toggle_time=0;
 
 /*-------------------------------------------------
 * Function: interrupt ISR
@@ -58,7 +64,7 @@ void interrupt ISR(void)
 {
 	if(URRXNE && RXNEF)       // Receive interrupt
 	{
-        LED_TOGGLE;
+        //LED_TOGGLE;
     	receivedata[mmm++] =URDATAL;
 
         if(mmm>=20)
@@ -67,6 +73,15 @@ void interrupt ISR(void)
         }
         NOP();
 	}
+
+    // TIM4定时器中断（1ms）- 用于按键扫描时间基准
+    if(T4UIE && T4UIF)
+    {
+        T4UIF = 1;              // 写1清除中断标志
+        g_timer_ms++;           // 毫秒计数器递增（允许溢出）
+        
+    }
+
     //----------------------------
   /*  if(TCEN && TCF)          // Transmit interrupt
     {
@@ -82,6 +97,7 @@ void interrupt ISR(void)
         }
 		NOP();
      }  */
+
 }
 /*-------------------------------------------------
 * Function: POWER_INITIAL
@@ -92,33 +108,62 @@ void interrupt ISR(void)
 void POWER_INITIAL (void)
 {
 	OSCCON = 0B01110001;	//16MHz 1:1
-	INTCON = 0B10000000;  			// Disable peripheral interrupt
+	INTCON = 0B00000000;  	// Disable peripheral interrupt
 
+    //输入引脚设置
 	PORTA = 0B00000000;
-	TRISA = 0B10010000;		// PA pin direction 0=output 1=input PA6=output PA7=input
+	TRISA = 0B10010000;		// PA7,PA4
 	PORTB = 0B00000000;
-	TRISB = 0B10000101;		// PB pin direction 0=output 1=input
+	TRISB = 0B10000101;		// PB7,PB2,PB0
 	PORTC = 0B00000000;
-	TRISC = 0B00000001;		// PC pin direction 0=output 1=input
+	TRISC = 0B00000000;		//
 
-	WPUA = 0B00000000;     	// PA pull-up resistor 1=enabled 0=disabled
-	WPUB = 0B10000101;     	// PB pull-up resistor 1=enabled 0=disabled
-	WPUC = 0B00000000;     	// PC pull-up resistor 1=enabled 0=disabled
+    //上拉引脚设置
+	WPUA = 0B00010000;     	// PA4
+	WPUB = 0B10000101;     	// PB7,PB2,PB0
+	WPUC = 0B00000000;     	// 
 
-    WPDA = 0B00000000;     	// PA pull-down resistor 1=enabled 0=disabled PA7 pull-down
-	WPDB = 0B00000000;     	// PB pull-down resistor 1=enabled 0=disabled
-	WPDC = 0B00000000;     	// PC pull-down resistor 1=enabled 0=disabled
+    //下拉引脚设置
+    WPDA = 0B00000000;     	// 
+	WPDB = 0B00000000;     	//
+	WPDC = 0B00000000;     	//
 
+    //源电流大小设置
     PSRC0 = 0B11111111;  	// PORTA source current drive 0=small 1=large
     PSRC1 = 0B11111111;     // PORTB source current drive 0=small 1=large
     PSRC2 = 0B11111111;		// PORTC source current drive 00=small 11=large
 
+    //灌电流大小设置
     PSINK0 = 0B11111111;  	// PORTA sink current drive 0=small 1=large
     PSINK1 = 0B11111111; 	// PORTB sink current drive 0=small 1=large
     PSINK2 = 0B11111111;	// PORTC sink current drive 0=small 1=large
 
     ANSELA = 0B00000000;    // All digital I/O pins
 }
+/*-------------------------------------------------
+* Function: IO_INT_INITIAL
+* Purpose:  Dual External Interrupt Initialization
+*           - PA4: 433 module wakeup signal (EINT0)
+*           - PB7: Pairing button wakeup (EINT1)
+* Input:    None
+* Output:   None
+ --------------------------------------------------*/
+void IO_INT_INITIAL(void)
+{
+    EPS0 = 0B00000000;//ESP0没用到
+
+    // EPS1 选择 PA4(ENT4),PB7(ENT7)
+    EPS1 = 0B01000000;
+
+    ITYPE0 = 0B00000000;//没用到
+
+    ITYPE1 = 0B10000000;    // PB7,PA4 边沿
+
+    EPIE0  = 0B10010000;    //ent7,ent4外设中段使能
+    
+    INTCON = 0B11000000; //GIE,PEIE使能
+}
+
 /*-------------------------------------------------
 * Function: DelayUs
 * Purpose:  Microsecond delay - 16MHz 2T mode - about 1% error
@@ -169,11 +214,6 @@ void UART_INITIAL(void)
     TCF=1;
     AFP1=0;
     ODCON0=0B00000000;
-	INTCON=0B11000000;
-
-    // TCF: Transmit Complete Flag
-    // TXEF: 1=Transmit register empty
-    // RXNEF: 1=Receive register not empty
 }
 /*-------------------------------------------------
 * Function: SendByte
@@ -230,8 +270,9 @@ void SendATCommand(const char* cmd)
     // Send \n (0x0A)
     SendByte(0x0A);
 }
+
 /*-------------------------------------------------
-* Function: CAT1_Init
+* Function: CAT1_Init这个是一直唤醒模式的配置，后续要用周期睡眠模式
 * Purpose:  CAT1 433MHz module initialization with AT commands
 * Input:    None
 * Output:   None
@@ -267,11 +308,20 @@ void CAT1_Init(void)
     SendATCommand("AT+PB=3");
     DelayMs(50);
 
+    SendATCommand("AT+MODE=1"); // 开启周期休眠
+    DelayMs(50);
+
+    SendATCommand("AT+WT=2");   // 唤醒周期2秒 (发送方的前导码PB必须>2秒)
+    DelayMs(50);
+
+    // Initialize pairing module (EEPROM, GPIO, timer, interrupt)
+    Duima_Init();
+
     // Save all settings
     SendATCommand("ATW");
     DelayMs(50);
 
-    WAKE_UP;//唤醒433
+    SLEEP_DN;//唤醒433
 }
 /*-------------------------------------------------
 * Function: main
@@ -279,52 +329,121 @@ void CAT1_Init(void)
 * Input:    None
 * Output:   None
  --------------------------------------------------*/
+// 定义系统状态
+typedef enum {
+    STATE_WAKE_INIT,    // 状态0: 唤醒初始化
+    STATE_WORKING,      // 状态1: 正常工作 (5秒窗口)
+    STATE_GO_SLEEP      // 状态2: 准备休眠
+} MAIN_STATE;
+//==============================================================================
+// 系统进入休眠模式 
+//==============================================================================
+void Sys_EnterSleep(void)
+{
+    // 1. 关外设，准备睡觉
+    LED_OFF;
+    SLEEP_DN;
+    DelayMs(50); // 防抖
+
+    // 2. 备份现场
+    //unsigned char backup_INTCON = INTCON;
+
+    IO_INT_INITIAL();
+    EPIF0 = 0x90;
+    //TIM4IER=0;
+    GIE = 0;
+
+    // 8. 睡觉
+    NOP(); NOP();NOP();NOP();
+    SLEEP();
+    NOP(); NOP();NOP();NOP();
+
+    // 9. 醒来后
+    EPIF0 = 0x90;   
+    INTCON = 0B11000000; //GIE,PEIE使能
+    //TIM4IER=1;
+    DelayMs(50);
+    // 10. 恢复现场
+    //INTCON = backup_INTCON;
+}
 void main(void)
 {
-	POWER_INITIAL();		// System initialization
+    // --- 硬件初始化 ---
+    POWER_INITIAL();
     UART_INITIAL();
-    DelayMs(100);
-    PC1=0;
-
-    // Initialize CAT1 433MHz module with all AT commands
+    DelayMs(50);
     CAT1_Init();
+    
+    // 统一开启中断
+    INTCON = 0B11000000;
+    DelayMs(50);
 
-    // Add more commands if needed
-    // SendATCommand("AT+B=3");
-    //SendATCommand("Hello");
+    // 状态机变量
+    MAIN_STATE sys_state = STATE_WAKE_INIT;
 
-    /* Old byte-by-byte send method, replaced by SendATCommand
-    //i=0;
-	for(i=0;i<11;i++)
-      {
-    	 TXEF=0;
-         URDATAL=toSend[i];
-         while(!TCF)
-         {
-         }
-         //DelayUs(255);
-         //DelayUs(255);
-         //DelayUs(255);
-
-
-      }
-    */
-        	//NOP();
-
-    /*if(TXEF)                // Power-on send 10+1 bytes data
+    while(1)
     {
-      URDATAL =0xaa;
-    }  */
+        switch(sys_state)
+        {
+            // ============================================================
+            // 状态 0: 刚醒来，做准备工作
+            // ============================================================
+            case STATE_WAKE_INIT:
+                LED_ON;
+                g_timer_ms = 0;         // 重置计时器
+                mmm = 0;                // 清空串口缓冲
+                WAKE_UP;                // 唤醒 433 模块 (PC1=0)
+                sys_state = STATE_WORKING; // 马上进入工作状态
+                //sys_state=STATE_GO_SLEEP;//测试模式，直接进入休眠
+                break;
 
+            // ============================================================
+            // 状态 1: 工作中 (5秒窗口)
+            // ============================================================
+            case STATE_WORKING:
+                // 1. 核心业务
+                Duima_MainLoop();       // 检测按键
 
-	while(1)
-	{
-		// Send "HELLO" every 1 second
-		SendString("HELLO");
-		DelayMs(250);  // Delay 1000ms = 1s (using 4x250ms)
-		DelayMs(250);
-		DelayMs(250);
-		DelayMs(250);
+                // 2. 处理串口数据
+                if(mmm >= 2) {
+                    Duima_ProcessReceivedData((unsigned char*)receivedata, mmm);
+                    mmm = 0; 
+                }
+
+                // 3. 检查是否该睡觉了
+                if(current_mode == MODE_PAIRING)
+                {
+                    // 对码模式：超时 10秒 退出
+                    if(g_timer_ms >= 10000) {
+                        Duima_Configure433Address(local_paired_id); // 恢复ID
+                        current_mode = MODE_NORMAL;
+                        LED_OFF;
+                        sys_state = STATE_GO_SLEEP; // 去睡觉
+                    }
+                }
+                else
+                {
+                    // 正常模式：超时 5秒 睡觉
+                    if(g_timer_ms >= 5000) {
+                        sys_state = STATE_GO_SLEEP; // 去睡觉
+                    }
+                }
+                break;
+
+            // ============================================================
+            // 状态 2: 执行休眠
+            // ============================================================
+            case STATE_GO_SLEEP:
+            for(unsigned char k=0; k<6; k++) 
+                {
+                    LED_TOGGLE;     // 翻转灯的状态
+                    DelayMs(100);    // 延时 (慢闪)
+                }
+                Sys_EnterSleep();       // 调用封装好的休眠函数 (程序会停在这里睡觉)
+                
+                // 醒来后，流程继续往下走
+                sys_state = STATE_WAKE_INIT; // 醒来后，回到初始化状态
+                break;
+        }
     }
-
 }

@@ -1,5 +1,5 @@
 
-# 1 "CAT1PRO.C"
+# 1 "duima.c"
 
 # 26 "E:\FMDprogrammer\Compiler\data\include\fmd.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -2672,342 +2672,322 @@ extern void SendATCommand(const char* cmd);
 extern void DelayMs(unsigned char ms);
 extern unsigned char Duima_Key_LongPress(unsigned int press_ms);
 
-# 42 "CAT1PRO.C"
-volatile unsigned int g_timer_ms = 0;
+# 4 "duima.c"
+SYS_MODE current_mode = MODE_NORMAL;
+unsigned int local_paired_id = 0;
 
-
-volatile unsigned char receivedata[20]={0x00,0x0a,0x00,0x0a,0x00,0x0a,0x00,0x0a};
-volatile unsigned char senddat[20]={'A','T',0x0d,0x0a};
-
-volatile unsigned char toSend[20]={'A','T','+','P','W','R','=','2','9',0x0d,0x0a};
-volatile unsigned char toSendA[20]={'A','T',0x0d,0x0a};
-
-volatile unsigned char toSenda[20]={'A','T','+','U','A','R','T','=','3',',','0',0x0d,0x0a,0x55,0x66,0x77,0x88,0x99,0xaa};
-unsigned char i=0;
-unsigned char mmm=0;
-const char* abc="ABCD\r\n";
-
-# 63
-void interrupt ISR(void)
+# 11
+void Duima_Timer_Init(void)
 {
-if(URRXNE && RXNEF)
-{
-
-receivedata[mmm++] =URDATAL;
-
-if(mmm>=20)
-{
-mmm=0;
-}
-__nop();
-}
-
-
-if(T4UIE && T4UIF)
-{
-T4UIF = 1;
-g_timer_ms++;
-
-}
-
-# 101
-}
-
-# 108
-void POWER_INITIAL (void)
-{
-OSCCON = 0B01110001;
-INTCON = 0B00000000;
-
-
-PORTA = 0B00000000;
-TRISA = 0B10010000;
-PORTB = 0B00000000;
-TRISB = 0B10000101;
-PORTC = 0B00000000;
-TRISC = 0B00000000;
-
-
-WPUA = 0B00010000;
-WPUB = 0B10000101;
-WPUC = 0B00000000;
-
-
-WPDA = 0B00000000;
-WPDB = 0B00000000;
-WPDC = 0B00000000;
-
-
-PSRC0 = 0B11111111;
-PSRC1 = 0B11111111;
-PSRC2 = 0B11111111;
-
-
-PSINK0 = 0B11111111;
-PSINK1 = 0B11111111;
-PSINK2 = 0B11111111;
-
-ANSELA = 0B00000000;
-}
-
-# 151
-void IO_INT_INITIAL(void)
-{
-EPS0 = 0B00000000;
-
-
-EPS1 = 0B01000000;
-
-ITYPE0 = 0B00000000;
-
-ITYPE1 = 0B10000000;
-
-EPIE0 = 0B10010000;
-
-INTCON = 0B11000000;
-}
-
-# 173
-void DelayUs(unsigned char Time)
-{
-unsigned char a;
-for(a=0;a<Time;a++)
-{
-__nop();
-}
-}
-
-# 187
-void DelayMs(unsigned char Time)
-{
-unsigned char a,b;
-for(a=0;a<Time;a++)
-{
-for(b=0;b<5;b++)
-{
-DelayUs(197);
-}
-}
-}
-
-# 204
-void UART_INITIAL(void)
-{
-PCKEN |=0B00100000;
-
-URIER =0B00000001;
-URLCR =0B00000001;
-URMCR =0B00011000;
-
-URDLL =104;
-URDLH =0;
-TCF=1;
-AFP1=0;
-ODCON0=0B00000000;
-}
-
-# 224
-void SendByte(unsigned char data)
-{
-TXEF = 0;
-URDATAL = data;
-while(!TCF)
-{
-}
-}
-
-# 238
-void SendString(const char* MOVWF)
-{
-unsigned char j = 0;
-while(MOVWF[j] != '\0')
-{
-SendByte(MOVWF[j]);
-j++;
-}
-}
-
-# 256
-void SendATCommand(const char* cmd)
-{
-unsigned char j = 0;
-
-
-while(cmd[j] != '\0')
-{
-SendByte(cmd[j]);
-j++;
-}
-
-
-SendByte(0x0D);
-
-
-SendByte(0x0A);
-}
-
-# 281
-void CAT1_Init(void)
-{
-
-SendATCommand("AT+PWR=20");
-DelayMs(50);
-
-
-SendATCommand("AT+UART=3,0");
-DelayMs(50);
-
-
-SendATCommand("AT+FEQ=434000000");
-DelayMs(50);
-
-
-SendATCommand("AT+ADR=0");
-DelayMs(50);
-
-
-SendATCommand("AT+SF=7");
-DelayMs(50);
-
-
-SendATCommand("AT+BW=9");
-DelayMs(50);
-
-
-SendATCommand("AT+PB=2000");
-DelayMs(50);
-
-SendATCommand("AT+MODE=1");
-DelayMs(50);
-
-SendATCommand("AT+WT=2");
-DelayMs(50);
-
-
-Duima_Init();
-
-
-SendATCommand("ATW");
-DelayMs(50);
-
-PORTCbits.PC1 = 1;
-}
-
-# 333
-typedef enum {
-STATE_WAKE_INIT,
-STATE_WORKING,
-STATE_GO_SLEEP
-} MAIN_STATE;
-
-
-
-void Sys_EnterSleep(void)
-{
-
-PORTAbits.PA1 = 0;
-PORTCbits.PC1 = 1;
-DelayMs(50);
-
-
-
-
-IO_INT_INITIAL();
-EPIF0 = 0x90;
-
-GIE = 0;
-
-
-__nop(); __nop();__nop();__nop();
-asm("sleep");
-__nop(); __nop();__nop();__nop();
-
-
-EPIF0 = 0x90;
-INTCON = 0B11000000;
-
-DelayMs(50);
-
-
-}
-void main(void)
-{
-
-POWER_INITIAL();
-UART_INITIAL();
-DelayMs(50);
-CAT1_Init();
-
-
-INTCON = 0B11000000;
-DelayMs(50);
-
-
-MAIN_STATE sys_state = STATE_WAKE_INIT;
-
-while(1)
-{
-switch(sys_state)
-{
-
-
-
-case STATE_WAKE_INIT:
-PORTAbits.PA1 = 1;
 g_timer_ms = 0;
-mmm = 0;
-PORTCbits.PC1 = 0;
-sys_state = STATE_WORKING;
 
-break;
+
+PCKEN |= 0B00001000;
 
 
 
-
-case STATE_WORKING:
-
-Duima_MainLoop();
+TIM4CR1 = 0B00000101;
 
 
-if(mmm >= 2) {
-Duima_ProcessReceivedData((unsigned char*)receivedata, mmm);
-mmm = 0;
+TIM4IER = 0B00000001;
+
+
+TIM4SR = 0;
+TIM4EGR = 0;
+
+
+TIM4CNTR = 0;
+
+# 39
+TIM4PSCR = 6;
+TIM4ARR = 249;
+
+
+}
+
+# 49
+void Duima_Init(void)
+{
+Duima_Timer_Init();
+
+
+local_paired_id = Duima_EEPROM_ReadID(0x13);
+
+
+if(local_paired_id == 0xFFFFFFFF) {
+local_paired_id = 65535;
 }
 
 
+(PORTCbits.PC1 = 0);
+DelayMs(100);
+
+
+Duima_Configure433Address(local_paired_id);
+}
+
+
+
+
+void Duima_StartPairing(void)
+{
+
+if(current_mode == MODE_PAIRING) return;
+
+current_mode = MODE_PAIRING;
+PORTAbits.PA1 = 1;
+
+
+(PORTCbits.PC1 = 0);
+DelayMs(20);
+
+
+
+Duima_Configure433Address(65535);
+
+
+mmm = 0;
+
+
+g_timer_ms = 0;
+}
+
+
+
+
+void Duima_ProcessReceivedData(unsigned char *data, unsigned char len)
+{
+
+
+
+if(current_mode == MODE_NORMAL)
+{
+
+
+
+if(len > 0)
+{
+
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+}
+return;
+}
+
+# 120
 if(current_mode == MODE_PAIRING)
 {
 
-if(g_timer_ms >= 10000) {
+if(len >= 2)
+{
+unsigned int new_id = 0;
+
+
+
+new_id = data[0] * 256 + data[1];
+
+
+if(new_id == 65535) return;
+
+
+Duima_EEPROM_WriteID(new_id, 0x13);
+local_paired_id = new_id;
+
+
 Duima_Configure433Address(local_paired_id);
+
+
 current_mode = MODE_NORMAL;
+
+
+for(unsigned char k=0; k<6; k++) {
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(10);
+}
 PORTAbits.PA1 = 0;
-sys_state = STATE_GO_SLEEP;
 }
 }
+}
+
+
+
+
+void Duima_Configure433Address(unsigned int addr)
+{
+unsigned char cmd_buffer[32];
+unsigned char i;
+unsigned char digit_count = 0;
+unsigned long temp = addr;
+unsigned char digits[10];
+
+
+cmd_buffer[0]='A'; cmd_buffer[1]='T'; cmd_buffer[2]='+';
+cmd_buffer[3]='A'; cmd_buffer[4]='D'; cmd_buffer[5]='R'; cmd_buffer[6]='=';
+
+
+if(temp == 0) {
+digits[0] = 0; digit_count = 1;
+} else {
+while(temp > 0) {
+digits[digit_count++] = temp % 10;
+temp /= 10;
+}
+}
+
+
+for(i = 0; i < digit_count; i++) {
+cmd_buffer[7 + i] = '0' + digits[digit_count - 1 - i];
+}
+
+
+cmd_buffer[7 + digit_count] = '\0';
+
+
+SendATCommand((const char*)cmd_buffer);
+DelayMs(100);
+}
+
+# 195
+void Duima_MainLoop(void)
+{
+
+static unsigned char key_state = 0;
+static unsigned int press_start_time = 0;
+
+
+if(current_mode == MODE_NORMAL)
+{
+
+
+
+if(PORTBbits.PB7 == 0)
+{
+
+if(key_state == 0)
+{
+key_state = 1;
+press_start_time = g_timer_ms;
+}
+
+else if(key_state == 1)
+{
+
+
+if((g_timer_ms - press_start_time) >= 2000)
+{
+
+Duima_StartPairing();
+
+
+
+key_state = 2;
+}
+}
+
+}
+
+
+
 else
 {
 
-if(g_timer_ms >= 5000) {
-sys_state = STATE_GO_SLEEP;
+key_state = 0;
 }
 }
-break;
+}
 
-
-
-
-case STATE_GO_SLEEP:
-for(unsigned char k=0; k<6; k++)
+# 252
+unsigned char Duima_EEPROM_ReadByte(unsigned char addr)
 {
-PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
-DelayMs(100);
+unsigned char data;
+
+while(GIE) {
+GIE = 0;
+__nop();
+__nop();
 }
-Sys_EnterSleep();
+
+EEADRL = addr;
+CFGS = 0;
+EEPGD = 0;
+RD = 1;
+__nop();
+__nop();
+__nop();
+__nop();
+data = EEDATL;
+
+return data;
+}
+void Unlock_Flash()
+{
+
+# 276
+#asm
+    MOVLW 0x03
+    MOVWF _BSREG
+    MOVLW 0x55
+    MOVWF _EECON2 & 0x7F
+    MOVLW 0xAA
+    MOVWF _EECON2 & 0x7F
+    BSF _EECON1& 0x7F,1
+    NOP
+ NOP
+#endasm 
+# 286
+
+}
+
+# 293
+void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr)
+{
+unsigned char PEIE_1=PEIE;
+while(GIE|PEIE) {
+GIE = 0;PEIE=0;
+__nop();
+__nop();
+}
+
+EEADRL = addr;
+EEDATL = data;
+CFGS = 0;
+EEPGD = 0;
+EEIF = 0;
+WREN = 1;
 
 
-sys_state = STATE_WAKE_INIT;
-break;
+Unlock_Flash();
+__nop();
+__nop();
+__nop();
+__nop();
+
+
+while(WR) ;
+
+WREN = 0;
+GIE = 1;PEIE=PEIE_1;
 }
+
+
+
+
+unsigned int Duima_EEPROM_ReadID(unsigned char addr)
+{
+unsigned long id = 0;
+
+
+id = Duima_EEPROM_ReadByte(addr);
+id = (id << 8) | Duima_EEPROM_ReadByte(addr+1);
+
+return id;
 }
+
+
+
+
+void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr)
+{
+
+
+Duima_EEPROM_WriteByte((unsigned char)(id >> 8), addr);
+Duima_EEPROM_WriteByte((unsigned char)(id), addr+1);
 }
