@@ -2638,7 +2638,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 30 "duima.h"
+# 48 "duima.h"
 typedef enum {
 MODE_NORMAL = 0,
 MODE_PAIRING = 1
@@ -2651,6 +2651,10 @@ extern volatile unsigned int g_timer_ms;
 extern unsigned char mmm;
 
 
+extern volatile unsigned char head;
+extern volatile unsigned char tail;
+
+
 
 
 void Duima_Init(void);
@@ -2659,6 +2663,11 @@ void Duima_StartPairing(void);
 void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
 void Duima_Configure433Address(unsigned int addr);
 void Duima_MainLoop(void);
+
+
+void Duima_ExecuteCommand(unsigned char *data, unsigned char len);
+void Duima_ControlMotor(unsigned char cmd);
+void Duima_CheckLimitSwitch(void);
 
 
 unsigned int Duima_EEPROM_ReadID(unsigned char addr);
@@ -2746,44 +2755,33 @@ DelayMs(20);
 Duima_Configure433Address(65535);
 
 
-mmm = 0;
+head = 0;
+tail = 0;
+
+
+DelayMs(200);
 
 
 g_timer_ms = 0;
 }
 
-
-
-
+# 104
 void Duima_ProcessReceivedData(unsigned char *data, unsigned char len)
 {
 
+if(data == 0 || len < 7) return;
 
 
-if(current_mode == MODE_NORMAL)
-{
-
-
-
-if(len > 0)
-{
-
-PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
-}
-return;
-}
-
-# 120
 if(current_mode == MODE_PAIRING)
 {
 
-if(len >= 2)
+if(data[0] == 0xBB && data[1] == 0x02 && data[2] == 0x02)
 {
 unsigned int new_id = 0;
 
 
 
-new_id = data[0] * 256 + data[1];
+new_id = ((unsigned int)data[3] << 8) | data[4];
 
 
 if(new_id == 65535) return;
@@ -2800,7 +2798,7 @@ current_mode = MODE_NORMAL;
 
 
 for(unsigned char k=0; k<6; k++) {
-PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(10);
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(100);
 }
 PORTAbits.PA1 = 0;
 }
@@ -2845,7 +2843,7 @@ SendATCommand((const char*)cmd_buffer);
 DelayMs(100);
 }
 
-# 195
+# 185
 void Duima_MainLoop(void)
 {
 
@@ -2894,7 +2892,7 @@ key_state = 0;
 }
 }
 
-# 252
+# 242
 unsigned char Duima_EEPROM_ReadByte(unsigned char addr)
 {
 unsigned char data;
@@ -2920,7 +2918,7 @@ return data;
 void Unlock_Flash()
 {
 
-# 276
+# 266
 #asm
     MOVLW 0x03
     MOVWF _BSREG
@@ -2932,11 +2930,11 @@ void Unlock_Flash()
     NOP
  NOP
 #endasm 
-# 286
+# 276
 
 }
 
-# 293
+# 283
 void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr)
 {
 unsigned char PEIE_1=PEIE;
@@ -2990,4 +2988,99 @@ void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr)
 
 Duima_EEPROM_WriteByte((unsigned char)(id >> 8), addr);
 Duima_EEPROM_WriteByte((unsigned char)(id), addr+1);
+}
+
+
+
+
+void Duima_ControlMotor(unsigned char cmd)
+{
+switch(cmd)
+{
+case 0x01:
+PORTBbits.PB1 = 1;
+PORTAbits.PA0 = 0;
+break;
+
+case 0x02:
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 1;
+break;
+
+case 0x00:
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 0;
+break;
+
+default:
+
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 0;
+break;
+}
+}
+
+# 373
+void Duima_CheckLimitSwitch(void)
+{
+
+if(PORTBbits.PB2 == 0)
+{
+
+if(PORTBbits.PB1 == 1 && PORTAbits.PA0 == 0)
+{
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 0;
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+}
+}
+
+
+if(PORTBbits.PB0 == 0)
+{
+
+if(PORTBbits.PB1 == 0 && PORTAbits.PA0 == 1)
+{
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 0;
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+}
+}
+}
+
+# 404
+void Duima_ExecuteCommand(unsigned char *data, unsigned char len)
+{
+
+if(data == 0 || len < 7) {
+return;
+}
+
+# 420
+unsigned char cmd_type = data[1];
+unsigned char data_len = data[2];
+
+
+
+
+switch(cmd_type)
+{
+case 0x01:
+if(data_len >= 1) {
+unsigned char motor_cmd = data[3];
+Duima_ControlMotor(motor_cmd);
+
+
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+}
+break;
+
+case 0x02:
+
+break;
+
+default:
+
+break;
+}
 }

@@ -713,24 +713,28 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "31 E:\FMDprogrammer\Compiler\data\include\SYSCFG.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"44 duima.h
-[v _Duima_Init `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"382 CAT1PRO.C
-[c E2511 0 1 2 .. ]
-[n E2511 . STATE_WAKE_INIT STATE_WORKING STATE_GO_SLEEP  ]
-"49 duima.h
-[v _Duima_MainLoop `(v ~T0 @X0 0 ef ]
-"47
-[v _Duima_ProcessReceivedData `(v ~T0 @X0 0 ef2`*uc`uc ]
-"414 CAT1PRO.C
+"345 CAT1PRO.C
 [c E2441 0 1 .. ]
 [n E2441 . MODE_NORMAL MODE_PAIRING  ]
-"36 duima.h
+"54 duima.h
 [v _current_mode `E2441 ~T0 @X0 0 e ]
-"48
+"75
+[v _Duima_ControlMotor `(v ~T0 @X0 0 ef1`uc ]
+"69
+[v _Duima_ProcessReceivedData `(v ~T0 @X0 0 ef2`*uc`uc ]
+"66
+[v _Duima_Init `(v ~T0 @X0 0 ef ]
+[p mainexit ]
+"558 CAT1PRO.C
+[c E2549 0 1 2 .. ]
+[n E2549 . STATE_WAKE_INIT STATE_WORKING STATE_GO_SLEEP  ]
+"71 duima.h
+[v _Duima_MainLoop `(v ~T0 @X0 0 ef ]
+"76
+[v _Duima_CheckLimitSwitch `(v ~T0 @X0 0 ef ]
+"70
 [v _Duima_Configure433Address `(v ~T0 @X0 0 ef1`ui ]
-"37
+"55
 [v _local_paired_id `ui ~T0 @X0 0 e ]
 [; ;fmd.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;fmd.h: 28: extern double __fpnormalize(double);
@@ -4219,28 +4223,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;SYSCFG.h: 157: extern unsigned char __resetbits;
 [; ;SYSCFG.h: 158: extern __bit __powerdown;
 [; ;SYSCFG.h: 159: extern __bit __timeout;
-[; ;duima.h: 30: typedef enum {
-[; ;duima.h: 31: MODE_NORMAL = 0,
-[; ;duima.h: 32: MODE_PAIRING = 1
-[; ;duima.h: 33: } SYS_MODE;
-[; ;duima.h: 36: extern SYS_MODE current_mode;
-[; ;duima.h: 37: extern unsigned int local_paired_id;
-[; ;duima.h: 38: extern volatile unsigned int g_timer_ms;
-[; ;duima.h: 39: extern unsigned char mmm;
-[; ;duima.h: 44: void Duima_Init(void);
-[; ;duima.h: 45: void Duima_Timer_Init(void);
-[; ;duima.h: 46: void Duima_StartPairing(void);
-[; ;duima.h: 47: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
-[; ;duima.h: 48: void Duima_Configure433Address(unsigned int addr);
-[; ;duima.h: 49: void Duima_MainLoop(void);
-[; ;duima.h: 52: unsigned int Duima_EEPROM_ReadID(unsigned char addr);
-[; ;duima.h: 53: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr);
-[; ;duima.h: 54: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr);
-[; ;duima.h: 55: unsigned char Duima_EEPROM_ReadByte(unsigned char addr);
-[; ;duima.h: 56: void Unlock_Flash(void);
-[; ;duima.h: 59: extern void SendATCommand(const char* cmd);
-[; ;duima.h: 60: extern void DelayMs(unsigned char ms);
-[; ;duima.h: 61: extern unsigned char Duima_Key_LongPress(unsigned int press_ms);
+[; ;duima.h: 48: typedef enum {
+[; ;duima.h: 49: MODE_NORMAL = 0,
+[; ;duima.h: 50: MODE_PAIRING = 1
+[; ;duima.h: 51: } SYS_MODE;
+[; ;duima.h: 54: extern SYS_MODE current_mode;
+[; ;duima.h: 55: extern unsigned int local_paired_id;
+[; ;duima.h: 56: extern volatile unsigned int g_timer_ms;
+[; ;duima.h: 57: extern unsigned char mmm;
+[; ;duima.h: 60: extern volatile unsigned char head;
+[; ;duima.h: 61: extern volatile unsigned char tail;
+[; ;duima.h: 66: void Duima_Init(void);
+[; ;duima.h: 67: void Duima_Timer_Init(void);
+[; ;duima.h: 68: void Duima_StartPairing(void);
+[; ;duima.h: 69: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
+[; ;duima.h: 70: void Duima_Configure433Address(unsigned int addr);
+[; ;duima.h: 71: void Duima_MainLoop(void);
+[; ;duima.h: 74: void Duima_ExecuteCommand(unsigned char *data, unsigned char len);
+[; ;duima.h: 75: void Duima_ControlMotor(unsigned char cmd);
+[; ;duima.h: 76: void Duima_CheckLimitSwitch(void);
+[; ;duima.h: 79: unsigned int Duima_EEPROM_ReadID(unsigned char addr);
+[; ;duima.h: 80: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr);
+[; ;duima.h: 81: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr);
+[; ;duima.h: 82: unsigned char Duima_EEPROM_ReadByte(unsigned char addr);
+[; ;duima.h: 83: void Unlock_Flash(void);
+[; ;duima.h: 86: extern void SendATCommand(const char* cmd);
+[; ;duima.h: 87: extern void DelayMs(unsigned char ms);
+[; ;duima.h: 88: extern unsigned char Duima_Key_LongPress(unsigned int press_ms);
 "42 CAT1PRO.C
 [v _g_timer_ms `Vui ~T0 @X0 1 e ]
 [i _g_timer_ms
@@ -4346,763 +4355,1198 @@ Version 3.2   GCC8 Compiled Intermediate Code
 :s 1C
 ]
 [; ;CAT1PRO.C: 54: const char* abc="ABCD\r\n";
-[v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F2489 `(v ~T0 @X0 1 tf ]
+"61
+[v _ring_buf `Vuc ~T0 @X0 -> 32 `i e ]
+[; ;CAT1PRO.C: 61: volatile unsigned char ring_buf[32];
+"62
+[v _head `Vuc ~T0 @X0 1 e ]
+[i _head
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 62: volatile unsigned char head = 0;
 "63
-[v _ISR `IF2489 ~T0 @X0 1 e ]
-"64
+[v _tail `Vuc ~T0 @X0 1 e ]
+[i _tail
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 63: volatile unsigned char tail = 0;
+"66
+[v _msg_buffer `uc ~T0 @X0 -> 20 `i e ]
+[; ;CAT1PRO.C: 66: unsigned char msg_buffer[20];
+"69
+[v _g_cal_crc `Vuc ~T0 @X0 1 e ]
+[i _g_cal_crc
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 69: volatile unsigned char g_cal_crc = 0;
+"70
+[v _g_rx_crc `Vuc ~T0 @X0 1 e ]
+[i _g_rx_crc
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 70: volatile unsigned char g_rx_crc = 0;
+"71
+[v _g_crc_match `Vuc ~T0 @X0 1 e ]
+[i _g_crc_match
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 71: volatile unsigned char g_crc_match = 0;
+"72
+[v _g_frame_len `Vuc ~T0 @X0 1 e ]
+[i _g_frame_len
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 72: volatile unsigned char g_frame_len = 0;
+"73
+[v _g_frame_count `Vuc ~T0 @X0 1 e ]
+[i _g_frame_count
+-> -> 0 `i `uc
+]
+[; ;CAT1PRO.C: 73: volatile unsigned char g_frame_count = 0;
+[; ;CAT1PRO.C: 76: typedef enum {
+[; ;CAT1PRO.C: 77: STATE_WAIT_HEAD = 0,
+[; ;CAT1PRO.C: 78: STATE_RECEIVING,
+[; ;CAT1PRO.C: 79: STATE_WAIT_END2
+[; ;CAT1PRO.C: 80: } PARSE_STATE;
+[v $root$_ISR `(v ~T0 @X0 0 e ]
+[v F2510 `(v ~T0 @X0 1 tf ]
+"93
+[v _ISR `IF2510 ~T0 @X0 1 e ]
+"94
 {
-[; ;CAT1PRO.C: 63: void interrupt ISR(void)
-[; ;CAT1PRO.C: 64: {
+[; ;CAT1PRO.C: 93: void interrupt ISR(void)
+[; ;CAT1PRO.C: 94: {
 [e :U _ISR ]
 [f ]
-[; ;CAT1PRO.C: 65: if(URRXNE && RXNEF)
-"65
+[; ;CAT1PRO.C: 98: if(URRXNE && RXNEF)
+"98
 [e $ ! && _URRXNE _RXNEF 239  ]
-[; ;CAT1PRO.C: 66: {
-"66
+[; ;CAT1PRO.C: 99: {
+"99
 {
-[; ;CAT1PRO.C: 68: receivedata[mmm++] =URDATAL;
-"68
-[e = *U + &U _receivedata * -> ++ _mmm -> -> 1 `i `uc `ux -> -> # *U &U _receivedata `ui `ux _URDATAL ]
-[; ;CAT1PRO.C: 70: if(mmm>=20)
-"70
-[e $ ! >= -> _mmm `i -> 20 `i 240  ]
-[; ;CAT1PRO.C: 71: {
-"71
+"100
+[v _data `uc ~T0 @X0 1 a ]
+[; ;CAT1PRO.C: 100: unsigned char data = URDATAL;
+[e = _data _URDATAL ]
+"101
+[v _next_head `uc ~T0 @X0 1 a ]
+[; ;CAT1PRO.C: 101: unsigned char next_head = (head + 1) % 32;
+[e = _next_head -> % + -> _head `i -> 1 `i -> 32 `i `uc ]
+[; ;CAT1PRO.C: 104: if(next_head != tail) {
+"104
+[e $ ! != -> _next_head `i -> _tail `i 240  ]
 {
-[; ;CAT1PRO.C: 72: mmm=0;
-"72
-[e = _mmm -> -> 0 `i `uc ]
-"73
+[; ;CAT1PRO.C: 105: ring_buf[head] = data;
+"105
+[e = *U + &U _ring_buf * -> _head `ux -> -> # *U &U _ring_buf `ui `ux _data ]
+[; ;CAT1PRO.C: 106: head = next_head;
+"106
+[e = _head _next_head ]
+"107
 }
 [e :U 240 ]
-[; ;CAT1PRO.C: 73: }
-[; ;CAT1PRO.C: 74: __nop();
-"74
+[; ;CAT1PRO.C: 107: }
+[; ;CAT1PRO.C: 110: __nop();
+"110
 [e ( ___nop ..  ]
-"75
+"111
 }
 [e :U 239 ]
-[; ;CAT1PRO.C: 75: }
-[; ;CAT1PRO.C: 78: if(T4UIE && T4UIF)
-"78
+[; ;CAT1PRO.C: 111: }
+[; ;CAT1PRO.C: 116: if(T4UIE && T4UIF)
+"116
 [e $ ! && _T4UIE _T4UIF 241  ]
-[; ;CAT1PRO.C: 79: {
-"79
+[; ;CAT1PRO.C: 117: {
+"117
 {
-[; ;CAT1PRO.C: 80: T4UIF = 1;
-"80
+[; ;CAT1PRO.C: 118: T4UIF = 1;
+"118
 [e = _T4UIF -> -> 1 `i `b ]
-[; ;CAT1PRO.C: 81: g_timer_ms++;
-"81
+[; ;CAT1PRO.C: 119: g_timer_ms++;
+"119
 [e ++ _g_timer_ms -> -> 1 `i `ui ]
-"83
+"120
 }
 [e :U 241 ]
-[; ;CAT1PRO.C: 83: }
-[; ;CAT1PRO.C: 101: }
-"101
+[; ;CAT1PRO.C: 120: }
+[; ;CAT1PRO.C: 121: }
+"121
 [e :UE 238 ]
 }
-"108
+"129
 [v _POWER_INITIAL `(v ~T0 @X0 1 ef ]
-"109
+"130
 {
-[; ;CAT1PRO.C: 108: void POWER_INITIAL (void)
-[; ;CAT1PRO.C: 109: {
+[; ;CAT1PRO.C: 129: void POWER_INITIAL (void)
+[; ;CAT1PRO.C: 130: {
 [e :U _POWER_INITIAL ]
 [f ]
-[; ;CAT1PRO.C: 110: OSCCON = 0B01110001;
-"110
+[; ;CAT1PRO.C: 131: OSCCON = 0B01110001;
+"131
 [e = _OSCCON -> -> 113 `i `uc ]
-[; ;CAT1PRO.C: 111: INTCON = 0B00000000;
-"111
-[e = _INTCON -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 114: PORTA = 0B00000000;
-"114
-[e = _PORTA -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 115: TRISA = 0B10010000;
-"115
-[e = _TRISA -> -> 144 `i `uc ]
-[; ;CAT1PRO.C: 116: PORTB = 0B00000000;
-"116
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 117: TRISB = 0B10000101;
-"117
-[e = _TRISB -> -> 133 `i `uc ]
-[; ;CAT1PRO.C: 118: PORTC = 0B00000000;
-"118
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 119: TRISC = 0B00000000;
-"119
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 122: WPUA = 0B00010000;
-"122
-[e = _WPUA -> -> 16 `i `uc ]
-[; ;CAT1PRO.C: 123: WPUB = 0B10000101;
-"123
-[e = _WPUB -> -> 133 `i `uc ]
-[; ;CAT1PRO.C: 124: WPUC = 0B00000000;
-"124
-[e = _WPUC -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 127: WPDA = 0B00000000;
-"127
-[e = _WPDA -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 128: WPDB = 0B00000000;
-"128
-[e = _WPDB -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 129: WPDC = 0B00000000;
-"129
-[e = _WPDC -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 132: PSRC0 = 0B11111111;
+[; ;CAT1PRO.C: 132: INTCON = 0B00000000;
 "132
-[e = _PSRC0 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 133: PSRC1 = 0B11111111;
-"133
-[e = _PSRC1 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 134: PSRC2 = 0B11111111;
-"134
-[e = _PSRC2 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 137: PSINK0 = 0B11111111;
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 135: PORTA = 0B00000000;
+"135
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 136: TRISA = 0B10010000;
+"136
+[e = _TRISA -> -> 144 `i `uc ]
+[; ;CAT1PRO.C: 137: PORTB = 0B00000000;
 "137
-[e = _PSINK0 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 138: PSINK1 = 0B11111111;
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 138: TRISB = 0B10000101;
 "138
-[e = _PSINK1 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 139: PSINK2 = 0B11111111;
+[e = _TRISB -> -> 133 `i `uc ]
+[; ;CAT1PRO.C: 139: PORTC = 0B00000000;
 "139
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 140: TRISC = 0B00000000;
+"140
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 143: WPUA = 0B00010000;
+"143
+[e = _WPUA -> -> 16 `i `uc ]
+[; ;CAT1PRO.C: 144: WPUB = 0B10000101;
+"144
+[e = _WPUB -> -> 133 `i `uc ]
+[; ;CAT1PRO.C: 145: WPUC = 0B00000000;
+"145
+[e = _WPUC -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 148: WPDA = 0B00000000;
+"148
+[e = _WPDA -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 149: WPDB = 0B00000000;
+"149
+[e = _WPDB -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 150: WPDC = 0B00000000;
+"150
+[e = _WPDC -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 153: PSRC0 = 0B11111111;
+"153
+[e = _PSRC0 -> -> 255 `i `uc ]
+[; ;CAT1PRO.C: 154: PSRC1 = 0B11111111;
+"154
+[e = _PSRC1 -> -> 255 `i `uc ]
+[; ;CAT1PRO.C: 155: PSRC2 = 0B11111111;
+"155
+[e = _PSRC2 -> -> 255 `i `uc ]
+[; ;CAT1PRO.C: 158: PSINK0 = 0B11111111;
+"158
+[e = _PSINK0 -> -> 255 `i `uc ]
+[; ;CAT1PRO.C: 159: PSINK1 = 0B11111111;
+"159
+[e = _PSINK1 -> -> 255 `i `uc ]
+[; ;CAT1PRO.C: 160: PSINK2 = 0B11111111;
+"160
 [e = _PSINK2 -> -> 255 `i `uc ]
-[; ;CAT1PRO.C: 141: ANSELA = 0B00000000;
-"141
+[; ;CAT1PRO.C: 162: ANSELA = 0B00000000;
+"162
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 142: }
-"142
+[; ;CAT1PRO.C: 163: }
+"163
 [e :UE 242 ]
 }
-"151
+"172
 [v _IO_INT_INITIAL `(v ~T0 @X0 1 ef ]
-"152
+"173
 {
-[; ;CAT1PRO.C: 151: void IO_INT_INITIAL(void)
-[; ;CAT1PRO.C: 152: {
+[; ;CAT1PRO.C: 172: void IO_INT_INITIAL(void)
+[; ;CAT1PRO.C: 173: {
 [e :U _IO_INT_INITIAL ]
 [f ]
-[; ;CAT1PRO.C: 153: EPS0 = 0B00000000;
-"153
+[; ;CAT1PRO.C: 174: EPS0 = 0B00000000;
+"174
 [e = _EPS0 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 156: EPS1 = 0B01000000;
-"156
+[; ;CAT1PRO.C: 177: EPS1 = 0B01000000;
+"177
 [e = _EPS1 -> -> 64 `i `uc ]
-[; ;CAT1PRO.C: 158: ITYPE0 = 0B00000000;
-"158
+[; ;CAT1PRO.C: 179: ITYPE0 = 0B00000000;
+"179
 [e = _ITYPE0 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 160: ITYPE1 = 0B10000000;
-"160
+[; ;CAT1PRO.C: 181: ITYPE1 = 0B10000000;
+"181
 [e = _ITYPE1 -> -> 128 `i `uc ]
-[; ;CAT1PRO.C: 162: EPIE0 = 0B10010000;
-"162
+[; ;CAT1PRO.C: 183: EPIE0 = 0B10010000;
+"183
 [e = _EPIE0 -> -> 144 `i `uc ]
-[; ;CAT1PRO.C: 164: INTCON = 0B11000000;
-"164
+[; ;CAT1PRO.C: 185: INTCON = 0B11000000;
+"185
 [e = _INTCON -> -> 192 `i `uc ]
-[; ;CAT1PRO.C: 165: }
-"165
+[; ;CAT1PRO.C: 186: }
+"186
 [e :UE 243 ]
 }
-"173
+"194
 [v _DelayUs `(v ~T0 @X0 1 ef1`uc ]
-"174
+"195
 {
-[; ;CAT1PRO.C: 173: void DelayUs(unsigned char Time)
-[; ;CAT1PRO.C: 174: {
+[; ;CAT1PRO.C: 194: void DelayUs(unsigned char Time)
+[; ;CAT1PRO.C: 195: {
 [e :U _DelayUs ]
-"173
+"194
 [v _Time `uc ~T0 @X0 1 r1 ]
-"174
+"195
 [f ]
-"175
+"196
 [v _a `uc ~T0 @X0 1 a ]
-[; ;CAT1PRO.C: 175: unsigned char a;
-[; ;CAT1PRO.C: 176: for(a=0;a<Time;a++)
-"176
+[; ;CAT1PRO.C: 196: unsigned char a;
+[; ;CAT1PRO.C: 197: for(a=0;a<Time;a++)
+"197
 {
 [e = _a -> -> 0 `i `uc ]
 [e $U 248  ]
-"177
+"198
 [e :U 245 ]
-[; ;CAT1PRO.C: 177: {
+[; ;CAT1PRO.C: 198: {
 {
-[; ;CAT1PRO.C: 178: __nop();
-"178
+[; ;CAT1PRO.C: 199: __nop();
+"199
 [e ( ___nop ..  ]
-"179
+"200
 }
-"176
+"197
 [e ++ _a -> -> 1 `i `uc ]
 [e :U 248 ]
 [e $ < -> _a `i -> _Time `i 245  ]
 [e :U 246 ]
-"179
+"200
 }
-[; ;CAT1PRO.C: 179: }
-[; ;CAT1PRO.C: 180: }
-"180
+[; ;CAT1PRO.C: 200: }
+[; ;CAT1PRO.C: 201: }
+"201
 [e :UE 244 ]
 }
-"187
+"208
 [v _DelayMs `(v ~T0 @X0 1 ef1`uc ]
-"188
+"209
 {
-[; ;CAT1PRO.C: 187: void DelayMs(unsigned char Time)
-[; ;CAT1PRO.C: 188: {
+[; ;CAT1PRO.C: 208: void DelayMs(unsigned char Time)
+[; ;CAT1PRO.C: 209: {
 [e :U _DelayMs ]
-"187
+"208
 [v _Time `uc ~T0 @X0 1 r1 ]
-"188
+"209
 [f ]
-"189
+"210
 [v _a `uc ~T0 @X0 1 a ]
 [v _b `uc ~T0 @X0 1 a ]
-[; ;CAT1PRO.C: 189: unsigned char a,b;
-[; ;CAT1PRO.C: 190: for(a=0;a<Time;a++)
-"190
+[; ;CAT1PRO.C: 210: unsigned char a,b;
+[; ;CAT1PRO.C: 211: for(a=0;a<Time;a++)
+"211
 {
 [e = _a -> -> 0 `i `uc ]
 [e $U 253  ]
-"191
+"212
 [e :U 250 ]
-[; ;CAT1PRO.C: 191: {
+[; ;CAT1PRO.C: 212: {
 {
-[; ;CAT1PRO.C: 192: for(b=0;b<5;b++)
-"192
+[; ;CAT1PRO.C: 213: for(b=0;b<5;b++)
+"213
 {
 [e = _b -> -> 0 `i `uc ]
 [e $ < -> _b `i -> 5 `i 254  ]
 [e $U 255  ]
-"193
+"214
 [e :U 254 ]
-[; ;CAT1PRO.C: 193: {
+[; ;CAT1PRO.C: 214: {
 {
-[; ;CAT1PRO.C: 194: DelayUs(197);
-"194
+[; ;CAT1PRO.C: 215: DelayUs(197);
+"215
 [e ( _DelayUs (1 -> -> 197 `i `uc ]
-"195
+"216
 }
-"192
+"213
 [e ++ _b -> -> 1 `i `uc ]
 [e $ < -> _b `i -> 5 `i 254  ]
 [e :U 255 ]
-"195
+"216
 }
-"196
+"217
 }
-"190
+"211
 [e ++ _a -> -> 1 `i `uc ]
 [e :U 253 ]
 [e $ < -> _a `i -> _Time `i 250  ]
 [e :U 251 ]
-"196
+"217
 }
-[; ;CAT1PRO.C: 195: }
-[; ;CAT1PRO.C: 196: }
-[; ;CAT1PRO.C: 197: }
-"197
+[; ;CAT1PRO.C: 216: }
+[; ;CAT1PRO.C: 217: }
+[; ;CAT1PRO.C: 218: }
+"218
 [e :UE 249 ]
 }
-"204
+"225
 [v _UART_INITIAL `(v ~T0 @X0 1 ef ]
-"205
+"226
 {
-[; ;CAT1PRO.C: 204: void UART_INITIAL(void)
-[; ;CAT1PRO.C: 205: {
+[; ;CAT1PRO.C: 225: void UART_INITIAL(void)
+[; ;CAT1PRO.C: 226: {
 [e :U _UART_INITIAL ]
 [f ]
-[; ;CAT1PRO.C: 206: PCKEN |=0B00100000;
-"206
+[; ;CAT1PRO.C: 227: PCKEN |=0B00100000;
+"227
 [e =| _PCKEN -> -> 32 `i `uc ]
-[; ;CAT1PRO.C: 208: URIER =0B00000001;
-"208
+[; ;CAT1PRO.C: 229: URIER =0B00000001;
+"229
 [e = _URIER -> -> 1 `i `uc ]
-[; ;CAT1PRO.C: 209: URLCR =0B00000001;
-"209
+[; ;CAT1PRO.C: 230: URLCR =0B00000001;
+"230
 [e = _URLCR -> -> 1 `i `uc ]
-[; ;CAT1PRO.C: 210: URMCR =0B00011000;
-"210
+[; ;CAT1PRO.C: 231: URMCR =0B00011000;
+"231
 [e = _URMCR -> -> 24 `i `uc ]
-[; ;CAT1PRO.C: 212: URDLL =104;
-"212
+[; ;CAT1PRO.C: 233: URDLL =104;
+"233
 [e = _URDLL -> -> 104 `i `uc ]
-[; ;CAT1PRO.C: 213: URDLH =0;
-"213
+[; ;CAT1PRO.C: 234: URDLH =0;
+"234
 [e = _URDLH -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 214: TCF=1;
-"214
+[; ;CAT1PRO.C: 235: TCF=1;
+"235
 [e = _TCF -> -> 1 `i `b ]
-[; ;CAT1PRO.C: 215: AFP1=0;
-"215
+[; ;CAT1PRO.C: 236: AFP1=0;
+"236
 [e = _AFP1 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 216: ODCON0=0B00000000;
-"216
+[; ;CAT1PRO.C: 237: ODCON0=0B00000000;
+"237
 [e = _ODCON0 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 217: }
-"217
+[; ;CAT1PRO.C: 238: }
+"238
 [e :UE 257 ]
 }
-"224
+"245
 [v _SendByte `(v ~T0 @X0 1 ef1`uc ]
-"225
+"246
 {
-[; ;CAT1PRO.C: 224: void SendByte(unsigned char data)
-[; ;CAT1PRO.C: 225: {
+[; ;CAT1PRO.C: 245: void SendByte(unsigned char data)
+[; ;CAT1PRO.C: 246: {
 [e :U _SendByte ]
-"224
+"245
 [v _data `uc ~T0 @X0 1 r1 ]
-"225
+"246
 [f ]
-[; ;CAT1PRO.C: 226: TXEF = 0;
-"226
+[; ;CAT1PRO.C: 247: TXEF = 0;
+"247
 [e = _TXEF -> -> 0 `i `b ]
-[; ;CAT1PRO.C: 227: URDATAL = data;
-"227
+[; ;CAT1PRO.C: 248: URDATAL = data;
+"248
 [e = _URDATAL _data ]
-[; ;CAT1PRO.C: 228: while(!TCF)
-"228
+[; ;CAT1PRO.C: 249: while(!TCF)
+"249
 [e $U 259  ]
 [e :U 260 ]
-[; ;CAT1PRO.C: 229: {
-"229
+[; ;CAT1PRO.C: 250: {
+"250
 {
-"230
+"251
 }
 [e :U 259 ]
-"228
+"249
 [e $ ! _TCF 260  ]
 [e :U 261 ]
-[; ;CAT1PRO.C: 230: }
-[; ;CAT1PRO.C: 231: }
-"231
+[; ;CAT1PRO.C: 251: }
+[; ;CAT1PRO.C: 252: }
+"252
 [e :UE 258 ]
 }
-"238
+"259
 [v _SendString `(v ~T0 @X0 1 ef1`*Cuc ]
-"239
+"260
 {
-[; ;CAT1PRO.C: 238: void SendString(const char* MOVWF)
-[; ;CAT1PRO.C: 239: {
+[; ;CAT1PRO.C: 259: void SendString(const char* MOVWF)
+[; ;CAT1PRO.C: 260: {
 [e :U _SendString ]
-"238
+"259
 [v _MOVWF `*Cuc ~T0 @X0 1 r1 ]
-"239
+"260
 [f ]
-"240
+"261
 [v _j `uc ~T0 @X0 1 a ]
-[; ;CAT1PRO.C: 240: unsigned char j = 0;
+[; ;CAT1PRO.C: 261: unsigned char j = 0;
 [e = _j -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 241: while(MOVWF[j] != '\0')
-"241
+[; ;CAT1PRO.C: 262: while(MOVWF[j] != '\0')
+"262
 [e $U 263  ]
 [e :U 264 ]
-[; ;CAT1PRO.C: 242: {
-"242
+[; ;CAT1PRO.C: 263: {
+"263
 {
-[; ;CAT1PRO.C: 243: SendByte(MOVWF[j]);
-"243
+[; ;CAT1PRO.C: 264: SendByte(MOVWF[j]);
+"264
 [e ( _SendByte (1 *U + _MOVWF * -> _j `ux -> -> # *U _MOVWF `ui `ux ]
-[; ;CAT1PRO.C: 244: j++;
-"244
+[; ;CAT1PRO.C: 265: j++;
+"265
 [e ++ _j -> -> 1 `i `uc ]
-"245
+"266
 }
 [e :U 263 ]
-"241
+"262
 [e $ != -> *U + _MOVWF * -> _j `ux -> -> # *U _MOVWF `ui `ux `ui -> 0 `ui 264  ]
 [e :U 265 ]
-[; ;CAT1PRO.C: 245: }
-[; ;CAT1PRO.C: 246: }
-"246
+[; ;CAT1PRO.C: 266: }
+[; ;CAT1PRO.C: 267: }
+"267
 [e :UE 262 ]
 }
-"256
+"277
 [v _SendATCommand `(v ~T0 @X0 1 ef1`*Cuc ]
-"257
+"278
 {
-[; ;CAT1PRO.C: 256: void SendATCommand(const char* cmd)
-[; ;CAT1PRO.C: 257: {
+[; ;CAT1PRO.C: 277: void SendATCommand(const char* cmd)
+[; ;CAT1PRO.C: 278: {
 [e :U _SendATCommand ]
-"256
+"277
 [v _cmd `*Cuc ~T0 @X0 1 r1 ]
-"257
+"278
 [f ]
-"258
+"279
 [v _j `uc ~T0 @X0 1 a ]
-[; ;CAT1PRO.C: 258: unsigned char j = 0;
+[; ;CAT1PRO.C: 279: unsigned char j = 0;
 [e = _j -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 261: while(cmd[j] != '\0')
-"261
+[; ;CAT1PRO.C: 282: while(cmd[j] != '\0')
+"282
 [e $U 267  ]
 [e :U 268 ]
-[; ;CAT1PRO.C: 262: {
-"262
+[; ;CAT1PRO.C: 283: {
+"283
 {
-[; ;CAT1PRO.C: 263: SendByte(cmd[j]);
-"263
+[; ;CAT1PRO.C: 284: SendByte(cmd[j]);
+"284
 [e ( _SendByte (1 *U + _cmd * -> _j `ux -> -> # *U _cmd `ui `ux ]
-[; ;CAT1PRO.C: 264: j++;
-"264
+[; ;CAT1PRO.C: 285: j++;
+"285
 [e ++ _j -> -> 1 `i `uc ]
-"265
+"286
 }
 [e :U 267 ]
-"261
+"282
 [e $ != -> *U + _cmd * -> _j `ux -> -> # *U _cmd `ui `ux `ui -> 0 `ui 268  ]
 [e :U 269 ]
-[; ;CAT1PRO.C: 265: }
-[; ;CAT1PRO.C: 268: SendByte(0x0D);
-"268
+[; ;CAT1PRO.C: 286: }
+[; ;CAT1PRO.C: 289: SendByte(0x0D);
+"289
 [e ( _SendByte (1 -> -> 13 `i `uc ]
-[; ;CAT1PRO.C: 271: SendByte(0x0A);
-"271
+[; ;CAT1PRO.C: 292: SendByte(0x0A);
+"292
 [e ( _SendByte (1 -> -> 10 `i `uc ]
-[; ;CAT1PRO.C: 272: }
-"272
+[; ;CAT1PRO.C: 293: }
+"293
 [e :UE 266 ]
 }
-"281
-[v _CAT1_Init `(v ~T0 @X0 1 ef ]
-"282
-{
-[; ;CAT1PRO.C: 281: void CAT1_Init(void)
-[; ;CAT1PRO.C: 282: {
-[e :U _CAT1_Init ]
-[f ]
-[; ;CAT1PRO.C: 284: SendATCommand("AT+PWR=20");
-"284
-[e ( _SendATCommand (1 :s 2C ]
-[; ;CAT1PRO.C: 285: DelayMs(50);
-"285
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 288: SendATCommand("AT+UART=3,0");
-"288
-[e ( _SendATCommand (1 :s 3C ]
-[; ;CAT1PRO.C: 289: DelayMs(50);
-"289
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 292: SendATCommand("AT+FEQ=434000000");
-"292
-[e ( _SendATCommand (1 :s 4C ]
-[; ;CAT1PRO.C: 293: DelayMs(50);
-"293
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 296: SendATCommand("AT+ADR=0");
-"296
-[e ( _SendATCommand (1 :s 5C ]
-[; ;CAT1PRO.C: 297: DelayMs(50);
-"297
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 300: SendATCommand("AT+SF=7");
-"300
-[e ( _SendATCommand (1 :s 6C ]
-[; ;CAT1PRO.C: 301: DelayMs(50);
 "301
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 304: SendATCommand("AT+BW=9");
-"304
-[e ( _SendATCommand (1 :s 7C ]
-[; ;CAT1PRO.C: 305: DelayMs(50);
-"305
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 308: SendATCommand("AT+PB=2000");
-"308
-[e ( _SendATCommand (1 :s 8C ]
-[; ;CAT1PRO.C: 309: DelayMs(50);
+[v _Calculate_CRC `(uc ~T0 @X0 1 ef1`uc ]
+"302
+{
+[; ;CAT1PRO.C: 301: unsigned char Calculate_CRC(unsigned char len)
+[; ;CAT1PRO.C: 302: {
+[e :U _Calculate_CRC ]
+"301
+[v _len `uc ~T0 @X0 1 r1 ]
+"302
+[f ]
+"303
+[v _sum `ui ~T0 @X0 1 a ]
+[; ;CAT1PRO.C: 303: unsigned int sum = 0;
+[e = _sum -> -> 0 `i `ui ]
+[; ;CAT1PRO.C: 309: for(unsigned char k = 1; k < (len - 3); k++) {
 "309
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 311: SendATCommand("AT+MODE=1");
+{
+[v _k `uc ~T0 @X0 1 a ]
+[e = _k -> -> 1 `i `uc ]
+[e $U 274  ]
+[e :U 271 ]
+{
+[; ;CAT1PRO.C: 310: sum += msg_buffer[k];
+"310
+[e =+ _sum -> *U + &U _msg_buffer * -> _k `ux -> -> # *U &U _msg_buffer `ui `ux `ui ]
 "311
-[e ( _SendATCommand (1 :s 9C ]
-[; ;CAT1PRO.C: 312: DelayMs(50);
+}
+"309
+[e ++ _k -> -> 1 `i `uc ]
+[e :U 274 ]
+[e $ < -> _k `i - -> _len `i -> 3 `i 271  ]
+[e :U 272 ]
+"311
+}
+[; ;CAT1PRO.C: 311: }
+[; ;CAT1PRO.C: 312: return (unsigned char)(sum & 0xFF);
 "312
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 314: SendATCommand("AT+WT=2");
-"314
-[e ( _SendATCommand (1 :s 10C ]
-[; ;CAT1PRO.C: 315: DelayMs(50);
-"315
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 318: Duima_Init();
-"318
-[e ( _Duima_Init ..  ]
-[; ;CAT1PRO.C: 321: SendATCommand("ATW");
-"321
-[e ( _SendATCommand (1 :s 11C ]
-[; ;CAT1PRO.C: 322: DelayMs(50);
-"322
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 324: PORTCbits.PC1 = 1;
-"324
-[e = . . _PORTCbits 1 1 -> -> 1 `i `uc ]
-[; ;CAT1PRO.C: 325: }
-"325
+[e ) -> & _sum -> -> 255 `i `ui `uc ]
+[e $UE 270  ]
+[; ;CAT1PRO.C: 313: }
+"313
 [e :UE 270 ]
 }
-[; ;CAT1PRO.C: 333: typedef enum {
-[; ;CAT1PRO.C: 334: STATE_WAKE_INIT,
-[; ;CAT1PRO.C: 335: STATE_WORKING,
-[; ;CAT1PRO.C: 336: STATE_GO_SLEEP
-[; ;CAT1PRO.C: 337: } MAIN_STATE;
-"341
-[v _Sys_EnterSleep `(v ~T0 @X0 1 ef ]
-"342
+"328
+[v _UART_Task `(v ~T0 @X0 1 ef ]
+"329
 {
-[; ;CAT1PRO.C: 341: void Sys_EnterSleep(void)
-[; ;CAT1PRO.C: 342: {
+[; ;CAT1PRO.C: 328: void UART_Task(void)
+[; ;CAT1PRO.C: 329: {
+[e :U _UART_Task ]
+[f ]
+"332
+[v _check_buf `uc ~T0 @X0 -> 8 `i a ]
+[v _i `uc ~T0 @X0 1 a ]
+"334
+[v _match `uc ~T0 @X0 1 a ]
+"335
+[v _calculated_crc `uc ~T0 @X0 1 a ]
+"336
+[v _min_len `uc ~T0 @X0 1 a ]
+"339
+[v F2544 `Cuc ~T0 @X0 -> 7 `i s CMD_FRAME_OPEN ]
+[i F2544
+:U ..
+-> -> 187 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 13 `i `uc
+-> -> 10 `i `uc
+..
+]
+"340
+[v F2545 `Cuc ~T0 @X0 -> 7 `i s CMD_FRAME_CLOSE ]
+[i F2545
+:U ..
+-> -> 187 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 13 `i `uc
+-> -> 10 `i `uc
+..
+]
+"341
+[v F2546 `Cuc ~T0 @X0 -> 7 `i s CMD_FRAME_STOP ]
+[i F2546
+:U ..
+-> -> 187 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 13 `i `uc
+-> -> 10 `i `uc
+..
+]
+[; ;CAT1PRO.C: 332: unsigned char check_buf[8];
+[; ;CAT1PRO.C: 333: unsigned char i;
+[; ;CAT1PRO.C: 334: unsigned char match;
+[; ;CAT1PRO.C: 335: unsigned char calculated_crc;
+[; ;CAT1PRO.C: 336: unsigned char min_len;
+[; ;CAT1PRO.C: 339: const unsigned char CMD_FRAME_OPEN[7] = {0xBB, 0x01, 0x01, 0x01, 0x03, 0x0D, 0x0A};
+[; ;CAT1PRO.C: 340: const unsigned char CMD_FRAME_CLOSE[7] = {0xBB, 0x01, 0x01, 0x02, 0x04, 0x0D, 0x0A};
+[; ;CAT1PRO.C: 341: const unsigned char CMD_FRAME_STOP[7] = {0xBB, 0x01, 0x01, 0x00, 0x02, 0x0D, 0x0A};
+[; ;CAT1PRO.C: 345: min_len = (current_mode == MODE_PAIRING) ? 8 : 7;
+"345
+[e = _min_len -> ? == -> _current_mode `i -> . `E2441 1 `i : -> 8 `i -> 7 `i `uc ]
+[; ;CAT1PRO.C: 348: while((head - tail + 32) % 32 >= min_len)
+"348
+[e $U 276  ]
+[e :U 277 ]
+[; ;CAT1PRO.C: 349: {
+"349
+{
+[; ;CAT1PRO.C: 351: for(i = 0; i < 7; i++) {
+"351
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 7 `i 279  ]
+[e $U 280  ]
+[e :U 279 ]
+{
+[; ;CAT1PRO.C: 352: check_buf[i] = ring_buf[(tail + i) % 32];
+"352
+[e = *U + &U _check_buf * -> _i `ux -> -> # *U &U _check_buf `ui `ux *U + &U _ring_buf * -> -> % + -> _tail `i -> _i `i -> 32 `i `ui `ux -> -> # *U &U _ring_buf `ui `ux ]
+"353
+}
+"351
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 279  ]
+[e :U 280 ]
+"353
+}
+[; ;CAT1PRO.C: 353: }
+[; ;CAT1PRO.C: 358: match = 1;
+"358
+[e = _match -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 359: for(i = 0; i < 7; i++) {
+"359
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 7 `i 282  ]
+[e $U 283  ]
+[e :U 282 ]
+{
+[; ;CAT1PRO.C: 360: if(check_buf[i] != CMD_FRAME_OPEN[i]) {
+"360
+[e $ ! != -> *U + &U _check_buf * -> _i `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U F2544 * -> _i `ux -> -> # *U &U F2544 `ui `ux `i 285  ]
+{
+[; ;CAT1PRO.C: 361: match = 0;
+"361
+[e = _match -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 362: break;
+"362
+[e $U 283  ]
+"363
+}
+[e :U 285 ]
+"364
+}
+"359
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 282  ]
+[e :U 283 ]
+"364
+}
+[; ;CAT1PRO.C: 363: }
+[; ;CAT1PRO.C: 364: }
+[; ;CAT1PRO.C: 365: if(match) {
+"365
+[e $ ! != -> _match `i -> -> -> 0 `i `uc `i 286  ]
+{
+[; ;CAT1PRO.C: 367: Duima_ControlMotor(0x01);
+"367
+[e ( _Duima_ControlMotor (1 -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 368: g_frame_count++;
+"368
+[e ++ _g_frame_count -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 369: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"369
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[; ;CAT1PRO.C: 370: tail = (tail + 7) % 32;
+"370
+[e = _tail -> % + -> _tail `i -> 7 `i -> 32 `i `uc ]
+[; ;CAT1PRO.C: 371: continue;
+"371
+[e $U 276  ]
+"372
+}
+[e :U 286 ]
+[; ;CAT1PRO.C: 372: }
+[; ;CAT1PRO.C: 377: match = 1;
+"377
+[e = _match -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 378: for(i = 0; i < 7; i++) {
+"378
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 7 `i 287  ]
+[e $U 288  ]
+[e :U 287 ]
+{
+[; ;CAT1PRO.C: 379: if(check_buf[i] != CMD_FRAME_CLOSE[i]) {
+"379
+[e $ ! != -> *U + &U _check_buf * -> _i `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U F2545 * -> _i `ux -> -> # *U &U F2545 `ui `ux `i 290  ]
+{
+[; ;CAT1PRO.C: 380: match = 0;
+"380
+[e = _match -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 381: break;
+"381
+[e $U 288  ]
+"382
+}
+[e :U 290 ]
+"383
+}
+"378
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 287  ]
+[e :U 288 ]
+"383
+}
+[; ;CAT1PRO.C: 382: }
+[; ;CAT1PRO.C: 383: }
+[; ;CAT1PRO.C: 384: if(match) {
+"384
+[e $ ! != -> _match `i -> -> -> 0 `i `uc `i 291  ]
+{
+[; ;CAT1PRO.C: 386: Duima_ControlMotor(0x02);
+"386
+[e ( _Duima_ControlMotor (1 -> -> 2 `i `uc ]
+[; ;CAT1PRO.C: 387: g_frame_count++;
+"387
+[e ++ _g_frame_count -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 388: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"388
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[; ;CAT1PRO.C: 389: tail = (tail + 7) % 32;
+"389
+[e = _tail -> % + -> _tail `i -> 7 `i -> 32 `i `uc ]
+[; ;CAT1PRO.C: 390: continue;
+"390
+[e $U 276  ]
+"391
+}
+[e :U 291 ]
+[; ;CAT1PRO.C: 391: }
+[; ;CAT1PRO.C: 396: match = 1;
+"396
+[e = _match -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 397: for(i = 0; i < 7; i++) {
+"397
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 7 `i 292  ]
+[e $U 293  ]
+[e :U 292 ]
+{
+[; ;CAT1PRO.C: 398: if(check_buf[i] != CMD_FRAME_STOP[i]) {
+"398
+[e $ ! != -> *U + &U _check_buf * -> _i `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U F2546 * -> _i `ux -> -> # *U &U F2546 `ui `ux `i 295  ]
+{
+[; ;CAT1PRO.C: 399: match = 0;
+"399
+[e = _match -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 400: break;
+"400
+[e $U 293  ]
+"401
+}
+[e :U 295 ]
+"402
+}
+"397
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 7 `i 292  ]
+[e :U 293 ]
+"402
+}
+[; ;CAT1PRO.C: 401: }
+[; ;CAT1PRO.C: 402: }
+[; ;CAT1PRO.C: 403: if(match) {
+"403
+[e $ ! != -> _match `i -> -> -> 0 `i `uc `i 296  ]
+{
+[; ;CAT1PRO.C: 405: Duima_ControlMotor(0x00);
+"405
+[e ( _Duima_ControlMotor (1 -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 406: g_frame_count++;
+"406
+[e ++ _g_frame_count -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 407: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"407
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[; ;CAT1PRO.C: 408: tail = (tail + 7) % 32;
+"408
+[e = _tail -> % + -> _tail `i -> 7 `i -> 32 `i `uc ]
+[; ;CAT1PRO.C: 409: continue;
+"409
+[e $U 276  ]
+"410
+}
+[e :U 296 ]
+[; ;CAT1PRO.C: 410: }
+[; ;CAT1PRO.C: 417: if(current_mode == MODE_PAIRING)
+"417
+[e $ ! == -> _current_mode `i -> . `E2441 1 `i 297  ]
+[; ;CAT1PRO.C: 418: {
+"418
+{
+[; ;CAT1PRO.C: 420: check_buf[7] = ring_buf[(tail + 7) % 32];
+"420
+[e = *U + &U _check_buf * -> -> -> 7 `i `ui `ux -> -> # *U &U _check_buf `ui `ux *U + &U _ring_buf * -> -> % + -> _tail `i -> 7 `i -> 32 `i `ui `ux -> -> # *U &U _ring_buf `ui `ux ]
+[; ;CAT1PRO.C: 423: if(check_buf[0] == 0xBB &&
+[; ;CAT1PRO.C: 424: check_buf[1] == 0x02 &&
+[; ;CAT1PRO.C: 425: check_buf[2] == 0x02 &&
+[; ;CAT1PRO.C: 426: check_buf[6] == 0x0D &&
+[; ;CAT1PRO.C: 427: check_buf[7] == 0x0A)
+"427
+[e $ ! && && && && == -> *U + &U _check_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> 187 `i == -> *U + &U _check_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> 2 `i == -> *U + &U _check_buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> 2 `i == -> *U + &U _check_buf * -> -> -> 6 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> 13 `i == -> *U + &U _check_buf * -> -> -> 7 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> 10 `i 298  ]
+[; ;CAT1PRO.C: 428: {
+"428
+{
+[; ;CAT1PRO.C: 430: calculated_crc = check_buf[1] + check_buf[2] + check_buf[3] + check_buf[4];
+"430
+[e = _calculated_crc -> + + + -> *U + &U _check_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U _check_buf * -> -> -> 2 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U _check_buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i -> *U + &U _check_buf * -> -> -> 4 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i `uc ]
+[; ;CAT1PRO.C: 432: if((calculated_crc & 0xFF) == check_buf[5])
+"432
+[e $ ! == & -> _calculated_crc `i -> 255 `i -> *U + &U _check_buf * -> -> -> 5 `i `ui `ux -> -> # *U &U _check_buf `ui `ux `i 299  ]
+[; ;CAT1PRO.C: 433: {
+"433
+{
+[; ;CAT1PRO.C: 435: Duima_ProcessReceivedData(check_buf, 8);
+"435
+[e ( _Duima_ProcessReceivedData (2 , &U _check_buf -> -> 8 `i `uc ]
+[; ;CAT1PRO.C: 436: g_frame_count++;
+"436
+[e ++ _g_frame_count -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 437: tail = (tail + 8) % 32;
+"437
+[e = _tail -> % + -> _tail `i -> 8 `i -> 32 `i `uc ]
+[; ;CAT1PRO.C: 438: continue;
+"438
+[e $U 276  ]
+"439
+}
+[e :U 299 ]
+"440
+}
+[e :U 298 ]
+"441
+}
+[e :U 297 ]
+[; ;CAT1PRO.C: 439: }
+[; ;CAT1PRO.C: 440: }
+[; ;CAT1PRO.C: 441: }
+[; ;CAT1PRO.C: 446: tail = (tail + 1) % 32;
+"446
+[e = _tail -> % + -> _tail `i -> 1 `i -> 32 `i `uc ]
+"447
+}
+[e :U 276 ]
+"348
+[e $ >= % + - -> _head `i -> _tail `i -> 32 `i -> 32 `i -> _min_len `i 277  ]
+[e :U 278 ]
+[; ;CAT1PRO.C: 447: }
+[; ;CAT1PRO.C: 448: }
+"448
+[e :UE 275 ]
+}
+"457
+[v _CAT1_Init `(v ~T0 @X0 1 ef ]
+"458
+{
+[; ;CAT1PRO.C: 457: void CAT1_Init(void)
+[; ;CAT1PRO.C: 458: {
+[e :U _CAT1_Init ]
+[f ]
+[; ;CAT1PRO.C: 460: SendATCommand("AT+PWR=20");
+"460
+[e ( _SendATCommand (1 :s 2C ]
+[; ;CAT1PRO.C: 461: DelayMs(50);
+"461
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 464: SendATCommand("AT+UART=3,0");
+"464
+[e ( _SendATCommand (1 :s 3C ]
+[; ;CAT1PRO.C: 465: DelayMs(50);
+"465
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 468: SendATCommand("AT+FEQ=434000000");
+"468
+[e ( _SendATCommand (1 :s 4C ]
+[; ;CAT1PRO.C: 469: DelayMs(50);
+"469
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 472: SendATCommand("AT+ADR=0");
+"472
+[e ( _SendATCommand (1 :s 5C ]
+[; ;CAT1PRO.C: 473: DelayMs(50);
+"473
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 476: SendATCommand("AT+SF=7");
+"476
+[e ( _SendATCommand (1 :s 6C ]
+[; ;CAT1PRO.C: 477: DelayMs(50);
+"477
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 480: SendATCommand("AT+BW=9");
+"480
+[e ( _SendATCommand (1 :s 7C ]
+[; ;CAT1PRO.C: 481: DelayMs(50);
+"481
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 484: SendATCommand("AT+PB=2000");
+"484
+[e ( _SendATCommand (1 :s 8C ]
+[; ;CAT1PRO.C: 485: DelayMs(50);
+"485
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 487: SendATCommand("AT+MODE=1");
+"487
+[e ( _SendATCommand (1 :s 9C ]
+[; ;CAT1PRO.C: 488: DelayMs(50);
+"488
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 490: SendATCommand("AT+WT=2");
+"490
+[e ( _SendATCommand (1 :s 10C ]
+[; ;CAT1PRO.C: 491: DelayMs(50);
+"491
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 494: Duima_Init();
+"494
+[e ( _Duima_Init ..  ]
+[; ;CAT1PRO.C: 497: SendATCommand("ATW");
+"497
+[e ( _SendATCommand (1 :s 11C ]
+[; ;CAT1PRO.C: 498: DelayMs(50);
+"498
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[; ;CAT1PRO.C: 500: PORTCbits.PC1 = 1;
+"500
+[e = . . _PORTCbits 1 1 -> -> 1 `i `uc ]
+[; ;CAT1PRO.C: 501: }
+"501
+[e :UE 300 ]
+}
+[; ;CAT1PRO.C: 509: typedef enum {
+[; ;CAT1PRO.C: 510: STATE_WAKE_INIT,
+[; ;CAT1PRO.C: 511: STATE_WORKING,
+[; ;CAT1PRO.C: 512: STATE_GO_SLEEP
+[; ;CAT1PRO.C: 513: } MAIN_STATE;
+"517
+[v _Sys_EnterSleep `(v ~T0 @X0 1 ef ]
+"518
+{
+[; ;CAT1PRO.C: 517: void Sys_EnterSleep(void)
+[; ;CAT1PRO.C: 518: {
 [e :U _Sys_EnterSleep ]
 [f ]
-[; ;CAT1PRO.C: 344: PORTAbits.PA1 = 0;
-"344
+[; ;CAT1PRO.C: 520: PORTAbits.PA1 = 0;
+"520
 [e = . . _PORTAbits 1 1 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 345: PORTCbits.PC1 = 1;
-"345
+[; ;CAT1PRO.C: 521: PORTCbits.PC1 = 1;
+"521
 [e = . . _PORTCbits 1 1 -> -> 1 `i `uc ]
-[; ;CAT1PRO.C: 346: DelayMs(50);
-"346
+[; ;CAT1PRO.C: 522: DelayMs(50);
+"522
 [e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 351: IO_INT_INITIAL();
-"351
+[; ;CAT1PRO.C: 527: IO_INT_INITIAL();
+"527
 [e ( _IO_INT_INITIAL ..  ]
-[; ;CAT1PRO.C: 352: EPIF0 = 0x90;
-"352
+[; ;CAT1PRO.C: 528: EPIF0 = 0x90;
+"528
 [e = _EPIF0 -> -> 144 `i `uc ]
-[; ;CAT1PRO.C: 354: GIE = 0;
-"354
+[; ;CAT1PRO.C: 530: GIE = 0;
+"530
 [e = _GIE -> -> 0 `i `b ]
-[; ;CAT1PRO.C: 357: __nop(); __nop();__nop();__nop();
-"357
+[; ;CAT1PRO.C: 533: __nop(); __nop();__nop();__nop();
+"533
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
-[; ;CAT1PRO.C: 358: asm("sleep");
-"358
+[; ;CAT1PRO.C: 534: asm("sleep");
+"534
 [; <" sleep ;# ">
-[; ;CAT1PRO.C: 359: __nop(); __nop();__nop();__nop();
-"359
+[; ;CAT1PRO.C: 535: __nop(); __nop();__nop();__nop();
+"535
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
 [e ( ___nop ..  ]
-[; ;CAT1PRO.C: 362: EPIF0 = 0x90;
-"362
+[; ;CAT1PRO.C: 538: EPIF0 = 0x90;
+"538
 [e = _EPIF0 -> -> 144 `i `uc ]
-[; ;CAT1PRO.C: 363: INTCON = 0B11000000;
-"363
+[; ;CAT1PRO.C: 539: INTCON = 0B11000000;
+"539
 [e = _INTCON -> -> 192 `i `uc ]
-[; ;CAT1PRO.C: 365: DelayMs(50);
-"365
+[; ;CAT1PRO.C: 541: DelayMs(50);
+"541
 [e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 368: }
-"368
-[e :UE 271 ]
+[; ;CAT1PRO.C: 544: }
+"544
+[e :UE 301 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"369
+"545
 [v _main `(v ~T0 @X0 1 ef ]
-"370
+"546
 {
-[; ;CAT1PRO.C: 369: void main(void)
-[; ;CAT1PRO.C: 370: {
+[; ;CAT1PRO.C: 545: void main(void)
+[; ;CAT1PRO.C: 546: {
 [e :U _main ]
 [f ]
-[; ;CAT1PRO.C: 372: POWER_INITIAL();
-"372
+[; ;CAT1PRO.C: 548: POWER_INITIAL();
+"548
 [e ( _POWER_INITIAL ..  ]
-[; ;CAT1PRO.C: 373: UART_INITIAL();
-"373
+[; ;CAT1PRO.C: 549: UART_INITIAL();
+"549
 [e ( _UART_INITIAL ..  ]
-[; ;CAT1PRO.C: 374: DelayMs(50);
-"374
+[; ;CAT1PRO.C: 550: DelayMs(50);
+"550
 [e ( _DelayMs (1 -> -> 50 `i `uc ]
-[; ;CAT1PRO.C: 375: CAT1_Init();
-"375
+[; ;CAT1PRO.C: 551: CAT1_Init();
+"551
 [e ( _CAT1_Init ..  ]
-[; ;CAT1PRO.C: 378: INTCON = 0B11000000;
-"378
+[; ;CAT1PRO.C: 554: INTCON = 0B11000000;
+"554
 [e = _INTCON -> -> 192 `i `uc ]
-[; ;CAT1PRO.C: 379: DelayMs(50);
-"379
+[; ;CAT1PRO.C: 555: DelayMs(50);
+"555
 [e ( _DelayMs (1 -> -> 50 `i `uc ]
-"382
-[v _sys_state `E2511 ~T0 @X0 1 a ]
-[; ;CAT1PRO.C: 382: MAIN_STATE sys_state = STATE_WAKE_INIT;
-[e = _sys_state . `E2511 0 ]
-[; ;CAT1PRO.C: 384: while(1)
-"384
-[e :U 274 ]
-[; ;CAT1PRO.C: 385: {
-"385
+"558
+[v _sys_state `E2549 ~T0 @X0 1 a ]
+[; ;CAT1PRO.C: 558: MAIN_STATE sys_state = STATE_WAKE_INIT;
+[e = _sys_state . `E2549 0 ]
+[; ;CAT1PRO.C: 561: while(1)
+"561
+[e :U 304 ]
+[; ;CAT1PRO.C: 562: {
+"562
 {
-[; ;CAT1PRO.C: 386: switch(sys_state)
-"386
-[e $U 277  ]
-[; ;CAT1PRO.C: 387: {
-"387
+[; ;CAT1PRO.C: 563: switch(sys_state)
+"563
+[e $U 307  ]
+[; ;CAT1PRO.C: 564: {
+"564
 {
-[; ;CAT1PRO.C: 391: case STATE_WAKE_INIT:
-"391
-[e :U 278 ]
-[; ;CAT1PRO.C: 392: PORTAbits.PA1 = 1;
-"392
+[; ;CAT1PRO.C: 568: case STATE_WAKE_INIT:
+"568
+[e :U 308 ]
+[; ;CAT1PRO.C: 569: PORTAbits.PA1 = 1;
+"569
 [e = . . _PORTAbits 1 1 -> -> 1 `i `uc ]
-[; ;CAT1PRO.C: 393: g_timer_ms = 0;
-"393
+[; ;CAT1PRO.C: 570: g_timer_ms = 0;
+"570
 [e = _g_timer_ms -> -> 0 `i `ui ]
-[; ;CAT1PRO.C: 394: mmm = 0;
-"394
-[e = _mmm -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 395: PORTCbits.PC1 = 0;
-"395
+[; ;CAT1PRO.C: 572: PORTCbits.PC1 = 0;
+"572
 [e = . . _PORTCbits 1 1 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 396: sys_state = STATE_WORKING;
-"396
-[e = _sys_state . `E2511 1 ]
-[; ;CAT1PRO.C: 398: break;
-"398
-[e $U 276  ]
-[; ;CAT1PRO.C: 403: case STATE_WORKING:
-"403
-[e :U 279 ]
-[; ;CAT1PRO.C: 405: Duima_MainLoop();
-"405
+[; ;CAT1PRO.C: 573: sys_state = STATE_WORKING;
+"573
+[e = _sys_state . `E2549 1 ]
+[; ;CAT1PRO.C: 574: break;
+"574
+[e $U 306  ]
+[; ;CAT1PRO.C: 580: case STATE_WORKING:
+"580
+[e :U 309 ]
+[; ;CAT1PRO.C: 582: Duima_MainLoop();
+"582
 [e ( _Duima_MainLoop ..  ]
-[; ;CAT1PRO.C: 408: if(mmm >= 2) {
-"408
-[e $ ! >= -> _mmm `i -> 2 `i 280  ]
+[; ;CAT1PRO.C: 585: UART_Task();
+"585
+[e ( _UART_Task ..  ]
+[; ;CAT1PRO.C: 588: Duima_CheckLimitSwitch();
+"588
+[e ( _Duima_CheckLimitSwitch ..  ]
+[; ;CAT1PRO.C: 591: if(current_mode == MODE_PAIRING)
+"591
+[e $ ! == -> _current_mode `i -> . `E2441 1 `i 310  ]
+[; ;CAT1PRO.C: 592: {
+"592
 {
-[; ;CAT1PRO.C: 409: Duima_ProcessReceivedData((unsigned char*)receivedata, mmm);
-"409
-[e ( _Duima_ProcessReceivedData (2 , -> &U _receivedata `*uc _mmm ]
-[; ;CAT1PRO.C: 410: mmm = 0;
-"410
-[e = _mmm -> -> 0 `i `uc ]
-"411
-}
-[e :U 280 ]
-[; ;CAT1PRO.C: 411: }
-[; ;CAT1PRO.C: 414: if(current_mode == MODE_PAIRING)
-"414
-[e $ ! == -> _current_mode `i -> . `E2441 1 `i 281  ]
-[; ;CAT1PRO.C: 415: {
-"415
+[; ;CAT1PRO.C: 594: if(g_timer_ms >= 10000) {
+"594
+[e $ ! >= _g_timer_ms -> -> 10000 `i `ui 311  ]
 {
-[; ;CAT1PRO.C: 417: if(g_timer_ms >= 10000) {
-"417
-[e $ ! >= _g_timer_ms -> -> 10000 `i `ui 282  ]
-{
-[; ;CAT1PRO.C: 418: Duima_Configure433Address(local_paired_id);
-"418
+[; ;CAT1PRO.C: 595: Duima_Configure433Address(local_paired_id);
+"595
 [e ( _Duima_Configure433Address (1 _local_paired_id ]
-[; ;CAT1PRO.C: 419: current_mode = MODE_NORMAL;
-"419
+[; ;CAT1PRO.C: 596: current_mode = MODE_NORMAL;
+"596
 [e = _current_mode . `E2441 0 ]
-[; ;CAT1PRO.C: 420: PORTAbits.PA1 = 0;
-"420
+[; ;CAT1PRO.C: 597: PORTAbits.PA1 = 0;
+"597
 [e = . . _PORTAbits 1 1 -> -> 0 `i `uc ]
-[; ;CAT1PRO.C: 421: sys_state = STATE_GO_SLEEP;
-"421
-[e = _sys_state . `E2511 2 ]
-"422
+[; ;CAT1PRO.C: 598: sys_state = STATE_GO_SLEEP;
+"598
+[e = _sys_state . `E2549 2 ]
+"599
 }
-[e :U 282 ]
-"423
+[e :U 311 ]
+"600
 }
-[; ;CAT1PRO.C: 422: }
-[; ;CAT1PRO.C: 423: }
-[e $U 283  ]
-"424
-[e :U 281 ]
-[; ;CAT1PRO.C: 424: else
-[; ;CAT1PRO.C: 425: {
-"425
+[; ;CAT1PRO.C: 599: }
+[; ;CAT1PRO.C: 600: }
+[e $U 312  ]
+"601
+[e :U 310 ]
+[; ;CAT1PRO.C: 601: else
+[; ;CAT1PRO.C: 602: {
+"602
 {
-[; ;CAT1PRO.C: 427: if(g_timer_ms >= 5000) {
-"427
-[e $ ! >= _g_timer_ms -> -> 5000 `i `ui 284  ]
+[; ;CAT1PRO.C: 604: if(g_timer_ms >= 10000) {
+"604
+[e $ ! >= _g_timer_ms -> -> 10000 `i `ui 313  ]
 {
-[; ;CAT1PRO.C: 428: sys_state = STATE_GO_SLEEP;
-"428
-[e = _sys_state . `E2511 2 ]
-"429
+[; ;CAT1PRO.C: 605: PORTBbits.PB1 = 0;
+"605
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 606: PORTAbits.PA0 = 0;
+"606
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;CAT1PRO.C: 607: sys_state = STATE_GO_SLEEP;
+"607
+[e = _sys_state . `E2549 2 ]
+"608
 }
-[e :U 284 ]
-"430
+[e :U 313 ]
+"609
 }
-[e :U 283 ]
-[; ;CAT1PRO.C: 429: }
-[; ;CAT1PRO.C: 430: }
-[; ;CAT1PRO.C: 431: break;
-"431
-[e $U 276  ]
-[; ;CAT1PRO.C: 436: case STATE_GO_SLEEP:
-"436
-[e :U 285 ]
-[; ;CAT1PRO.C: 437: for(unsigned char k=0; k<6; k++)
-"437
+[e :U 312 ]
+[; ;CAT1PRO.C: 608: }
+[; ;CAT1PRO.C: 609: }
+[; ;CAT1PRO.C: 610: break;
+"610
+[e $U 306  ]
+[; ;CAT1PRO.C: 616: case STATE_GO_SLEEP:
+"616
+[e :U 314 ]
+[; ;CAT1PRO.C: 617: for(unsigned char k=0; k<6; k++)
+"617
 {
 [v _k `uc ~T0 @X0 1 a ]
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 6 `i 286  ]
-[e $U 287  ]
-"438
-[e :U 286 ]
-[; ;CAT1PRO.C: 438: {
+[e $ < -> _k `i -> 6 `i 315  ]
+[e $U 316  ]
+"618
+[e :U 315 ]
+[; ;CAT1PRO.C: 618: {
 {
-[; ;CAT1PRO.C: 439: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
-"439
+[; ;CAT1PRO.C: 619: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"619
 [e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
-[; ;CAT1PRO.C: 440: DelayMs(100);
-"440
-[e ( _DelayMs (1 -> -> 100 `i `uc ]
-"441
+[; ;CAT1PRO.C: 620: DelayMs(10);
+"620
+[e ( _DelayMs (1 -> -> 10 `i `uc ]
+"621
 }
-"437
+"617
 [e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 6 `i 286  ]
-[e :U 287 ]
-"441
+[e $ < -> _k `i -> 6 `i 315  ]
+[e :U 316 ]
+"621
 }
-[; ;CAT1PRO.C: 441: }
-[; ;CAT1PRO.C: 442: Sys_EnterSleep();
-"442
+[; ;CAT1PRO.C: 621: }
+[; ;CAT1PRO.C: 622: Sys_EnterSleep();
+"622
 [e ( _Sys_EnterSleep ..  ]
-[; ;CAT1PRO.C: 445: sys_state = STATE_WAKE_INIT;
-"445
-[e = _sys_state . `E2511 0 ]
-[; ;CAT1PRO.C: 446: break;
-"446
-[e $U 276  ]
-"447
+[; ;CAT1PRO.C: 625: sys_state = STATE_WAKE_INIT;
+"625
+[e = _sys_state . `E2549 0 ]
+[; ;CAT1PRO.C: 626: break;
+"626
+[e $U 306  ]
+"627
 }
-[; ;CAT1PRO.C: 447: }
-[e $U 276  ]
-"386
-[e :U 277 ]
-[e [\ _sys_state , $ . `E2511 0 278
- , $ . `E2511 1 279
- , $ . `E2511 2 285
- 276 ]
-"447
-[e :U 276 ]
-"448
+[; ;CAT1PRO.C: 627: }
+[e $U 306  ]
+"563
+[e :U 307 ]
+[e [\ _sys_state , $ . `E2549 0 308
+ , $ . `E2549 1 309
+ , $ . `E2549 2 314
+ 306 ]
+"627
+[e :U 306 ]
+"628
 }
-[e :U 273 ]
-"384
-[e $U 274  ]
-[e :U 275 ]
-[; ;CAT1PRO.C: 448: }
-[; ;CAT1PRO.C: 449: }
-"449
-[e :UE 272 ]
+[e :U 303 ]
+"561
+[e $U 304  ]
+[e :U 305 ]
+[; ;CAT1PRO.C: 628: }
+[; ;CAT1PRO.C: 629: }
+"629
+[e :UE 302 ]
 }
 [a 11C 65 84 87 0 ]
 [a 7C 65 84 43 66 87 61 57 0 ]

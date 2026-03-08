@@ -713,19 +713,21 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "4 duima.c
 [c E2441 0 1 .. ]
 [n E2441 . MODE_NORMAL MODE_PAIRING  ]
-"38 duima.h
+"56 duima.h
 [v _g_timer_ms `Vui ~T0 @X0 0 e ]
-"52
+"79
 [v _Duima_EEPROM_ReadID `(ui ~T0 @X0 0 ef1`uc ]
-"60
+"87
 [v _DelayMs `(v ~T0 @X0 0 ef1`uc ]
-"48
+"70
 [v _Duima_Configure433Address `(v ~T0 @X0 0 ef1`ui ]
-"39
-[v _mmm `uc ~T0 @X0 0 e ]
-"53
+"60
+[v _head `Vuc ~T0 @X0 0 e ]
+"61
+[v _tail `Vuc ~T0 @X0 0 e ]
+"80
 [v _Duima_EEPROM_WriteID `(v ~T0 @X0 0 ef2`ui`uc ]
-"59
+"86
 [v _SendATCommand `(v ~T0 @X0 0 ef1`*Cuc ]
 "31 E:\FMDprogrammer\Compiler\data\include\SYSCFG.h
 [v ___nop `(v ~T0 @X0 0 ef ]
@@ -4217,28 +4219,33 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;SYSCFG.h: 157: extern unsigned char __resetbits;
 [; ;SYSCFG.h: 158: extern __bit __powerdown;
 [; ;SYSCFG.h: 159: extern __bit __timeout;
-[; ;duima.h: 30: typedef enum {
-[; ;duima.h: 31: MODE_NORMAL = 0,
-[; ;duima.h: 32: MODE_PAIRING = 1
-[; ;duima.h: 33: } SYS_MODE;
-[; ;duima.h: 36: extern SYS_MODE current_mode;
-[; ;duima.h: 37: extern unsigned int local_paired_id;
-[; ;duima.h: 38: extern volatile unsigned int g_timer_ms;
-[; ;duima.h: 39: extern unsigned char mmm;
-[; ;duima.h: 44: void Duima_Init(void);
-[; ;duima.h: 45: void Duima_Timer_Init(void);
-[; ;duima.h: 46: void Duima_StartPairing(void);
-[; ;duima.h: 47: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
-[; ;duima.h: 48: void Duima_Configure433Address(unsigned int addr);
-[; ;duima.h: 49: void Duima_MainLoop(void);
-[; ;duima.h: 52: unsigned int Duima_EEPROM_ReadID(unsigned char addr);
-[; ;duima.h: 53: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr);
-[; ;duima.h: 54: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr);
-[; ;duima.h: 55: unsigned char Duima_EEPROM_ReadByte(unsigned char addr);
-[; ;duima.h: 56: void Unlock_Flash(void);
-[; ;duima.h: 59: extern void SendATCommand(const char* cmd);
-[; ;duima.h: 60: extern void DelayMs(unsigned char ms);
-[; ;duima.h: 61: extern unsigned char Duima_Key_LongPress(unsigned int press_ms);
+[; ;duima.h: 48: typedef enum {
+[; ;duima.h: 49: MODE_NORMAL = 0,
+[; ;duima.h: 50: MODE_PAIRING = 1
+[; ;duima.h: 51: } SYS_MODE;
+[; ;duima.h: 54: extern SYS_MODE current_mode;
+[; ;duima.h: 55: extern unsigned int local_paired_id;
+[; ;duima.h: 56: extern volatile unsigned int g_timer_ms;
+[; ;duima.h: 57: extern unsigned char mmm;
+[; ;duima.h: 60: extern volatile unsigned char head;
+[; ;duima.h: 61: extern volatile unsigned char tail;
+[; ;duima.h: 66: void Duima_Init(void);
+[; ;duima.h: 67: void Duima_Timer_Init(void);
+[; ;duima.h: 68: void Duima_StartPairing(void);
+[; ;duima.h: 69: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
+[; ;duima.h: 70: void Duima_Configure433Address(unsigned int addr);
+[; ;duima.h: 71: void Duima_MainLoop(void);
+[; ;duima.h: 74: void Duima_ExecuteCommand(unsigned char *data, unsigned char len);
+[; ;duima.h: 75: void Duima_ControlMotor(unsigned char cmd);
+[; ;duima.h: 76: void Duima_CheckLimitSwitch(void);
+[; ;duima.h: 79: unsigned int Duima_EEPROM_ReadID(unsigned char addr);
+[; ;duima.h: 80: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr);
+[; ;duima.h: 81: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr);
+[; ;duima.h: 82: unsigned char Duima_EEPROM_ReadByte(unsigned char addr);
+[; ;duima.h: 83: void Unlock_Flash(void);
+[; ;duima.h: 86: extern void SendATCommand(const char* cmd);
+[; ;duima.h: 87: extern void DelayMs(unsigned char ms);
+[; ;duima.h: 88: extern unsigned char Duima_Key_LongPress(unsigned int press_ms);
 "4 duima.c
 [v _current_mode `E2441 ~T0 @X0 1 e ]
 [i _current_mode
@@ -4356,575 +4363,799 @@ Version 3.2   GCC8 Compiled Intermediate Code
 [; ;duima.c: 86: Duima_Configure433Address(65535);
 "86
 [e ( _Duima_Configure433Address (1 -> -> 65535 `l `ui ]
-[; ;duima.c: 89: mmm = 0;
+[; ;duima.c: 89: head = 0;
 "89
-[e = _mmm -> -> 0 `i `uc ]
-[; ;duima.c: 92: g_timer_ms = 0;
-"92
-[e = _g_timer_ms -> -> 0 `i `ui ]
-[; ;duima.c: 93: }
+[e = _head -> -> 0 `i `uc ]
+[; ;duima.c: 90: tail = 0;
+"90
+[e = _tail -> -> 0 `i `uc ]
+[; ;duima.c: 93: DelayMs(200);
 "93
+[e ( _DelayMs (1 -> -> 200 `i `uc ]
+[; ;duima.c: 96: g_timer_ms = 0;
+"96
+[e = _g_timer_ms -> -> 0 `i `ui ]
+[; ;duima.c: 97: }
+"97
 [e :UE 241 ]
 }
-"98
+"104
 [v _Duima_ProcessReceivedData `(v ~T0 @X0 1 ef2`*uc`uc ]
-"99
+"105
 {
-[; ;duima.c: 98: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len)
-[; ;duima.c: 99: {
+[; ;duima.c: 104: void Duima_ProcessReceivedData(unsigned char *data, unsigned char len)
+[; ;duima.c: 105: {
 [e :U _Duima_ProcessReceivedData ]
-"98
+"104
 [v _data `*uc ~T0 @X0 1 r1 ]
 [v _len `uc ~T0 @X0 1 r2 ]
-"99
+"105
 [f ]
-[; ;duima.c: 103: if(current_mode == MODE_NORMAL)
-"103
-[e $ ! == -> _current_mode `i -> . `E2441 0 `i 244  ]
-[; ;duima.c: 104: {
-"104
-{
-[; ;duima.c: 108: if(len > 0)
-"108
-[e $ ! > -> _len `i -> 0 `i 245  ]
-[; ;duima.c: 109: {
-"109
-{
-[; ;duima.c: 111: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
-"111
-[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
-[e ( _DelayMs (1 -> -> 50 `i `uc ]
-[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
-"112
-}
-[e :U 245 ]
-[; ;duima.c: 112: }
-[; ;duima.c: 113: return;
-"113
+[; ;duima.c: 107: if(data == 0 || len < 7) return;
+"107
+[e $ ! || == _data -> -> 0 `i `*uc < -> _len `i -> 7 `i 244  ]
 [e $UE 243  ]
-"114
-}
 [e :U 244 ]
-[; ;duima.c: 114: }
-[; ;duima.c: 120: if(current_mode == MODE_PAIRING)
-"120
-[e $ ! == -> _current_mode `i -> . `E2441 1 `i 246  ]
-[; ;duima.c: 121: {
-"121
+[; ;duima.c: 110: if(current_mode == MODE_PAIRING)
+"110
+[e $ ! == -> _current_mode `i -> . `E2441 1 `i 245  ]
+[; ;duima.c: 111: {
+"111
 {
-[; ;duima.c: 123: if(len >= 2)
-"123
-[e $ ! >= -> _len `i -> 2 `i 247  ]
-[; ;duima.c: 124: {
-"124
+[; ;duima.c: 113: if(data[0] == 0xBB && data[1] == 0x02 && data[2] == 0x02)
+"113
+[e $ ! && && == -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `i -> 187 `i == -> *U + _data * -> -> 1 `i `x -> -> # *U _data `i `x `i -> 2 `i == -> *U + _data * -> -> 2 `i `x -> -> # *U _data `i `x `i -> 2 `i 246  ]
+[; ;duima.c: 114: {
+"114
 {
-"125
+"115
 [v _new_id `ui ~T0 @X0 1 a ]
-[; ;duima.c: 125: unsigned int new_id = 0;
+[; ;duima.c: 115: unsigned int new_id = 0;
 [e = _new_id -> -> 0 `i `ui ]
-[; ;duima.c: 129: new_id = data[0] * 256 + data[1];
-"129
-[e = _new_id -> + * -> *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x `i -> 256 `i -> *U + _data * -> -> 1 `i `x -> -> # *U _data `i `x `i `ui ]
-[; ;duima.c: 132: if(new_id == 65535) return;
-"132
-[e $ ! == -> _new_id `l -> 65535 `l 248  ]
+[; ;duima.c: 119: new_id = ((unsigned int)data[3] << 8) | data[4];
+"119
+[e = _new_id | << -> *U + _data * -> -> 3 `i `x -> -> # *U _data `i `x `ui -> 8 `i -> *U + _data * -> -> 4 `i `x -> -> # *U _data `i `x `ui ]
+[; ;duima.c: 122: if(new_id == 65535) return;
+"122
+[e $ ! == -> _new_id `l -> 65535 `l 247  ]
 [e $UE 243  ]
-[e :U 248 ]
-[; ;duima.c: 135: Duima_EEPROM_WriteID(new_id, 0x13);
-"135
+[e :U 247 ]
+[; ;duima.c: 125: Duima_EEPROM_WriteID(new_id, 0x13);
+"125
 [e ( _Duima_EEPROM_WriteID (2 , _new_id -> -> 19 `i `uc ]
-[; ;duima.c: 136: local_paired_id = new_id;
-"136
+[; ;duima.c: 126: local_paired_id = new_id;
+"126
 [e = _local_paired_id _new_id ]
-[; ;duima.c: 139: Duima_Configure433Address(local_paired_id);
-"139
+[; ;duima.c: 129: Duima_Configure433Address(local_paired_id);
+"129
 [e ( _Duima_Configure433Address (1 _local_paired_id ]
-[; ;duima.c: 142: current_mode = MODE_NORMAL;
-"142
+[; ;duima.c: 132: current_mode = MODE_NORMAL;
+"132
 [e = _current_mode . `E2441 0 ]
-[; ;duima.c: 145: for(unsigned char k=0; k<6; k++) {
-"145
+[; ;duima.c: 135: for(unsigned char k=0; k<6; k++) {
+"135
 {
 [v _k `uc ~T0 @X0 1 a ]
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 6 `i 249  ]
-[e $U 250  ]
-[e :U 249 ]
+[e $ < -> _k `i -> 6 `i 248  ]
+[e $U 249  ]
+[e :U 248 ]
 {
-[; ;duima.c: 146: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(10);
-"146
+[; ;duima.c: 136: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(100);
+"136
 [e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
-[e ( _DelayMs (1 -> -> 10 `i `uc ]
-"147
+[e ( _DelayMs (1 -> -> 100 `i `uc ]
+"137
 }
-"145
+"135
 [e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 6 `i 249  ]
-[e :U 250 ]
-"147
+[e $ < -> _k `i -> 6 `i 248  ]
+[e :U 249 ]
+"137
 }
-[; ;duima.c: 147: }
-[; ;duima.c: 148: PORTAbits.PA1 = 0;
-"148
+[; ;duima.c: 137: }
+[; ;duima.c: 138: PORTAbits.PA1 = 0;
+"138
 [e = . . _PORTAbits 1 1 -> -> 0 `i `uc ]
-"149
-}
-[e :U 247 ]
-"150
+"139
 }
 [e :U 246 ]
-[; ;duima.c: 149: }
-[; ;duima.c: 150: }
-[; ;duima.c: 151: }
-"151
+"140
+}
+[e :U 245 ]
+[; ;duima.c: 139: }
+[; ;duima.c: 140: }
+[; ;duima.c: 141: }
+"141
 [e :UE 243 ]
 }
-"156
+"146
 [v _Duima_Configure433Address `(v ~T0 @X0 1 ef1`ui ]
-"157
+"147
 {
-[; ;duima.c: 156: void Duima_Configure433Address(unsigned int addr)
-[; ;duima.c: 157: {
+[; ;duima.c: 146: void Duima_Configure433Address(unsigned int addr)
+[; ;duima.c: 147: {
 [e :U _Duima_Configure433Address ]
-"156
+"146
 [v _addr `ui ~T0 @X0 1 r1 ]
-"157
+"147
 [f ]
-"158
+"148
 [v _cmd_buffer `uc ~T0 @X0 -> 32 `i a ]
-"159
+"149
 [v _i `uc ~T0 @X0 1 a ]
-"160
+"150
 [v _digit_count `uc ~T0 @X0 1 a ]
-[; ;duima.c: 158: unsigned char cmd_buffer[32];
-[; ;duima.c: 159: unsigned char i;
-[; ;duima.c: 160: unsigned char digit_count = 0;
+[; ;duima.c: 148: unsigned char cmd_buffer[32];
+[; ;duima.c: 149: unsigned char i;
+[; ;duima.c: 150: unsigned char digit_count = 0;
 [e = _digit_count -> -> 0 `i `uc ]
-"161
+"151
 [v _temp `ul ~T0 @X0 1 a ]
-[; ;duima.c: 161: unsigned long temp = addr;
+[; ;duima.c: 151: unsigned long temp = addr;
 [e = _temp -> _addr `ul ]
-"162
+"152
 [v _digits `uc ~T0 @X0 -> 10 `i a ]
-[; ;duima.c: 162: unsigned char digits[10];
-[; ;duima.c: 165: cmd_buffer[0]='A'; cmd_buffer[1]='T'; cmd_buffer[2]='+';
-"165
+[; ;duima.c: 152: unsigned char digits[10];
+[; ;duima.c: 155: cmd_buffer[0]='A'; cmd_buffer[1]='T'; cmd_buffer[2]='+';
+"155
 [e = *U + &U _cmd_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 65 `ui `uc ]
 [e = *U + &U _cmd_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 84 `ui `uc ]
 [e = *U + &U _cmd_buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 43 `ui `uc ]
-[; ;duima.c: 166: cmd_buffer[3]='A'; cmd_buffer[4]='D'; cmd_buffer[5]='R'; cmd_buffer[6]='=';
-"166
+[; ;duima.c: 156: cmd_buffer[3]='A'; cmd_buffer[4]='D'; cmd_buffer[5]='R'; cmd_buffer[6]='=';
+"156
 [e = *U + &U _cmd_buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 65 `ui `uc ]
 [e = *U + &U _cmd_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 68 `ui `uc ]
 [e = *U + &U _cmd_buffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 82 `ui `uc ]
 [e = *U + &U _cmd_buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 61 `ui `uc ]
-[; ;duima.c: 169: if(temp == 0) {
-"169
-[e $ ! == _temp -> -> -> 0 `i `l `ul 253  ]
+[; ;duima.c: 159: if(temp == 0) {
+"159
+[e $ ! == _temp -> -> -> 0 `i `l `ul 252  ]
 {
-[; ;duima.c: 170: digits[0] = 0; digit_count = 1;
-"170
+[; ;duima.c: 160: digits[0] = 0; digit_count = 1;
+"160
 [e = *U + &U _digits * -> -> -> 0 `i `ui `ux -> -> # *U &U _digits `ui `ux -> -> 0 `i `uc ]
 [e = _digit_count -> -> 1 `i `uc ]
-"171
+"161
 }
-[; ;duima.c: 171: } else {
+[; ;duima.c: 161: } else {
+[e $U 253  ]
+[e :U 252 ]
+{
+[; ;duima.c: 162: while(temp > 0) {
+"162
 [e $U 254  ]
-[e :U 253 ]
-{
-[; ;duima.c: 172: while(temp > 0) {
-"172
-[e $U 255  ]
-[e :U 256 ]
-{
-[; ;duima.c: 173: digits[digit_count++] = temp % 10;
-"173
-[e = *U + &U _digits * -> ++ _digit_count -> -> 1 `i `uc `ux -> -> # *U &U _digits `ui `ux -> % _temp -> -> -> 10 `i `l `ul `uc ]
-[; ;duima.c: 174: temp /= 10;
-"174
-[e =/ _temp -> -> 10 `uc `ul ]
-"175
-}
 [e :U 255 ]
-"172
-[e $ > _temp -> -> -> 0 `i `l `ul 256  ]
-[e :U 257 ]
-"176
+{
+[; ;duima.c: 163: digits[digit_count++] = temp % 10;
+"163
+[e = *U + &U _digits * -> ++ _digit_count -> -> 1 `i `uc `ux -> -> # *U &U _digits `ui `ux -> % _temp -> -> -> 10 `i `l `ul `uc ]
+[; ;duima.c: 164: temp /= 10;
+"164
+[e =/ _temp -> -> 10 `uc `ul ]
+"165
 }
 [e :U 254 ]
-[; ;duima.c: 175: }
-[; ;duima.c: 176: }
-[; ;duima.c: 179: for(i = 0; i < digit_count; i++) {
-"179
+"162
+[e $ > _temp -> -> -> 0 `i `l `ul 255  ]
+[e :U 256 ]
+"166
+}
+[e :U 253 ]
+[; ;duima.c: 165: }
+[; ;duima.c: 166: }
+[; ;duima.c: 169: for(i = 0; i < digit_count; i++) {
+"169
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 261  ]
-[e :U 258 ]
+[e $U 260  ]
+[e :U 257 ]
 {
-[; ;duima.c: 180: cmd_buffer[7 + i] = '0' + digits[digit_count - 1 - i];
-"180
+[; ;duima.c: 170: cmd_buffer[7 + i] = '0' + digits[digit_count - 1 - i];
+"170
 [e = *U + &U _cmd_buffer * -> -> + -> 7 `i -> _i `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> + -> 48 `ui -> *U + &U _digits * -> -> - - -> _digit_count `i -> 1 `i -> _i `i `ui `ux -> -> # *U &U _digits `ui `ux `ui `uc ]
-"181
+"171
 }
-"179
+"169
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 261 ]
-[e $ < -> _i `i -> _digit_count `i 258  ]
-[e :U 259 ]
-"181
+[e :U 260 ]
+[e $ < -> _i `i -> _digit_count `i 257  ]
+[e :U 258 ]
+"171
 }
-[; ;duima.c: 181: }
-[; ;duima.c: 184: cmd_buffer[7 + digit_count] = '\0';
-"184
+[; ;duima.c: 171: }
+[; ;duima.c: 174: cmd_buffer[7 + digit_count] = '\0';
+"174
 [e = *U + &U _cmd_buffer * -> -> + -> 7 `i -> _digit_count `i `ui `ux -> -> # *U &U _cmd_buffer `ui `ux -> -> 0 `ui `uc ]
-[; ;duima.c: 187: SendATCommand((const char*)cmd_buffer);
-"187
+[; ;duima.c: 177: SendATCommand((const char*)cmd_buffer);
+"177
 [e ( _SendATCommand (1 -> &U _cmd_buffer `*Cuc ]
-[; ;duima.c: 188: DelayMs(100);
-"188
+[; ;duima.c: 178: DelayMs(100);
+"178
 [e ( _DelayMs (1 -> -> 100 `i `uc ]
-[; ;duima.c: 189: }
-"189
-[e :UE 252 ]
+[; ;duima.c: 179: }
+"179
+[e :UE 251 ]
 }
-"195
+"185
 [v _Duima_MainLoop `(v ~T0 @X0 1 ef ]
-"196
+"186
 {
-[; ;duima.c: 195: void Duima_MainLoop(void)
-[; ;duima.c: 196: {
+[; ;duima.c: 185: void Duima_MainLoop(void)
+[; ;duima.c: 186: {
 [e :U _Duima_MainLoop ]
 [f ]
-"198
-[v F2495 `uc ~T0 @X0 1 s key_state ]
-[i F2495
+"188
+[v F2505 `uc ~T0 @X0 1 s key_state ]
+[i F2505
 -> -> 0 `i `uc
 ]
-"199
-[v F2496 `ui ~T0 @X0 1 s press_start_time ]
-[i F2496
+"189
+[v F2506 `ui ~T0 @X0 1 s press_start_time ]
+[i F2506
 -> -> 0 `i `ui
 ]
-[; ;duima.c: 198: static unsigned char key_state = 0;
-[; ;duima.c: 199: static unsigned int press_start_time = 0;
-[; ;duima.c: 202: if(current_mode == MODE_NORMAL)
+[; ;duima.c: 188: static unsigned char key_state = 0;
+[; ;duima.c: 189: static unsigned int press_start_time = 0;
+[; ;duima.c: 192: if(current_mode == MODE_NORMAL)
+"192
+[e $ ! == -> _current_mode `i -> . `E2441 0 `i 262  ]
+[; ;duima.c: 193: {
+"193
+{
+[; ;duima.c: 197: if(PORTBbits.PB7 == 0)
+"197
+[e $ ! == -> . . _PORTBbits 1 7 `i -> 0 `i 263  ]
+[; ;duima.c: 198: {
+"198
+{
+[; ;duima.c: 200: if(key_state == 0)
+"200
+[e $ ! == -> F2505 `i -> 0 `i 264  ]
+[; ;duima.c: 201: {
+"201
+{
+[; ;duima.c: 202: key_state = 1;
 "202
-[e $ ! == -> _current_mode `i -> . `E2441 0 `i 263  ]
-[; ;duima.c: 203: {
+[e = F2505 -> -> 1 `i `uc ]
+[; ;duima.c: 203: press_start_time = g_timer_ms;
 "203
-{
-[; ;duima.c: 207: if(PORTBbits.PB7 == 0)
+[e = F2506 _g_timer_ms ]
+"204
+}
+[; ;duima.c: 204: }
+[e $U 265  ]
+"206
+[e :U 264 ]
+[; ;duima.c: 206: else if(key_state == 1)
+[e $ ! == -> F2505 `i -> 1 `i 266  ]
+[; ;duima.c: 207: {
 "207
-[e $ ! == -> . . _PORTBbits 1 7 `i -> 0 `i 264  ]
-[; ;duima.c: 208: {
-"208
 {
-[; ;duima.c: 210: if(key_state == 0)
+[; ;duima.c: 210: if((g_timer_ms - press_start_time) >= 2000)
 "210
-[e $ ! == -> F2495 `i -> 0 `i 265  ]
+[e $ ! >= - _g_timer_ms F2506 -> -> 2000 `i `ui 267  ]
 [; ;duima.c: 211: {
 "211
 {
-[; ;duima.c: 212: key_state = 1;
-"212
-[e = F2495 -> -> 1 `i `uc ]
-[; ;duima.c: 213: press_start_time = g_timer_ms;
+[; ;duima.c: 213: Duima_StartPairing();
 "213
-[e = F2496 _g_timer_ms ]
-"214
-}
-[; ;duima.c: 214: }
-[e $U 266  ]
-"216
-[e :U 265 ]
-[; ;duima.c: 216: else if(key_state == 1)
-[e $ ! == -> F2495 `i -> 1 `i 267  ]
-[; ;duima.c: 217: {
-"217
-{
-[; ;duima.c: 220: if((g_timer_ms - press_start_time) >= 2000)
-"220
-[e $ ! >= - _g_timer_ms F2496 -> -> 2000 `i `ui 268  ]
-[; ;duima.c: 221: {
-"221
-{
-[; ;duima.c: 223: Duima_StartPairing();
-"223
 [e ( _Duima_StartPairing ..  ]
-[; ;duima.c: 227: key_state = 2;
-"227
-[e = F2495 -> -> 2 `i `uc ]
-"228
-}
-[e :U 268 ]
-"229
+[; ;duima.c: 217: key_state = 2;
+"217
+[e = F2505 -> -> 2 `i `uc ]
+"218
 }
 [e :U 267 ]
-"231
+"219
+}
 [e :U 266 ]
+"221
+[e :U 265 ]
 }
-[; ;duima.c: 228: }
-[; ;duima.c: 229: }
-[; ;duima.c: 231: }
-[e $U 269  ]
-"235
-[e :U 264 ]
-[; ;duima.c: 235: else
-[; ;duima.c: 236: {
-"236
-{
-[; ;duima.c: 238: key_state = 0;
-"238
-[e = F2495 -> -> 0 `i `uc ]
-"239
-}
-[e :U 269 ]
-"240
-}
+[; ;duima.c: 218: }
+[; ;duima.c: 219: }
+[; ;duima.c: 221: }
+[e $U 268  ]
+"225
 [e :U 263 ]
-[; ;duima.c: 239: }
-[; ;duima.c: 240: }
-[; ;duima.c: 241: }
-"241
-[e :UE 262 ]
+[; ;duima.c: 225: else
+[; ;duima.c: 226: {
+"226
+{
+[; ;duima.c: 228: key_state = 0;
+"228
+[e = F2505 -> -> 0 `i `uc ]
+"229
 }
-"252
+[e :U 268 ]
+"230
+}
+[e :U 262 ]
+[; ;duima.c: 229: }
+[; ;duima.c: 230: }
+[; ;duima.c: 231: }
+"231
+[e :UE 261 ]
+}
+"242
 [v _Duima_EEPROM_ReadByte `(uc ~T0 @X0 1 ef1`uc ]
-"253
+"243
 {
-[; ;duima.c: 252: unsigned char Duima_EEPROM_ReadByte(unsigned char addr)
-[; ;duima.c: 253: {
+[; ;duima.c: 242: unsigned char Duima_EEPROM_ReadByte(unsigned char addr)
+[; ;duima.c: 243: {
 [e :U _Duima_EEPROM_ReadByte ]
-"252
+"242
 [v _addr `uc ~T0 @X0 1 r1 ]
-"253
+"243
 [f ]
-"254
+"244
 [v _data `uc ~T0 @X0 1 a ]
-[; ;duima.c: 254: unsigned char data;
-[; ;duima.c: 256: while(GIE) {
-"256
-[e $U 271  ]
-[e :U 272 ]
+[; ;duima.c: 244: unsigned char data;
+[; ;duima.c: 246: while(GIE) {
+"246
+[e $U 270  ]
+[e :U 271 ]
 {
-[; ;duima.c: 257: GIE = 0;
-"257
+[; ;duima.c: 247: GIE = 0;
+"247
 [e = _GIE -> -> 0 `i `b ]
+[; ;duima.c: 248: __nop();
+"248
+[e ( ___nop ..  ]
+[; ;duima.c: 249: __nop();
+"249
+[e ( ___nop ..  ]
+"250
+}
+[e :U 270 ]
+"246
+[e $ _GIE 271  ]
+[e :U 272 ]
+[; ;duima.c: 250: }
+[; ;duima.c: 252: EEADRL = addr;
+"252
+[e = _EEADRL _addr ]
+[; ;duima.c: 253: CFGS = 0;
+"253
+[e = _CFGS -> -> 0 `i `b ]
+[; ;duima.c: 254: EEPGD = 0;
+"254
+[e = _EEPGD -> -> 0 `i `b ]
+[; ;duima.c: 255: RD = 1;
+"255
+[e = _RD -> -> 1 `i `b ]
+[; ;duima.c: 256: __nop();
+"256
+[e ( ___nop ..  ]
+[; ;duima.c: 257: __nop();
+"257
+[e ( ___nop ..  ]
 [; ;duima.c: 258: __nop();
 "258
 [e ( ___nop ..  ]
 [; ;duima.c: 259: __nop();
 "259
 [e ( ___nop ..  ]
+[; ;duima.c: 260: data = EEDATL;
 "260
-}
-[e :U 271 ]
-"256
-[e $ _GIE 272  ]
-[e :U 273 ]
-[; ;duima.c: 260: }
-[; ;duima.c: 262: EEADRL = addr;
-"262
-[e = _EEADRL _addr ]
-[; ;duima.c: 263: CFGS = 0;
-"263
-[e = _CFGS -> -> 0 `i `b ]
-[; ;duima.c: 264: EEPGD = 0;
-"264
-[e = _EEPGD -> -> 0 `i `b ]
-[; ;duima.c: 265: RD = 1;
-"265
-[e = _RD -> -> 1 `i `b ]
-[; ;duima.c: 266: __nop();
-"266
-[e ( ___nop ..  ]
-[; ;duima.c: 267: __nop();
-"267
-[e ( ___nop ..  ]
-[; ;duima.c: 268: __nop();
-"268
-[e ( ___nop ..  ]
-[; ;duima.c: 269: __nop();
-"269
-[e ( ___nop ..  ]
-[; ;duima.c: 270: data = EEDATL;
-"270
 [e = _data _EEDATL ]
-[; ;duima.c: 272: return data;
-"272
+[; ;duima.c: 262: return data;
+"262
 [e ) _data ]
-[e $UE 270  ]
-[; ;duima.c: 273: }
-"273
-[e :UE 270 ]
+[e $UE 269  ]
+[; ;duima.c: 263: }
+"263
+[e :UE 269 ]
 }
-"274
+"264
 [v _Unlock_Flash `(v ~T0 @X0 1 ef ]
-"275
+"265
 {
-[; ;duima.c: 274: void Unlock_Flash()
-[; ;duima.c: 275: {
+[; ;duima.c: 264: void Unlock_Flash()
+[; ;duima.c: 265: {
 [e :U _Unlock_Flash ]
 [f ]
-"277
+"267
 [; <"     MOVLW 0x03 ;# ">
-"278
+"268
 [; <"     MOVWF _BSREG ;# ">
-"279
+"269
 [; <"     MOVLW 0x55 ;# ">
-"280
+"270
 [; <"     MOVWF _EECON2 & 0x7F ;# ">
-"281
+"271
 [; <"     MOVLW 0xAA ;# ">
-"282
+"272
 [; <"     MOVWF _EECON2 & 0x7F ;# ">
-"283
+"273
 [; <"     BSF _EECON1& 0x7F,1 ;# ">
-"284
+"274
 [; <"     NOP ;# ">
-"285
+"275
 [; <"  NOP ;# ">
-[; ;duima.c: 287: }
-"287
-[e :UE 274 ]
+[; ;duima.c: 277: }
+"277
+[e :UE 273 ]
 }
-"293
+"283
 [v _Duima_EEPROM_WriteByte `(v ~T0 @X0 1 ef2`uc`uc ]
-"294
+"284
 {
-[; ;duima.c: 293: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr)
-[; ;duima.c: 294: {
+[; ;duima.c: 283: void Duima_EEPROM_WriteByte(unsigned char data, unsigned char addr)
+[; ;duima.c: 284: {
 [e :U _Duima_EEPROM_WriteByte ]
-"293
+"283
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
-"294
+"284
 [f ]
-"295
+"285
 [v _PEIE_1 `uc ~T0 @X0 1 a ]
-[; ;duima.c: 295: unsigned char PEIE_1=PEIE;
+[; ;duima.c: 285: unsigned char PEIE_1=PEIE;
 [e = _PEIE_1 -> -> _PEIE `i `uc ]
-[; ;duima.c: 296: while(GIE|PEIE) {
-"296
-[e $U 276  ]
-[e :U 277 ]
+[; ;duima.c: 286: while(GIE|PEIE) {
+"286
+[e $U 275  ]
+[e :U 276 ]
 {
-[; ;duima.c: 297: GIE = 0;PEIE=0;
-"297
+[; ;duima.c: 287: GIE = 0;PEIE=0;
+"287
 [e = _GIE -> -> 0 `i `b ]
 [e = _PEIE -> -> 0 `i `b ]
-[; ;duima.c: 298: __nop();
-"298
+[; ;duima.c: 288: __nop();
+"288
 [e ( ___nop ..  ]
-[; ;duima.c: 299: __nop();
-"299
+[; ;duima.c: 289: __nop();
+"289
 [e ( ___nop ..  ]
-"300
+"290
 }
-[e :U 276 ]
-"296
-[e $ | _GIE _PEIE 277  ]
-[e :U 278 ]
-[; ;duima.c: 300: }
-[; ;duima.c: 302: EEADRL = addr;
-"302
+[e :U 275 ]
+"286
+[e $ | _GIE _PEIE 276  ]
+[e :U 277 ]
+[; ;duima.c: 290: }
+[; ;duima.c: 292: EEADRL = addr;
+"292
 [e = _EEADRL _addr ]
-[; ;duima.c: 303: EEDATL = data;
-"303
+[; ;duima.c: 293: EEDATL = data;
+"293
 [e = _EEDATL _data ]
-[; ;duima.c: 304: CFGS = 0;
-"304
+[; ;duima.c: 294: CFGS = 0;
+"294
 [e = _CFGS -> -> 0 `i `b ]
-[; ;duima.c: 305: EEPGD = 0;
-"305
+[; ;duima.c: 295: EEPGD = 0;
+"295
 [e = _EEPGD -> -> 0 `i `b ]
-[; ;duima.c: 306: EEIF = 0;
-"306
+[; ;duima.c: 296: EEIF = 0;
+"296
 [e = _EEIF -> -> 0 `i `b ]
-[; ;duima.c: 307: WREN = 1;
-"307
+[; ;duima.c: 297: WREN = 1;
+"297
 [e = _WREN -> -> 1 `i `b ]
-[; ;duima.c: 310: Unlock_Flash();
-"310
+[; ;duima.c: 300: Unlock_Flash();
+"300
 [e ( _Unlock_Flash ..  ]
-[; ;duima.c: 311: __nop();
-"311
+[; ;duima.c: 301: __nop();
+"301
 [e ( ___nop ..  ]
-[; ;duima.c: 312: __nop();
-"312
+[; ;duima.c: 302: __nop();
+"302
 [e ( ___nop ..  ]
-[; ;duima.c: 313: __nop();
-"313
+[; ;duima.c: 303: __nop();
+"303
 [e ( ___nop ..  ]
-[; ;duima.c: 314: __nop();
-"314
+[; ;duima.c: 304: __nop();
+"304
 [e ( ___nop ..  ]
-[; ;duima.c: 317: while(WR) ;
-"317
-[e $U 279  ]
-[e :U 280 ]
+[; ;duima.c: 307: while(WR) ;
+"307
+[e $U 278  ]
 [e :U 279 ]
-[e $ _WR 280  ]
-[e :U 281 ]
-[; ;duima.c: 319: WREN = 0;
-"319
+[e :U 278 ]
+[e $ _WR 279  ]
+[e :U 280 ]
+[; ;duima.c: 309: WREN = 0;
+"309
 [e = _WREN -> -> 0 `i `b ]
-[; ;duima.c: 320: GIE = 1;PEIE=PEIE_1;
-"320
+[; ;duima.c: 310: GIE = 1;PEIE=PEIE_1;
+"310
 [e = _GIE -> -> 1 `i `b ]
 [e = _PEIE -> _PEIE_1 `b ]
-[; ;duima.c: 321: }
-"321
-[e :UE 275 ]
+[; ;duima.c: 311: }
+"311
+[e :UE 274 ]
 }
-"326
+"316
 [v _Duima_EEPROM_ReadID `(ui ~T0 @X0 1 ef1`uc ]
-"327
+"317
 {
-[; ;duima.c: 326: unsigned int Duima_EEPROM_ReadID(unsigned char addr)
-[; ;duima.c: 327: {
+[; ;duima.c: 316: unsigned int Duima_EEPROM_ReadID(unsigned char addr)
+[; ;duima.c: 317: {
 [e :U _Duima_EEPROM_ReadID ]
-"326
+"316
 [v _addr `uc ~T0 @X0 1 r1 ]
-"327
+"317
 [f ]
-"328
+"318
 [v _id `ul ~T0 @X0 1 a ]
-[; ;duima.c: 328: unsigned long id = 0;
+[; ;duima.c: 318: unsigned long id = 0;
 [e = _id -> -> -> 0 `i `l `ul ]
-[; ;duima.c: 331: id = Duima_EEPROM_ReadByte(addr);
-"331
+[; ;duima.c: 321: id = Duima_EEPROM_ReadByte(addr);
+"321
 [e = _id -> ( _Duima_EEPROM_ReadByte (1 _addr `ul ]
-[; ;duima.c: 332: id = (id << 8) | Duima_EEPROM_ReadByte(addr+1);
-"332
+[; ;duima.c: 322: id = (id << 8) | Duima_EEPROM_ReadByte(addr+1);
+"322
 [e = _id | << _id -> 8 `i -> ( _Duima_EEPROM_ReadByte (1 -> + -> _addr `i -> 1 `i `uc `ul ]
-[; ;duima.c: 334: return id;
-"334
+[; ;duima.c: 324: return id;
+"324
 [e ) -> _id `ui ]
-[e $UE 282  ]
-[; ;duima.c: 335: }
-"335
-[e :UE 282 ]
+[e $UE 281  ]
+[; ;duima.c: 325: }
+"325
+[e :UE 281 ]
 }
-"340
+"330
 [v _Duima_EEPROM_WriteID `(v ~T0 @X0 1 ef2`ui`uc ]
-"341
+"331
 {
-[; ;duima.c: 340: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr)
-[; ;duima.c: 341: {
+[; ;duima.c: 330: void Duima_EEPROM_WriteID(unsigned int id, unsigned char addr)
+[; ;duima.c: 331: {
 [e :U _Duima_EEPROM_WriteID ]
-"340
+"330
 [v _id `ui ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
-"341
+"331
 [f ]
-[; ;duima.c: 344: Duima_EEPROM_WriteByte((unsigned char)(id >> 8), addr);
-"344
+[; ;duima.c: 334: Duima_EEPROM_WriteByte((unsigned char)(id >> 8), addr);
+"334
 [e ( _Duima_EEPROM_WriteByte (2 , -> >> _id -> 8 `i `uc _addr ]
-[; ;duima.c: 345: Duima_EEPROM_WriteByte((unsigned char)(id), addr+1);
-"345
+[; ;duima.c: 335: Duima_EEPROM_WriteByte((unsigned char)(id), addr+1);
+"335
 [e ( _Duima_EEPROM_WriteByte (2 , -> _id `uc -> + -> _addr `i -> 1 `i `uc ]
-[; ;duima.c: 346: }
+[; ;duima.c: 336: }
+"336
+[e :UE 282 ]
+}
+"341
+[v _Duima_ControlMotor `(v ~T0 @X0 1 ef1`uc ]
+"342
+{
+[; ;duima.c: 341: void Duima_ControlMotor(unsigned char cmd)
+[; ;duima.c: 342: {
+[e :U _Duima_ControlMotor ]
+"341
+[v _cmd `uc ~T0 @X0 1 r1 ]
+"342
+[f ]
+[; ;duima.c: 343: switch(cmd)
+"343
+[e $U 285  ]
+[; ;duima.c: 344: {
+"344
+{
+[; ;duima.c: 345: case 0x01:
+"345
+[e :U 286 ]
+[; ;duima.c: 346: PORTBbits.PB1 = 1;
 "346
+[e = . . _PORTBbits 1 1 -> -> 1 `i `uc ]
+[; ;duima.c: 347: PORTAbits.PA0 = 0;
+"347
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;duima.c: 348: break;
+"348
+[e $U 284  ]
+[; ;duima.c: 350: case 0x02:
+"350
+[e :U 287 ]
+[; ;duima.c: 351: PORTBbits.PB1 = 0;
+"351
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;duima.c: 352: PORTAbits.PA0 = 1;
+"352
+[e = . . _PORTAbits 1 0 -> -> 1 `i `uc ]
+[; ;duima.c: 353: break;
+"353
+[e $U 284  ]
+[; ;duima.c: 355: case 0x00:
+"355
+[e :U 288 ]
+[; ;duima.c: 356: PORTBbits.PB1 = 0;
+"356
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;duima.c: 357: PORTAbits.PA0 = 0;
+"357
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;duima.c: 358: break;
+"358
+[e $U 284  ]
+[; ;duima.c: 360: default:
+"360
+[e :U 289 ]
+[; ;duima.c: 362: PORTBbits.PB1 = 0;
+"362
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;duima.c: 363: PORTAbits.PA0 = 0;
+"363
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;duima.c: 364: break;
+"364
+[e $U 284  ]
+"365
+}
+[; ;duima.c: 365: }
+[e $U 284  ]
+"343
+[e :U 285 ]
+[e [\ _cmd , $ -> -> 1 `i `uc 286
+ , $ -> -> 2 `i `uc 287
+ , $ -> -> 0 `i `uc 288
+ 289 ]
+"365
+[e :U 284 ]
+[; ;duima.c: 366: }
+"366
 [e :UE 283 ]
+}
+"373
+[v _Duima_CheckLimitSwitch `(v ~T0 @X0 1 ef ]
+"374
+{
+[; ;duima.c: 373: void Duima_CheckLimitSwitch(void)
+[; ;duima.c: 374: {
+[e :U _Duima_CheckLimitSwitch ]
+[f ]
+[; ;duima.c: 376: if(PORTBbits.PB2 == 0)
+"376
+[e $ ! == -> . . _PORTBbits 1 2 `i -> 0 `i 291  ]
+[; ;duima.c: 377: {
+"377
+{
+[; ;duima.c: 379: if(PORTBbits.PB1 == 1 && PORTAbits.PA0 == 0)
+"379
+[e $ ! && == -> . . _PORTBbits 1 1 `i -> 1 `i == -> . . _PORTAbits 1 0 `i -> 0 `i 292  ]
+[; ;duima.c: 380: {
+"380
+{
+[; ;duima.c: 381: PORTBbits.PB1 = 0;
+"381
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;duima.c: 382: PORTAbits.PA0 = 0;
+"382
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;duima.c: 383: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"383
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+"384
+}
+[e :U 292 ]
+"385
+}
+[e :U 291 ]
+[; ;duima.c: 384: }
+[; ;duima.c: 385: }
+[; ;duima.c: 388: if(PORTBbits.PB0 == 0)
+"388
+[e $ ! == -> . . _PORTBbits 1 0 `i -> 0 `i 293  ]
+[; ;duima.c: 389: {
+"389
+{
+[; ;duima.c: 391: if(PORTBbits.PB1 == 0 && PORTAbits.PA0 == 1)
+"391
+[e $ ! && == -> . . _PORTBbits 1 1 `i -> 0 `i == -> . . _PORTAbits 1 0 `i -> 1 `i 294  ]
+[; ;duima.c: 392: {
+"392
+{
+[; ;duima.c: 393: PORTBbits.PB1 = 0;
+"393
+[e = . . _PORTBbits 1 1 -> -> 0 `i `uc ]
+[; ;duima.c: 394: PORTAbits.PA0 = 0;
+"394
+[e = . . _PORTAbits 1 0 -> -> 0 `i `uc ]
+[; ;duima.c: 395: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"395
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+"396
+}
+[e :U 294 ]
+"397
+}
+[e :U 293 ]
+[; ;duima.c: 396: }
+[; ;duima.c: 397: }
+[; ;duima.c: 398: }
+"398
+[e :UE 290 ]
+}
+"404
+[v _Duima_ExecuteCommand `(v ~T0 @X0 1 ef2`*uc`uc ]
+"405
+{
+[; ;duima.c: 404: void Duima_ExecuteCommand(unsigned char *data, unsigned char len)
+[; ;duima.c: 405: {
+[e :U _Duima_ExecuteCommand ]
+"404
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
+"405
+[f ]
+[; ;duima.c: 407: if(data == 0 || len < 7) {
+"407
+[e $ ! || == _data -> -> 0 `i `*uc < -> _len `i -> 7 `i 296  ]
+{
+[; ;duima.c: 408: return;
+"408
+[e $UE 295  ]
+"409
+}
+[e :U 296 ]
+"420
+[v _cmd_type `uc ~T0 @X0 1 a ]
+[; ;duima.c: 409: }
+[; ;duima.c: 420: unsigned char cmd_type = data[1];
+[e = _cmd_type *U + _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
+"421
+[v _data_len `uc ~T0 @X0 1 a ]
+[; ;duima.c: 421: unsigned char data_len = data[2];
+[e = _data_len *U + _data * -> -> 2 `i `x -> -> # *U _data `i `x ]
+[; ;duima.c: 426: switch(cmd_type)
+"426
+[e $U 298  ]
+[; ;duima.c: 427: {
+"427
+{
+[; ;duima.c: 428: case 0x01:
+"428
+[e :U 299 ]
+[; ;duima.c: 429: if(data_len >= 1) {
+"429
+[e $ ! >= -> _data_len `i -> 1 `i 300  ]
+{
+"430
+[v _motor_cmd `uc ~T0 @X0 1 a ]
+[; ;duima.c: 430: unsigned char motor_cmd = data[3];
+[e = _motor_cmd *U + _data * -> -> 3 `i `x -> -> # *U _data `i `x ]
+[; ;duima.c: 431: Duima_ControlMotor(motor_cmd);
+"431
+[e ( _Duima_ControlMotor (1 _motor_cmd ]
+[; ;duima.c: 434: PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+"434
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+[e ( _DelayMs (1 -> -> 50 `i `uc ]
+[e = . . _PORTAbits 1 1 -> ? == -> . . _PORTAbits 1 1 `i -> 1 `i : -> 0 `i -> 1 `i `uc ]
+"435
+}
+[e :U 300 ]
+[; ;duima.c: 435: }
+[; ;duima.c: 436: break;
+"436
+[e $U 297  ]
+[; ;duima.c: 438: case 0x02:
+"438
+[e :U 301 ]
+[; ;duima.c: 440: break;
+"440
+[e $U 297  ]
+[; ;duima.c: 442: default:
+"442
+[e :U 302 ]
+[; ;duima.c: 444: break;
+"444
+[e $U 297  ]
+"445
+}
+[; ;duima.c: 445: }
+[e $U 297  ]
+"426
+[e :U 298 ]
+[e [\ _cmd_type , $ -> -> 1 `i `uc 299
+ , $ -> -> 2 `i `uc 301
+ 302 ]
+"445
+[e :U 297 ]
+[; ;duima.c: 446: }
+"446
+[e :UE 295 ]
 }

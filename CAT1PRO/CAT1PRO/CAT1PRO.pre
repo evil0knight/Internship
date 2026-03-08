@@ -2638,7 +2638,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 30 "duima.h"
+# 48 "duima.h"
 typedef enum {
 MODE_NORMAL = 0,
 MODE_PAIRING = 1
@@ -2651,6 +2651,10 @@ extern volatile unsigned int g_timer_ms;
 extern unsigned char mmm;
 
 
+extern volatile unsigned char head;
+extern volatile unsigned char tail;
+
+
 
 
 void Duima_Init(void);
@@ -2659,6 +2663,11 @@ void Duima_StartPairing(void);
 void Duima_ProcessReceivedData(unsigned char *data, unsigned char len);
 void Duima_Configure433Address(unsigned int addr);
 void Duima_MainLoop(void);
+
+
+void Duima_ExecuteCommand(unsigned char *data, unsigned char len);
+void Duima_ControlMotor(unsigned char cmd);
+void Duima_CheckLimitSwitch(void);
 
 
 unsigned int Duima_EEPROM_ReadID(unsigned char addr);
@@ -2687,33 +2696,60 @@ unsigned char i=0;
 unsigned char mmm=0;
 const char* abc="ABCD\r\n";
 
-# 63
+# 61
+volatile unsigned char ring_buf[32];
+volatile unsigned char head = 0;
+volatile unsigned char tail = 0;
+
+
+unsigned char msg_buffer[20];
+
+
+volatile unsigned char g_cal_crc = 0;
+volatile unsigned char g_rx_crc = 0;
+volatile unsigned char g_crc_match = 0;
+volatile unsigned char g_frame_len = 0;
+volatile unsigned char g_frame_count = 0;
+
+
+typedef enum {
+STATE_WAIT_HEAD = 0,
+STATE_RECEIVING,
+STATE_WAIT_END2
+} PARSE_STATE;
+
+# 93
 void interrupt ISR(void)
 {
+
+
+
 if(URRXNE && RXNEF)
 {
+unsigned char data = URDATAL;
+unsigned char next_head = (head + 1) % 32;
 
-receivedata[mmm++] =URDATAL;
 
-if(mmm>=20)
-{
-mmm=0;
+if(next_head != tail) {
+ring_buf[head] = data;
+head = next_head;
 }
+
+
 __nop();
 }
+
+
 
 
 if(T4UIE && T4UIF)
 {
 T4UIF = 1;
 g_timer_ms++;
-
+}
 }
 
-# 101
-}
-
-# 108
+# 129
 void POWER_INITIAL (void)
 {
 OSCCON = 0B01110001;
@@ -2750,7 +2786,7 @@ PSINK2 = 0B11111111;
 ANSELA = 0B00000000;
 }
 
-# 151
+# 172
 void IO_INT_INITIAL(void)
 {
 EPS0 = 0B00000000;
@@ -2767,7 +2803,7 @@ EPIE0 = 0B10010000;
 INTCON = 0B11000000;
 }
 
-# 173
+# 194
 void DelayUs(unsigned char Time)
 {
 unsigned char a;
@@ -2777,7 +2813,7 @@ __nop();
 }
 }
 
-# 187
+# 208
 void DelayMs(unsigned char Time)
 {
 unsigned char a,b;
@@ -2790,7 +2826,7 @@ DelayUs(197);
 }
 }
 
-# 204
+# 225
 void UART_INITIAL(void)
 {
 PCKEN |=0B00100000;
@@ -2806,7 +2842,7 @@ AFP1=0;
 ODCON0=0B00000000;
 }
 
-# 224
+# 245
 void SendByte(unsigned char data)
 {
 TXEF = 0;
@@ -2816,7 +2852,7 @@ while(!TCF)
 }
 }
 
-# 238
+# 259
 void SendString(const char* MOVWF)
 {
 unsigned char j = 0;
@@ -2827,7 +2863,7 @@ j++;
 }
 }
 
-# 256
+# 277
 void SendATCommand(const char* cmd)
 {
 unsigned char j = 0;
@@ -2846,7 +2882,138 @@ SendByte(0x0D);
 SendByte(0x0A);
 }
 
-# 281
+# 301
+unsigned char Calculate_CRC(unsigned char len)
+{
+unsigned int sum = 0;
+
+# 309
+for(unsigned char k = 1; k < (len - 3); k++) {
+sum += msg_buffer[k];
+}
+return (unsigned char)(sum & 0xFF);
+}
+
+# 328
+void UART_Task(void)
+{
+
+
+unsigned char check_buf[8];
+unsigned char i;
+unsigned char match;
+unsigned char calculated_crc;
+unsigned char min_len;
+
+
+const unsigned char CMD_FRAME_OPEN[7] = {0xBB, 0x01, 0x01, 0x01, 0x03, 0x0D, 0x0A};
+const unsigned char CMD_FRAME_CLOSE[7] = {0xBB, 0x01, 0x01, 0x02, 0x04, 0x0D, 0x0A};
+const unsigned char CMD_FRAME_STOP[7] = {0xBB, 0x01, 0x01, 0x00, 0x02, 0x0D, 0x0A};
+
+
+
+min_len = (current_mode == MODE_PAIRING) ? 8 : 7;
+
+
+while((head - tail + 32) % 32 >= min_len)
+{
+
+for(i = 0; i < 7; i++) {
+check_buf[i] = ring_buf[(tail + i) % 32];
+}
+
+
+
+
+match = 1;
+for(i = 0; i < 7; i++) {
+if(check_buf[i] != CMD_FRAME_OPEN[i]) {
+match = 0;
+break;
+}
+}
+if(match) {
+
+Duima_ControlMotor(0x01);
+g_frame_count++;
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+tail = (tail + 7) % 32;
+continue;
+}
+
+
+
+
+match = 1;
+for(i = 0; i < 7; i++) {
+if(check_buf[i] != CMD_FRAME_CLOSE[i]) {
+match = 0;
+break;
+}
+}
+if(match) {
+
+Duima_ControlMotor(0x02);
+g_frame_count++;
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+tail = (tail + 7) % 32;
+continue;
+}
+
+
+
+
+match = 1;
+for(i = 0; i < 7; i++) {
+if(check_buf[i] != CMD_FRAME_STOP[i]) {
+match = 0;
+break;
+}
+}
+if(match) {
+
+Duima_ControlMotor(0x00);
+g_frame_count++;
+PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1); DelayMs(50); PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
+tail = (tail + 7) % 32;
+continue;
+}
+
+# 417
+if(current_mode == MODE_PAIRING)
+{
+
+check_buf[7] = ring_buf[(tail + 7) % 32];
+
+
+if(check_buf[0] == 0xBB &&
+check_buf[1] == 0x02 &&
+check_buf[2] == 0x02 &&
+check_buf[6] == 0x0D &&
+check_buf[7] == 0x0A)
+{
+
+calculated_crc = check_buf[1] + check_buf[2] + check_buf[3] + check_buf[4];
+
+if((calculated_crc & 0xFF) == check_buf[5])
+{
+
+Duima_ProcessReceivedData(check_buf, 8);
+g_frame_count++;
+tail = (tail + 8) % 32;
+continue;
+}
+}
+}
+
+
+
+
+tail = (tail + 1) % 32;
+}
+}
+
+# 457
 void CAT1_Init(void)
 {
 
@@ -2893,7 +3060,7 @@ DelayMs(50);
 PORTCbits.PC1 = 1;
 }
 
-# 333
+# 509
 typedef enum {
 STATE_WAKE_INIT,
 STATE_WORKING,
@@ -2945,6 +3112,7 @@ DelayMs(50);
 
 MAIN_STATE sys_state = STATE_WAKE_INIT;
 
+
 while(1)
 {
 switch(sys_state)
@@ -2955,24 +3123,21 @@ switch(sys_state)
 case STATE_WAKE_INIT:
 PORTAbits.PA1 = 1;
 g_timer_ms = 0;
-mmm = 0;
+
 PORTCbits.PC1 = 0;
 sys_state = STATE_WORKING;
-
 break;
 
-
-
-
+# 580
 case STATE_WORKING:
 
 Duima_MainLoop();
 
 
-if(mmm >= 2) {
-Duima_ProcessReceivedData((unsigned char*)receivedata, mmm);
-mmm = 0;
-}
+UART_Task();
+
+
+Duima_CheckLimitSwitch();
 
 
 if(current_mode == MODE_PAIRING)
@@ -2988,20 +3153,20 @@ sys_state = STATE_GO_SLEEP;
 else
 {
 
-if(g_timer_ms >= 5000) {
+if(g_timer_ms >= 10000) {
+PORTBbits.PB1 = 0;
+PORTAbits.PA0 = 0;
 sys_state = STATE_GO_SLEEP;
 }
 }
 break;
 
-
-
-
+# 616
 case STATE_GO_SLEEP:
 for(unsigned char k=0; k<6; k++)
 {
 PORTAbits.PA1 = (PORTAbits.PA1 == 1 ? 0 : 1);
-DelayMs(100);
+DelayMs(10);
 }
 Sys_EnterSleep();
 
