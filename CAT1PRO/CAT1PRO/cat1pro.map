@@ -4,7 +4,7 @@ Linker command line:
 
 --edf=E:\FMDprogrammer\Compiler\data\dat\en_msgs.txt -cs -h+cat1pro.sym \
   --cmf=cat1pro.cmf -z -QFT61F14X \
-  -oC:\Users\17443\AppData\Local\Temp\s1n94.2 -Mcat1pro.map -E1 -ver=XC8 \
+  -oC:\Users\17443\AppData\Local\Temp\sp5g.2 -Mcat1pro.map -E1 -ver=XC8 \
   -ASTACK=020F0h-021efh -pstack=STACK -ACODE=00h-07FFhx2 \
   -ASTRCODE=00h-0FFFh -ASTRING=00h-0FFhx16 -ACONST=00h-0FFhx16 \
   -AENTRY=00h-0FFhx16 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh \
@@ -28,7 +28,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-07Fh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\17443\AppData\Local\Temp\s1n94.obj cat1pro.obj 
+  C:\Users\17443\AppData\Local\Temp\sp5g.obj cat1pro.obj 
 
 Object code version is 3.11
 
@@ -37,7 +37,7 @@ Machine type is FT61F14X
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\17443\AppData\Local\Temp\s1n94.obj
+C:\Users\17443\AppData\Local\Temp\sp5g.obj
                 end_init                             2A       2A        2        8       0
                 reset_vec                             0        0        2        0       0
 cat1pro.obj     intentry                              4        4       26        8       0

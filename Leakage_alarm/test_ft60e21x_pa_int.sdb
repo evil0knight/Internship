@@ -13,6 +13,8 @@ STATE_SLEEP 2
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 E:\FMDprogrammer\Compiler\data\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
+"15 E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "46 D:\information\circuit_board\nanjing_hosptial\Internship\Leakage_alarm\test_ft60e21x_PA_INT.C
 [v _ISR ISR `II(v  1 e 1 0 ]
 "80
@@ -21,33 +23,29 @@ STATE_SLEEP 2
 [v _TIMER0_INITIAL TIMER0_INITIAL `(v  1 e 1 0 ]
 "117
 [v _Delay10Us Delay10Us `(v  1 e 1 0 ]
-"128
-[v _delay_4us delay_4us `(v  1 e 1 0 ]
-"134
-[v _delay_12us delay_12us `(v  1 e 1 0 ]
-"141
-[v _delay_124us delay_124us `(v  1 e 1 0 ]
-"151
+"129
+[v _delay_us delay_us `(v  1 e 1 0 ]
+"145
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
-"184
+"178
 [v _Wakeup_INITIAL Wakeup_INITIAL `(v  1 e 1 0 ]
-"202
+"196
 [v _coding_syn_1527 coding_syn_1527 `(v  1 e 1 0 ]
-"210
+"204
 [v _coding_L_1527 coding_L_1527 `(v  1 e 1 0 ]
-"218
+"212
 [v _coding_H_1527 coding_H_1527 `(v  1 e 1 0 ]
-"228
+"224
 [v _coding_1527 coding_1527 `(v  1 e 1 0 ]
-"262
+"258
 [v _Enter_Deep_Sleep Enter_Deep_Sleep `(v  1 e 1 0 ]
-"272
+"268
 [v _System_Reinit System_Reinit `(v  1 e 1 0 ]
-"280
+"276
 [v _LED_Flickering3 LED_Flickering3 `(v  1 e 1 0 ]
-"288
+"284
 [v _LED_Flickering1 LED_Flickering1 `(v  1 e 1 0 ]
-"302
+"298
 [v _main main `(v  1 e 1 0 ]
 "10 E:\FMDprogrammer\Compiler\data\include\FT60F21X.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -97,102 +95,102 @@ STATE_SLEEP 2
 [v _g_timer_5s g_timer_5s `VEui  1 e 2 0 ]
 "39
 [v _g_timer_2s g_timer_2s `VEui  1 e 2 0 ]
-"302
+"298
 [v _main main `(v  1 e 1 0 ]
 {
-"319
-[v main@i i `uc  1 a 1 6 ]
-"348
+"315
+[v main@i i `uc  1 a 1 13 ]
+"344
 } 0
-"228
+"224
 [v _coding_1527 coding_1527 `(v  1 e 1 0 ]
 {
-"231
-[v coding_1527@j j `ul  1 a 4 0 ]
-"230
-[v coding_1527@i i `uc  1 a 1 5 ]
-[v coding_1527@k k `uc  1 a 1 4 ]
-"228
-[v coding_1527@Addr_1527 Addr_1527 `ul  1 p 4 3 ]
-[v coding_1527@Data Data `uc  1 p 1 7 ]
-"259
+"227
+[v coding_1527@j j `ul  1 a 4 7 ]
+"226
+[v coding_1527@i i `uc  1 a 1 12 ]
+[v coding_1527@k k `uc  1 a 1 11 ]
+"224
+[v coding_1527@Addr_1527 Addr_1527 `ul  1 p 4 2 ]
+[v coding_1527@Data Data `uc  1 p 1 6 ]
+"255
 } 0
-"202
+"196
 [v _coding_syn_1527 coding_syn_1527 `(v  1 e 1 0 ]
 {
-"207
+"202
 } 0
-"141
-[v _delay_124us delay_124us `(v  1 e 1 0 ]
-{
-"142
-[v delay_124us@i i `uc  1 a 1 2 ]
-"144
-} 0
-"210
+"204
 [v _coding_L_1527 coding_L_1527 `(v  1 e 1 0 ]
 {
-"215
+"210
 } 0
-"218
+"212
 [v _coding_H_1527 coding_H_1527 `(v  1 e 1 0 ]
 {
-"223
+"218
 } 0
-"128
-[v _delay_4us delay_4us `(v  1 e 1 0 ]
+"129
+[v _delay_us delay_us `(v  1 e 1 0 ]
 {
-"130
+"131
+[v delay_us@j j `ui  1 a 2 0 ]
+"129
+[v delay_us@us us `ui  1 p 2 8 ]
+"137
 } 0
-"134
-[v _delay_12us delay_12us `(v  1 e 1 0 ]
+"15 E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 {
-"135
-[v delay_12us@i i `uc  1 a 1 2 ]
-"138
+"17
+[v ___wmul@product product `ui  1 a 2 6 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
+"53
 } 0
-"97
+"97 D:\information\circuit_board\nanjing_hosptial\Internship\Leakage_alarm\test_ft60e21x_PA_INT.C
 [v _TIMER0_INITIAL TIMER0_INITIAL `(v  1 e 1 0 ]
 {
 "110
 } 0
-"272
+"268
 [v _System_Reinit System_Reinit `(v  1 e 1 0 ]
 {
-"279
+"275
 } 0
 "80
 [v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
 {
 "90
 } 0
-"280
+"276
 [v _LED_Flickering3 LED_Flickering3 `(v  1 e 1 0 ]
 {
-"282
-[v LED_Flickering3@i i `i  1 a 2 9 ]
-"287
+"278
+[v LED_Flickering3@i i `i  1 a 2 0 ]
+"283
 } 0
-"288
+"284
 [v _LED_Flickering1 LED_Flickering1 `(v  1 e 1 0 ]
 {
-"290
-[v LED_Flickering1@i i `i  1 a 2 9 ]
-"295
+"286
+[v LED_Flickering1@i i `i  1 a 2 0 ]
+"291
 } 0
-"151
+"145
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
 {
 [v DelayMs@Time Time `uc  1 a 1 wreg ]
-"155
+"149
 [v DelayMs@b b `uc  1 a 1 8 ]
-"153
+"147
 [v DelayMs@a a `ui  1 a 2 6 ]
-"151
+"145
 [v DelayMs@Time Time `uc  1 a 1 wreg ]
-"153
+"147
 [v DelayMs@Time Time `uc  1 a 1 5 ]
-"160
+"154
 } 0
 "117
 [v _Delay10Us Delay10Us `(v  1 e 1 0 ]
@@ -201,15 +199,15 @@ STATE_SLEEP 2
 [v Delay10Us@i i `uc  1 a 1 2 ]
 "123
 } 0
-"262
+"258
 [v _Enter_Deep_Sleep Enter_Deep_Sleep `(v  1 e 1 0 ]
 {
-"271
+"267
 } 0
-"184
+"178
 [v _Wakeup_INITIAL Wakeup_INITIAL `(v  1 e 1 0 ]
 {
-"200
+"194
 } 0
 "46
 [v _ISR ISR `II(v  1 e 1 0 ]

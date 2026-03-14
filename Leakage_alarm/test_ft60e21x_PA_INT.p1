@@ -1839,666 +1839,659 @@ Version 3.2   GCC8 Compiled Intermediate Code
 "123
 [e :UE 95 ]
 }
-"128
-[v _delay_4us `(v ~T0 @X0 1 ef ]
-{
-[; ;test_ft60e21x_PA_INT.C: 128: void delay_4us(void) {
-[e :U _delay_4us ]
-[f ]
-[; ;test_ft60e21x_PA_INT.C: 129: __nop(); __nop(); __nop(); __nop();
 "129
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 130: }
+[v _delay_us `(v ~T0 @X0 1 ef1`ui ]
 "130
+{
+[; ;test_ft60e21x_PA_INT.C: 129: void delay_us(uint16_t us)
+[; ;test_ft60e21x_PA_INT.C: 130: {
+[e :U _delay_us ]
+"129
+[v _us `ui ~T0 @X0 1 r1 ]
+"130
+[f ]
+"131
+[v _j `ui ~T0 @X0 1 a ]
+[; ;test_ft60e21x_PA_INT.C: 131: uint16_t j;
+[; ;test_ft60e21x_PA_INT.C: 132: us = us * 3;
+"132
+[e = _us * _us -> -> 3 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 133: for(j=0;j<us;j++)
+"133
+{
+[e = _j -> -> 0 `i `ui ]
+[e $U 103  ]
+"134
+[e :U 100 ]
+[; ;test_ft60e21x_PA_INT.C: 134: {
+{
+[; ;test_ft60e21x_PA_INT.C: 135: __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+"135
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+[e ( ___nop ..  ]
+"136
+}
+"133
+[e ++ _j -> -> 1 `i `ui ]
+[e :U 103 ]
+[e $ < _j _us 100  ]
+[e :U 101 ]
+"136
+}
+[; ;test_ft60e21x_PA_INT.C: 136: }
+[; ;test_ft60e21x_PA_INT.C: 137: }
+"137
 [e :UE 99 ]
 }
-"134
-[v _delay_12us `(v ~T0 @X0 1 ef ]
-{
-[; ;test_ft60e21x_PA_INT.C: 134: void delay_12us(void) {
-[e :U _delay_12us ]
-[f ]
-"135
-[v _i `uc ~T0 @X0 1 a ]
-[; ;test_ft60e21x_PA_INT.C: 135: unsigned char i;
-[; ;test_ft60e21x_PA_INT.C: 136: for(i=0; i<3; i++);
-"136
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 101  ]
-[e $U 102  ]
-[e :U 101 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 101  ]
-[e :U 102 ]
-}
-[; ;test_ft60e21x_PA_INT.C: 137: __nop(); __nop();
-"137
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 138: }
-"138
-[e :UE 100 ]
-}
-"141
-[v _delay_124us `(v ~T0 @X0 1 ef ]
-{
-[; ;test_ft60e21x_PA_INT.C: 141: void delay_124us(void) {
-[e :U _delay_124us ]
-[f ]
-"142
-[v _i `uc ~T0 @X0 1 a ]
-[; ;test_ft60e21x_PA_INT.C: 142: unsigned char i;
-[; ;test_ft60e21x_PA_INT.C: 143: for(i=0; i<38; i++);
-"143
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 38 `i 105  ]
-[e $U 106  ]
-[e :U 105 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 38 `i 105  ]
-[e :U 106 ]
-}
-[; ;test_ft60e21x_PA_INT.C: 144: }
-"144
-[e :UE 104 ]
-}
-"151
+"145
 [v _DelayMs `(v ~T0 @X0 1 ef1`uc ]
-"152
+"146
 {
-[; ;test_ft60e21x_PA_INT.C: 151: void DelayMs(unsigned char Time)
-[; ;test_ft60e21x_PA_INT.C: 152: {
+[; ;test_ft60e21x_PA_INT.C: 145: void DelayMs(unsigned char Time)
+[; ;test_ft60e21x_PA_INT.C: 146: {
 [e :U _DelayMs ]
-"151
+"145
 [v _Time `uc ~T0 @X0 1 r1 ]
-"152
+"146
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 153: for(unsigned int a=0;a<Time;a++)
-"153
+[; ;test_ft60e21x_PA_INT.C: 147: for(unsigned int a=0;a<Time;a++)
+"147
 {
 [v _a `ui ~T0 @X0 1 a ]
 [e = _a -> -> 0 `i `ui ]
-[e $U 112  ]
-"154
-[e :U 109 ]
-[; ;test_ft60e21x_PA_INT.C: 154: {
+[e $U 108  ]
+"148
+[e :U 105 ]
+[; ;test_ft60e21x_PA_INT.C: 148: {
 {
-[; ;test_ft60e21x_PA_INT.C: 155: for(unsigned char b=0;b<83;b++)
-"155
+[; ;test_ft60e21x_PA_INT.C: 149: for(unsigned char b=0;b<83;b++)
+"149
 {
 [v _b `uc ~T0 @X0 1 a ]
 [e = _b -> -> 0 `i `uc ]
-[e $ < -> _b `i -> 83 `i 113  ]
-[e $U 114  ]
-"156
-[e :U 113 ]
-[; ;test_ft60e21x_PA_INT.C: 156: {
+[e $ < -> _b `i -> 83 `i 109  ]
+[e $U 110  ]
+"150
+[e :U 109 ]
+[; ;test_ft60e21x_PA_INT.C: 150: {
 {
-[; ;test_ft60e21x_PA_INT.C: 157: Delay10Us();
-"157
+[; ;test_ft60e21x_PA_INT.C: 151: Delay10Us();
+"151
 [e ( _Delay10Us ..  ]
-"158
+"152
 }
-"155
+"149
 [e ++ _b -> -> 1 `i `uc ]
-[e $ < -> _b `i -> 83 `i 113  ]
-[e :U 114 ]
-"158
-}
-"159
+[e $ < -> _b `i -> 83 `i 109  ]
+[e :U 110 ]
+"152
 }
 "153
+}
+"147
 [e ++ _a -> -> 1 `i `ui ]
-[e :U 112 ]
-[e $ < _a -> _Time `ui 109  ]
-[e :U 110 ]
-"159
+[e :U 108 ]
+[e $ < _a -> _Time `ui 105  ]
+[e :U 106 ]
+"153
 }
-[; ;test_ft60e21x_PA_INT.C: 158: }
-[; ;test_ft60e21x_PA_INT.C: 159: }
-[; ;test_ft60e21x_PA_INT.C: 160: }
-"160
-[e :UE 108 ]
+[; ;test_ft60e21x_PA_INT.C: 152: }
+[; ;test_ft60e21x_PA_INT.C: 153: }
+[; ;test_ft60e21x_PA_INT.C: 154: }
+"154
+[e :UE 104 ]
 }
-"167
+"161
 [v _DelayS `(v ~T0 @X0 1 ef1`uc ]
-"168
+"162
 {
-[; ;test_ft60e21x_PA_INT.C: 167: void DelayS(unsigned char Time)
-[; ;test_ft60e21x_PA_INT.C: 168: {
+[; ;test_ft60e21x_PA_INT.C: 161: void DelayS(unsigned char Time)
+[; ;test_ft60e21x_PA_INT.C: 162: {
 [e :U _DelayS ]
-"167
+"161
 [v _Time `uc ~T0 @X0 1 r1 ]
-"168
+"162
 [f ]
-"169
+"163
 [v _a `uc ~T0 @X0 1 a ]
 [v _b `uc ~T0 @X0 1 a ]
-[; ;test_ft60e21x_PA_INT.C: 169: unsigned char a,b;
-[; ;test_ft60e21x_PA_INT.C: 170: for(a=0;a<Time;a++)
-"170
+[; ;test_ft60e21x_PA_INT.C: 163: unsigned char a,b;
+[; ;test_ft60e21x_PA_INT.C: 164: for(a=0;a<Time;a++)
+"164
 {
 [e = _a -> -> 0 `i `uc ]
-[e $U 120  ]
-"171
-[e :U 117 ]
-[; ;test_ft60e21x_PA_INT.C: 171: {
+[e $U 116  ]
+"165
+[e :U 113 ]
+[; ;test_ft60e21x_PA_INT.C: 165: {
 {
-[; ;test_ft60e21x_PA_INT.C: 172: for(b=0;b<10;b++)
-"172
+[; ;test_ft60e21x_PA_INT.C: 166: for(b=0;b<10;b++)
+"166
 {
 [e = _b -> -> 0 `i `uc ]
-[e $ < -> _b `i -> 10 `i 121  ]
-[e $U 122  ]
-"173
-[e :U 121 ]
-[; ;test_ft60e21x_PA_INT.C: 173: {
+[e $ < -> _b `i -> 10 `i 117  ]
+[e $U 118  ]
+"167
+[e :U 117 ]
+[; ;test_ft60e21x_PA_INT.C: 167: {
 {
-[; ;test_ft60e21x_PA_INT.C: 174: DelayMs(100);
-"174
+[; ;test_ft60e21x_PA_INT.C: 168: DelayMs(100);
+"168
 [e ( _DelayMs (1 -> -> 100 `i `uc ]
-"175
+"169
 }
-"172
+"166
 [e ++ _b -> -> 1 `i `uc ]
-[e $ < -> _b `i -> 10 `i 121  ]
-[e :U 122 ]
-"175
-}
-"176
+[e $ < -> _b `i -> 10 `i 117  ]
+[e :U 118 ]
+"169
 }
 "170
+}
+"164
 [e ++ _a -> -> 1 `i `uc ]
-[e :U 120 ]
-[e $ < -> _a `i -> _Time `i 117  ]
-[e :U 118 ]
-"176
+[e :U 116 ]
+[e $ < -> _a `i -> _Time `i 113  ]
+[e :U 114 ]
+"170
 }
-[; ;test_ft60e21x_PA_INT.C: 175: }
-[; ;test_ft60e21x_PA_INT.C: 176: }
-[; ;test_ft60e21x_PA_INT.C: 177: }
-"177
-[e :UE 116 ]
+[; ;test_ft60e21x_PA_INT.C: 169: }
+[; ;test_ft60e21x_PA_INT.C: 170: }
+[; ;test_ft60e21x_PA_INT.C: 171: }
+"171
+[e :UE 112 ]
 }
-"184
+"178
 [v _Wakeup_INITIAL `(v ~T0 @X0 1 ef ]
-"185
+"179
 {
-[; ;test_ft60e21x_PA_INT.C: 184: void Wakeup_INITIAL(void)
-[; ;test_ft60e21x_PA_INT.C: 185: {
+[; ;test_ft60e21x_PA_INT.C: 178: void Wakeup_INITIAL(void)
+[; ;test_ft60e21x_PA_INT.C: 179: {
 [e :U _Wakeup_INITIAL ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 186: TRISA2 = 1;
-"186
+[; ;test_ft60e21x_PA_INT.C: 180: TRISA2 = 1;
+"180
 [e = _TRISA2 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 187: TRISA5 = 1;
-"187
+[; ;test_ft60e21x_PA_INT.C: 181: TRISA5 = 1;
+"181
 [e = _TRISA5 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 192: ReadAPin = PORTA;
-"192
+[; ;test_ft60e21x_PA_INT.C: 186: ReadAPin = PORTA;
+"186
 [e = _ReadAPin _PORTA ]
-[; ;test_ft60e21x_PA_INT.C: 194: PAIF = 0;
-"194
+[; ;test_ft60e21x_PA_INT.C: 188: PAIF = 0;
+"188
 [e = _PAIF -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 196: IOCA2 = 1;
-"196
+[; ;test_ft60e21x_PA_INT.C: 190: IOCA2 = 1;
+"190
 [e = _IOCA2 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 197: IOCA5 = 1;
-"197
+[; ;test_ft60e21x_PA_INT.C: 191: IOCA5 = 1;
+"191
 [e = _IOCA5 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 199: PAIE = 1;
-"199
+[; ;test_ft60e21x_PA_INT.C: 193: PAIE = 1;
+"193
 [e = _PAIE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 200: }
-"200
-[e :UE 124 ]
+[; ;test_ft60e21x_PA_INT.C: 194: }
+"194
+[e :UE 120 ]
 }
-"202
+"196
 [v _coding_syn_1527 `(v ~T0 @X0 1 ef ]
+"197
 {
-[; ;test_ft60e21x_PA_INT.C: 202: void coding_syn_1527(void) {
+[; ;test_ft60e21x_PA_INT.C: 196: void coding_syn_1527(void)
+[; ;test_ft60e21x_PA_INT.C: 197: {
 [e :U _coding_syn_1527 ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 203: PA4=1;
-"203
+[; ;test_ft60e21x_PA_INT.C: 198: PA4=1;
+"198
 [e = _PA4 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 204: delay_4us();
-"204
-[e ( _delay_4us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 205: PA4=0;
-"205
+[; ;test_ft60e21x_PA_INT.C: 199: delay_us(4);
+"199
+[e ( _delay_us (1 -> -> 4 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 200: PA4=0;
+"200
 [e = _PA4 -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 206: delay_124us();
-"206
-[e ( _delay_124us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 207: }
-"207
-[e :UE 125 ]
+[; ;test_ft60e21x_PA_INT.C: 201: delay_us(124);
+"201
+[e ( _delay_us (1 -> -> 124 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 202: }
+"202
+[e :UE 121 ]
 }
-"210
+"204
 [v _coding_L_1527 `(v ~T0 @X0 1 ef ]
+"205
 {
-[; ;test_ft60e21x_PA_INT.C: 210: void coding_L_1527(void) {
+[; ;test_ft60e21x_PA_INT.C: 204: void coding_L_1527(void)
+[; ;test_ft60e21x_PA_INT.C: 205: {
 [e :U _coding_L_1527 ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 211: PA4=1;
-"211
+[; ;test_ft60e21x_PA_INT.C: 206: PA4=1;
+"206
 [e = _PA4 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 212: delay_4us();
-"212
-[e ( _delay_4us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 213: PA4=0;
-"213
+[; ;test_ft60e21x_PA_INT.C: 207: delay_us(4);
+"207
+[e ( _delay_us (1 -> -> 4 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 208: PA4=0;
+"208
 [e = _PA4 -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 214: delay_12us();
-"214
-[e ( _delay_12us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 215: }
-"215
-[e :UE 126 ]
+[; ;test_ft60e21x_PA_INT.C: 209: delay_us(12);
+"209
+[e ( _delay_us (1 -> -> 12 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 210: }
+"210
+[e :UE 122 ]
 }
-"218
+"212
 [v _coding_H_1527 `(v ~T0 @X0 1 ef ]
+"213
 {
-[; ;test_ft60e21x_PA_INT.C: 218: void coding_H_1527(void) {
+[; ;test_ft60e21x_PA_INT.C: 212: void coding_H_1527(void)
+[; ;test_ft60e21x_PA_INT.C: 213: {
 [e :U _coding_H_1527 ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 219: PA4=1;
-"219
+[; ;test_ft60e21x_PA_INT.C: 214: PA4=1;
+"214
 [e = _PA4 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 220: delay_12us();
-"220
-[e ( _delay_12us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 221: PA4=0;
-"221
+[; ;test_ft60e21x_PA_INT.C: 215: delay_us(12);
+"215
+[e ( _delay_us (1 -> -> 12 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 216: PA4=0;
+"216
 [e = _PA4 -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 222: delay_4us();
-"222
-[e ( _delay_4us ..  ]
-[; ;test_ft60e21x_PA_INT.C: 223: }
-"223
-[e :UE 127 ]
+[; ;test_ft60e21x_PA_INT.C: 217: delay_us(4);
+"217
+[e ( _delay_us (1 -> -> 4 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 218: }
+"218
+[e :UE 123 ]
 }
-"228
+"224
 [v _coding_1527 `(v ~T0 @X0 1 ef2`ul`uc ]
-"229
+"225
 {
-[; ;test_ft60e21x_PA_INT.C: 228: void coding_1527(uint32_t Addr_1527, uint8_t Data)
-[; ;test_ft60e21x_PA_INT.C: 229: {
+[; ;test_ft60e21x_PA_INT.C: 224: void coding_1527(uint32_t Addr_1527, uint8_t Data)
+[; ;test_ft60e21x_PA_INT.C: 225: {
 [e :U _coding_1527 ]
-"228
+"224
 [v _Addr_1527 `ul ~T0 @X0 1 r1 ]
 [v _Data `uc ~T0 @X0 1 r2 ]
-"229
+"225
 [f ]
-"230
+"226
 [v _i `uc ~T0 @X0 1 a ]
 [v _k `uc ~T0 @X0 1 a ]
-"231
+"227
 [v _j `ul ~T0 @X0 1 a ]
-[; ;test_ft60e21x_PA_INT.C: 230: uint8_t i,k;
-[; ;test_ft60e21x_PA_INT.C: 231: uint32_t j;
-[; ;test_ft60e21x_PA_INT.C: 232: if((Addr_1527 > 0xfffff) || Data >15)
-"232
-[e $ ! || > _Addr_1527 -> -> 1048575 `l `ul > -> _Data `i -> 15 `i 129  ]
-[; ;test_ft60e21x_PA_INT.C: 233: return;
-"233
-[e $UE 128  ]
-[e :U 129 ]
-[; ;test_ft60e21x_PA_INT.C: 235: GIE = 0;
-"235
+[; ;test_ft60e21x_PA_INT.C: 226: uint8_t i,k;
+[; ;test_ft60e21x_PA_INT.C: 227: uint32_t j;
+[; ;test_ft60e21x_PA_INT.C: 228: if((Addr_1527 > 0xfffff) || Data >15)
+"228
+[e $ ! || > _Addr_1527 -> -> 1048575 `l `ul > -> _Data `i -> 15 `i 125  ]
+[; ;test_ft60e21x_PA_INT.C: 229: return;
+"229
+[e $UE 124  ]
+[e :U 125 ]
+[; ;test_ft60e21x_PA_INT.C: 231: GIE = 0;
+"231
 [e = _GIE -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 237: coding_syn_1527();
-"237
+[; ;test_ft60e21x_PA_INT.C: 233: coding_syn_1527();
+"233
 [e ( _coding_syn_1527 ..  ]
-[; ;test_ft60e21x_PA_INT.C: 239: for(i=0;i<20;i++)
-"239
+[; ;test_ft60e21x_PA_INT.C: 235: for(i=0;i<20;i++)
+"235
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 20 `i 130  ]
-[e $U 131  ]
-"240
-[e :U 130 ]
-[; ;test_ft60e21x_PA_INT.C: 240: {
+[e $ < -> _i `i -> 20 `i 126  ]
+[e $U 127  ]
+"236
+[e :U 126 ]
+[; ;test_ft60e21x_PA_INT.C: 236: {
 {
-[; ;test_ft60e21x_PA_INT.C: 241: j = (0x80000 & Addr_1527);
-"241
+[; ;test_ft60e21x_PA_INT.C: 237: j = (0x80000 & Addr_1527);
+"237
 [e = _j & -> -> 524288 `l `ul _Addr_1527 ]
-[; ;test_ft60e21x_PA_INT.C: 242: Addr_1527 = (Addr_1527 << 1);
-"242
+[; ;test_ft60e21x_PA_INT.C: 238: Addr_1527 = (Addr_1527 << 1);
+"238
 [e = _Addr_1527 << _Addr_1527 -> 1 `i ]
-[; ;test_ft60e21x_PA_INT.C: 243: if(j != 0)
-"243
-[e $ ! != _j -> -> -> 0 `i `l `ul 133  ]
-[; ;test_ft60e21x_PA_INT.C: 244: coding_H_1527();
-"244
-[e ( _coding_H_1527 ..  ]
-[e $U 134  ]
-"245
-[e :U 133 ]
-[; ;test_ft60e21x_PA_INT.C: 245: else
-[; ;test_ft60e21x_PA_INT.C: 246: coding_L_1527();
-"246
-[e ( _coding_L_1527 ..  ]
-[e :U 134 ]
-"247
-}
+[; ;test_ft60e21x_PA_INT.C: 239: if(j != 0)
 "239
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 20 `i 130  ]
-[e :U 131 ]
-"247
+[e $ ! != _j -> -> -> 0 `i `l `ul 129  ]
+[; ;test_ft60e21x_PA_INT.C: 240: coding_H_1527();
+"240
+[e ( _coding_H_1527 ..  ]
+[e $U 130  ]
+"241
+[e :U 129 ]
+[; ;test_ft60e21x_PA_INT.C: 241: else
+[; ;test_ft60e21x_PA_INT.C: 242: coding_L_1527();
+"242
+[e ( _coding_L_1527 ..  ]
+[e :U 130 ]
+"243
 }
-[; ;test_ft60e21x_PA_INT.C: 247: }
-[; ;test_ft60e21x_PA_INT.C: 249: for(i=0;i<4;i++)
-"249
+"235
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 126  ]
+[e :U 127 ]
+"243
+}
+[; ;test_ft60e21x_PA_INT.C: 243: }
+[; ;test_ft60e21x_PA_INT.C: 245: for(i=0;i<4;i++)
+"245
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 135  ]
-[e $U 136  ]
-"250
-[e :U 135 ]
-[; ;test_ft60e21x_PA_INT.C: 250: {
+[e $ < -> _i `i -> 4 `i 131  ]
+[e $U 132  ]
+"246
+[e :U 131 ]
+[; ;test_ft60e21x_PA_INT.C: 246: {
 {
-[; ;test_ft60e21x_PA_INT.C: 251: k = (0x08 & Data);
-"251
+[; ;test_ft60e21x_PA_INT.C: 247: k = (0x08 & Data);
+"247
 [e = _k -> & -> 8 `i -> _Data `i `uc ]
-[; ;test_ft60e21x_PA_INT.C: 252: Data = (Data << 1);
-"252
+[; ;test_ft60e21x_PA_INT.C: 248: Data = (Data << 1);
+"248
 [e = _Data -> << -> _Data `i -> 1 `i `uc ]
-[; ;test_ft60e21x_PA_INT.C: 253: if(k != 0)
-"253
-[e $ ! != -> _k `i -> 0 `i 138  ]
-[; ;test_ft60e21x_PA_INT.C: 254: coding_H_1527();
-"254
-[e ( _coding_H_1527 ..  ]
-[e $U 139  ]
-"255
-[e :U 138 ]
-[; ;test_ft60e21x_PA_INT.C: 255: else
-[; ;test_ft60e21x_PA_INT.C: 256: coding_L_1527();
-"256
-[e ( _coding_L_1527 ..  ]
-[e :U 139 ]
-"257
-}
+[; ;test_ft60e21x_PA_INT.C: 249: if(k != 0)
 "249
+[e $ ! != -> _k `i -> 0 `i 134  ]
+[; ;test_ft60e21x_PA_INT.C: 250: coding_H_1527();
+"250
+[e ( _coding_H_1527 ..  ]
+[e $U 135  ]
+"251
+[e :U 134 ]
+[; ;test_ft60e21x_PA_INT.C: 251: else
+[; ;test_ft60e21x_PA_INT.C: 252: coding_L_1527();
+"252
+[e ( _coding_L_1527 ..  ]
+[e :U 135 ]
+"253
+}
+"245
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 135  ]
-[e :U 136 ]
-"257
+[e $ < -> _i `i -> 4 `i 131  ]
+[e :U 132 ]
+"253
 }
-[; ;test_ft60e21x_PA_INT.C: 257: }
-[; ;test_ft60e21x_PA_INT.C: 258: GIE = 1;
-"258
+[; ;test_ft60e21x_PA_INT.C: 253: }
+[; ;test_ft60e21x_PA_INT.C: 254: GIE = 1;
+"254
 [e = _GIE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 259: }
-"259
-[e :UE 128 ]
+[; ;test_ft60e21x_PA_INT.C: 255: }
+"255
+[e :UE 124 ]
 }
-"262
+"258
 [v _Enter_Deep_Sleep `(v ~T0 @X0 1 ef ]
-"263
+"259
 {
-[; ;test_ft60e21x_PA_INT.C: 262: void Enter_Deep_Sleep()
-[; ;test_ft60e21x_PA_INT.C: 263: {
+[; ;test_ft60e21x_PA_INT.C: 258: void Enter_Deep_Sleep()
+[; ;test_ft60e21x_PA_INT.C: 259: {
 [e :U _Enter_Deep_Sleep ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 264: Wakeup_INITIAL();
-"264
+[; ;test_ft60e21x_PA_INT.C: 260: Wakeup_INITIAL();
+"260
 [e ( _Wakeup_INITIAL ..  ]
-[; ;test_ft60e21x_PA_INT.C: 265: GIE = 0;
-"265
+[; ;test_ft60e21x_PA_INT.C: 261: GIE = 0;
+"261
 [e = _GIE -> -> 0 `i `b ]
+[; ;test_ft60e21x_PA_INT.C: 262: __nop();
+"262
+[e ( ___nop ..  ]
+[; ;test_ft60e21x_PA_INT.C: 263: __nop();
+"263
+[e ( ___nop ..  ]
+[; ;test_ft60e21x_PA_INT.C: 264: asm("sleep");
+"264
+[; <" sleep ;# ">
+[; ;test_ft60e21x_PA_INT.C: 265: __nop();
+"265
+[e ( ___nop ..  ]
 [; ;test_ft60e21x_PA_INT.C: 266: __nop();
 "266
 [e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 267: __nop();
+[; ;test_ft60e21x_PA_INT.C: 267: }
 "267
-[e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 268: asm("sleep");
-"268
-[; <" sleep ;# ">
-[; ;test_ft60e21x_PA_INT.C: 269: __nop();
-"269
-[e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 270: __nop();
-"270
-[e ( ___nop ..  ]
-[; ;test_ft60e21x_PA_INT.C: 271: }
-"271
-[e :UE 140 ]
+[e :UE 136 ]
 }
-"272
+"268
 [v _System_Reinit `(v ~T0 @X0 1 ef ]
-"273
+"269
 {
-[; ;test_ft60e21x_PA_INT.C: 272: void System_Reinit()
-[; ;test_ft60e21x_PA_INT.C: 273: {
+[; ;test_ft60e21x_PA_INT.C: 268: void System_Reinit()
+[; ;test_ft60e21x_PA_INT.C: 269: {
 [e :U _System_Reinit ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 274: PAIF = 0;
-"274
+[; ;test_ft60e21x_PA_INT.C: 270: PAIF = 0;
+"270
 [e = _PAIF -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 275: PAIE = 0;
-"275
+[; ;test_ft60e21x_PA_INT.C: 271: PAIE = 0;
+"271
 [e = _PAIE -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 276: IOCA2 =0;
-"276
+[; ;test_ft60e21x_PA_INT.C: 272: IOCA2 =0;
+"272
 [e = _IOCA2 -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 277: T0IE = 1;
-"277
+[; ;test_ft60e21x_PA_INT.C: 273: T0IE = 1;
+"273
 [e = _T0IE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 278: GIE = 1;
-"278
+[; ;test_ft60e21x_PA_INT.C: 274: GIE = 1;
+"274
 [e = _GIE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 279: }
-"279
-[e :UE 141 ]
+[; ;test_ft60e21x_PA_INT.C: 275: }
+"275
+[e :UE 137 ]
 }
-"280
+"276
 [v _LED_Flickering3 `(v ~T0 @X0 1 ef ]
-"281
+"277
 {
-[; ;test_ft60e21x_PA_INT.C: 280: void LED_Flickering3()
-[; ;test_ft60e21x_PA_INT.C: 281: {
+[; ;test_ft60e21x_PA_INT.C: 276: void LED_Flickering3()
+[; ;test_ft60e21x_PA_INT.C: 277: {
 [e :U _LED_Flickering3 ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 282: for(int i=0;i<6;i++)
-"282
+[; ;test_ft60e21x_PA_INT.C: 278: for(int i=0;i<6;i++)
+"278
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 6 `i 143  ]
-[e $U 144  ]
-"283
-[e :U 143 ]
-[; ;test_ft60e21x_PA_INT.C: 283: {
+[e $ < _i -> 6 `i 139  ]
+[e $U 140  ]
+"279
+[e :U 139 ]
+[; ;test_ft60e21x_PA_INT.C: 279: {
 {
-[; ;test_ft60e21x_PA_INT.C: 284: PA3 = (PA3 == 1 ? 0 : 1);
-"284
+[; ;test_ft60e21x_PA_INT.C: 280: PA3 = (PA3 == 1 ? 0 : 1);
+"280
 [e = _PA3 -> ? == -> _PA3 `i -> 1 `i : -> 0 `i -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 285: DelayMs(50);
-"285
+[; ;test_ft60e21x_PA_INT.C: 281: DelayMs(50);
+"281
 [e ( _DelayMs (1 -> -> 50 `i `uc ]
-"286
-}
 "282
+}
+"278
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 6 `i 143  ]
-[e :U 144 ]
-"286
+[e $ < _i -> 6 `i 139  ]
+[e :U 140 ]
+"282
 }
-[; ;test_ft60e21x_PA_INT.C: 286: }
-[; ;test_ft60e21x_PA_INT.C: 287: }
-"287
-[e :UE 142 ]
+[; ;test_ft60e21x_PA_INT.C: 282: }
+[; ;test_ft60e21x_PA_INT.C: 283: }
+"283
+[e :UE 138 ]
 }
-"288
+"284
 [v _LED_Flickering1 `(v ~T0 @X0 1 ef ]
-"289
+"285
 {
-[; ;test_ft60e21x_PA_INT.C: 288: void LED_Flickering1()
-[; ;test_ft60e21x_PA_INT.C: 289: {
+[; ;test_ft60e21x_PA_INT.C: 284: void LED_Flickering1()
+[; ;test_ft60e21x_PA_INT.C: 285: {
 [e :U _LED_Flickering1 ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 290: for(int i=0;i<3;i++)
-"290
+[; ;test_ft60e21x_PA_INT.C: 286: for(int i=0;i<3;i++)
+"286
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 3 `i 147  ]
-[e $U 148  ]
-"291
-[e :U 147 ]
-[; ;test_ft60e21x_PA_INT.C: 291: {
+[e $ < _i -> 3 `i 143  ]
+[e $U 144  ]
+"287
+[e :U 143 ]
+[; ;test_ft60e21x_PA_INT.C: 287: {
 {
-[; ;test_ft60e21x_PA_INT.C: 292: PA3 = (PA3 == 1 ? 0 : 1);
-"292
+[; ;test_ft60e21x_PA_INT.C: 288: PA3 = (PA3 == 1 ? 0 : 1);
+"288
 [e = _PA3 -> ? == -> _PA3 `i -> 1 `i : -> 0 `i -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 293: DelayMs(10);
-"293
+[; ;test_ft60e21x_PA_INT.C: 289: DelayMs(10);
+"289
 [e ( _DelayMs (1 -> -> 10 `i `uc ]
-"294
-}
 "290
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 3 `i 147  ]
-[e :U 148 ]
-"294
 }
-[; ;test_ft60e21x_PA_INT.C: 294: }
-[; ;test_ft60e21x_PA_INT.C: 295: }
-"295
-[e :UE 146 ]
+"286
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 3 `i 143  ]
+[e :U 144 ]
+"290
+}
+[; ;test_ft60e21x_PA_INT.C: 290: }
+[; ;test_ft60e21x_PA_INT.C: 291: }
+"291
+[e :UE 142 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"302
+"298
 [v _main `(v ~T0 @X0 1 ef ]
-"303
+"299
 {
-[; ;test_ft60e21x_PA_INT.C: 302: void main()
-[; ;test_ft60e21x_PA_INT.C: 303: {
+[; ;test_ft60e21x_PA_INT.C: 298: void main()
+[; ;test_ft60e21x_PA_INT.C: 299: {
 [e :U _main ]
 [f ]
-[; ;test_ft60e21x_PA_INT.C: 304: POWER_INITIAL();
-"304
+[; ;test_ft60e21x_PA_INT.C: 300: POWER_INITIAL();
+"300
 [e ( _POWER_INITIAL ..  ]
-[; ;test_ft60e21x_PA_INT.C: 305: TIMER0_INITIAL();
-"305
+[; ;test_ft60e21x_PA_INT.C: 301: TIMER0_INITIAL();
+"301
 [e ( _TIMER0_INITIAL ..  ]
-[; ;test_ft60e21x_PA_INT.C: 306: GIE = 1;
-"306
+[; ;test_ft60e21x_PA_INT.C: 302: GIE = 1;
+"302
 [e = _GIE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 307: T0IE = 1;
-"307
+[; ;test_ft60e21x_PA_INT.C: 303: T0IE = 1;
+"303
 [e = _T0IE -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 308: while(1)
-"308
+[; ;test_ft60e21x_PA_INT.C: 304: while(1)
+"304
+[e :U 148 ]
+[; ;test_ft60e21x_PA_INT.C: 305: {
+"305
+{
+[; ;test_ft60e21x_PA_INT.C: 312: switch (g_state) {
+"312
+[e $U 151  ]
+{
+[; ;test_ft60e21x_PA_INT.C: 313: case STATE_PAIRING:
+"313
 [e :U 152 ]
-[; ;test_ft60e21x_PA_INT.C: 309: {
-"309
-{
-[; ;test_ft60e21x_PA_INT.C: 316: switch (g_state) {
-"316
-[e $U 155  ]
-{
-[; ;test_ft60e21x_PA_INT.C: 317: case STATE_PAIRING:
-"317
-[e :U 156 ]
-[; ;test_ft60e21x_PA_INT.C: 319: for(uint8_t i=0; i<3; i++)
-"319
+[; ;test_ft60e21x_PA_INT.C: 315: for(uint8_t i=0; i<3; i++)
+"315
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 157  ]
-[e $U 158  ]
-"320
-[e :U 157 ]
-[; ;test_ft60e21x_PA_INT.C: 320: {
-{
-[; ;test_ft60e21x_PA_INT.C: 322: coding_1527(0x12345, 0x01);
-"322
-[e ( _coding_1527 (2 , -> -> 74565 `l `ul -> -> 1 `i `uc ]
-[; ;test_ft60e21x_PA_INT.C: 325: LED_Flickering1();
-"325
-[e ( _LED_Flickering1 ..  ]
-"326
-}
-"319
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 157  ]
-[e :U 158 ]
-"326
-}
-[; ;test_ft60e21x_PA_INT.C: 326: }
-[; ;test_ft60e21x_PA_INT.C: 327: LED_Flickering3();
-"327
-[e ( _LED_Flickering3 ..  ]
-[; ;test_ft60e21x_PA_INT.C: 328: g_state = STATE_WAKEUP;
-"328
-[e = _g_state . `E904 0 ]
-[; ;test_ft60e21x_PA_INT.C: 329: break;
-"329
-[e $U 154  ]
-[; ;test_ft60e21x_PA_INT.C: 330: case STATE_SLEEP:
-"330
-[e :U 160 ]
-[; ;test_ft60e21x_PA_INT.C: 332: coding_1527(0x12345, 0x02);
-"332
-[e ( _coding_1527 (2 , -> -> 74565 `l `ul -> -> 2 `i `uc ]
-[; ;test_ft60e21x_PA_INT.C: 333: PA3=0;
-"333
-[e = _PA3 -> -> 0 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 335: Enter_Deep_Sleep();
-"335
-[e ( _Enter_Deep_Sleep ..  ]
-[; ;test_ft60e21x_PA_INT.C: 338: System_Reinit();
-"338
-[e ( _System_Reinit ..  ]
-[; ;test_ft60e21x_PA_INT.C: 339: g_state = STATE_WAKEUP;
-"339
-[e = _g_state . `E904 0 ]
-[; ;test_ft60e21x_PA_INT.C: 340: g_timer_5s = 0;
-"340
-[e = _g_timer_5s -> -> 0 `i `ui ]
-[; ;test_ft60e21x_PA_INT.C: 341: break;
-"341
-[e $U 154  ]
-[; ;test_ft60e21x_PA_INT.C: 342: case STATE_WAKEUP:
-"342
-[e :U 161 ]
-[; ;test_ft60e21x_PA_INT.C: 344: PA3=1;
-"344
-[e = _PA3 -> -> 1 `i `b ]
-[; ;test_ft60e21x_PA_INT.C: 345: break;
-"345
-[e $U 154  ]
-"346
-}
-[; ;test_ft60e21x_PA_INT.C: 346: }
+[e $ < -> _i `i -> 3 `i 153  ]
 [e $U 154  ]
 "316
-[e :U 155 ]
-[e [\ _g_state , $ . `E904 1 156
- , $ . `E904 2 160
- , $ . `E904 0 161
- 154 ]
-"346
-[e :U 154 ]
-"347
-}
-[e :U 151 ]
-"308
-[e $U 152  ]
 [e :U 153 ]
-[; ;test_ft60e21x_PA_INT.C: 347: }
-[; ;test_ft60e21x_PA_INT.C: 348: }
-"348
-[e :UE 150 ]
+[; ;test_ft60e21x_PA_INT.C: 316: {
+{
+[; ;test_ft60e21x_PA_INT.C: 318: coding_1527(0x12345, 0x01);
+"318
+[e ( _coding_1527 (2 , -> -> 74565 `l `ul -> -> 1 `i `uc ]
+[; ;test_ft60e21x_PA_INT.C: 321: LED_Flickering1();
+"321
+[e ( _LED_Flickering1 ..  ]
+"322
+}
+"315
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 153  ]
+[e :U 154 ]
+"322
+}
+[; ;test_ft60e21x_PA_INT.C: 322: }
+[; ;test_ft60e21x_PA_INT.C: 323: LED_Flickering3();
+"323
+[e ( _LED_Flickering3 ..  ]
+[; ;test_ft60e21x_PA_INT.C: 324: g_state = STATE_WAKEUP;
+"324
+[e = _g_state . `E904 0 ]
+[; ;test_ft60e21x_PA_INT.C: 325: break;
+"325
+[e $U 150  ]
+[; ;test_ft60e21x_PA_INT.C: 326: case STATE_SLEEP:
+"326
+[e :U 156 ]
+[; ;test_ft60e21x_PA_INT.C: 328: coding_1527(0x12345, 0x02);
+"328
+[e ( _coding_1527 (2 , -> -> 74565 `l `ul -> -> 2 `i `uc ]
+[; ;test_ft60e21x_PA_INT.C: 329: PA3=0;
+"329
+[e = _PA3 -> -> 0 `i `b ]
+[; ;test_ft60e21x_PA_INT.C: 331: Enter_Deep_Sleep();
+"331
+[e ( _Enter_Deep_Sleep ..  ]
+[; ;test_ft60e21x_PA_INT.C: 334: System_Reinit();
+"334
+[e ( _System_Reinit ..  ]
+[; ;test_ft60e21x_PA_INT.C: 335: g_state = STATE_WAKEUP;
+"335
+[e = _g_state . `E904 0 ]
+[; ;test_ft60e21x_PA_INT.C: 336: g_timer_5s = 0;
+"336
+[e = _g_timer_5s -> -> 0 `i `ui ]
+[; ;test_ft60e21x_PA_INT.C: 337: break;
+"337
+[e $U 150  ]
+[; ;test_ft60e21x_PA_INT.C: 338: case STATE_WAKEUP:
+"338
+[e :U 157 ]
+[; ;test_ft60e21x_PA_INT.C: 340: PA3=1;
+"340
+[e = _PA3 -> -> 1 `i `b ]
+[; ;test_ft60e21x_PA_INT.C: 341: break;
+"341
+[e $U 150  ]
+"342
+}
+[; ;test_ft60e21x_PA_INT.C: 342: }
+[e $U 150  ]
+"312
+[e :U 151 ]
+[e [\ _g_state , $ . `E904 1 152
+ , $ . `E904 2 156
+ , $ . `E904 0 157
+ 150 ]
+"342
+[e :U 150 ]
+"343
+}
+[e :U 147 ]
+"304
+[e $U 148  ]
+[e :U 149 ]
+[; ;test_ft60e21x_PA_INT.C: 343: }
+[; ;test_ft60e21x_PA_INT.C: 344: }
+"344
+[e :UE 146 ]
 }

@@ -121,27 +121,21 @@ void Delay10Us(void)
 		NOP();                                                                                      
 	}
 }   
-// --- 针对 1527 协议优化的微秒延时 ---
-
-// 4us 延时：约 8 个指令周期
-// 函数调用 + 返回约占 4 个周期，内部补 4 个 NOP
-void delay_4us(void) {
-    NOP(); NOP(); NOP(); NOP(); 
+/*
+下面的延时函数是从例程里考出来的，延时的真实时间不对
+但是和接收端是配套的
+我就不乱改了
+*/
+void delay_us(uint16_t us)
+{
+	uint16_t j;
+	us = us * 3;
+	for(j=0;j<us;j++)
+	{
+		NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();
+	}
 }
 
-// 12us 延时：约 24 个指令周期
-// 扣除调用开销，内部补 20 个 NOP 或者用极短循环
-void delay_12us(void) {
-    unchar i;
-    for(i=0; i<3; i++); // 简单的循环调整
-    NOP(); NOP(); 
-}
-
-// 124us 延时：约 248 个指令周期
-void delay_124us(void) {
-    unchar i;
-    for(i=0; i<38; i++); // 38 * 约6.5周期
-}
 /*-------------------------------------------------
  * 函数名：DelayMs
  * 功能：  短延时函数
@@ -198,29 +192,31 @@ void Wakeup_INITIAL(void)
     
     PAIE = 1;               // 使能总的 PA 端口中断允许位
 }
- // 1527编码中的同步码
-void coding_syn_1527(void) {
-    DATAOUT_HIGH; 
-    delay_4us();      
-    DATAOUT_LOW;
-    delay_124us();    
+  //1527编码中的同步码
+void coding_syn_1527(void)
+{
+  DATAOUT_HIGH; 
+  delay_us(4);
+  DATAOUT_LOW;
+  delay_us(124);
+ }
+ //1527编码中的0码
+void coding_L_1527(void)
+{
+  DATAOUT_HIGH; 
+  delay_us(4);
+  DATAOUT_LOW;
+  delay_us(12);
+ } 
+  //1527编码中的1码
+void coding_H_1527(void)
+{ 
+  DATAOUT_HIGH; 
+  delay_us(12);  
+  DATAOUT_LOW;
+  delay_us(4);
 }
 
-// 1527编码中的 0 码
-void coding_L_1527(void) {
-    DATAOUT_HIGH; 
-    delay_4us();      
-    DATAOUT_LOW;
-    delay_12us();     
-} 
-
-// 1527编码中的 1 码
-void coding_H_1527(void) { 
-    DATAOUT_HIGH; 
-    delay_12us();     
-    DATAOUT_LOW;
-    delay_4us();      
-}
 
 //完整的1527编码
 //输入参数：uint32_t addr   20位地址码

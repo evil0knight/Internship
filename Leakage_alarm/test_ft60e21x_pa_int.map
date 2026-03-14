@@ -4,8 +4,8 @@ Linker command line:
 
 --edf=E:\FMDprogrammer\Compiler\data\dat\en_msgs.txt -cs \
   -h+test_ft60e21x_pa_int.sym --cmf=test_ft60e21x_pa_int.cmf -z -QFT60F21X \
-  -oC:\Users\17443\AppData\Local\Temp\su9s.2 -Mtest_ft60e21x_pa_int.map -E1 \
-  -ver=XC8 -ASTACK=04Bh-06fh -pstack=STACK -ACODE=00h-03FFh \
+  -oC:\Users\17443\AppData\Local\Temp\sidg.2 -Mtest_ft60e21x_pa_int.map -E1 \
+  -ver=XC8 -ASTACK=051h-06fh -pstack=STACK -ACODE=00h-03FFh \
   -ASTRCODE=00h-03FFh -ASTRING=00h-0FFhx4 -ACONST=00h-0FFhx4 \
   -AENTRY=00h-0FFhx4 -ACOMMON=070h-07Fh -ABANK0=040h-06Fh -ARAM=040h-06Fh \
   -AABS1=040h-07Fh -ASFR0=00h-03Fh -ASFR1=080h-0EFh \
@@ -13,7 +13,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-07Fh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\17443\AppData\Local\Temp\su9s.obj \
+  -DENTRY=2 -k C:\Users\17443\AppData\Local\Temp\sidg.obj \
   test_ft60e21x_pa_int.obj 
 
 Object code version is 3.11
@@ -23,35 +23,34 @@ Machine type is FT60F21X
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\17443\AppData\Local\Temp\su9s.obj
+C:\Users\17443\AppData\Local\Temp\sidg.obj
                 end_init                              A        A        1        8       0
                 reset_vec                             0        0        1        0       0
 test_ft60e21x_pa_int.obj
                 cinit                                 B        B        8        8       0
                 intentry                              4        4        6        8       0
-                text17                               98       98       31        8       0
-                text16                              11B      11B        B        8       0
-                text15                              141      141        8        8       0
-                text14                              139      139        8        8       0
-                text13                               C9       C9       19        8       0
-                text12                               F8       F8       16        8       0
-                text11                               E2       E2       16        8       0
-                text10                              10E      10E        D        8       0
-                text9                               150      150        7        8       0
-                text8                               126      126        A        8       0
-                text7                               130      130        9        8       0
-                text6                               167      167        5        8       0
-                text5                               162      162        5        8       0
-                text4                               15D      15D        5        8       0
-                text3                               149      149        7        8       0
-                text2                               157      157        6        8       0
-                text1                                13       13       4D        8       0
+                text16                               94       94       30        8       0
+                text15                              165      165        B        8       0
+                text14                              18C      18C        8        8       0
+                text13                              184      184        8        8       0
+                text12                              105      105       19        8       0
+                text11                              135      135       17        8       0
+                text10                              11E      11E       17        8       0
+                text9                               14C      14C        D        8       0
+                text8                               19B      19B        7        8       0
+                text7                               17A      17A        A        8       0
+                text6                                EC       EC       19        8       0
+                text5                                C4       C4       28        8       0
+                text4                               170      170        A        8       0
+                text3                               159      159        C        8       0
+                text2                               194      194        7        8       0
+                text1                                13       13       4B        8       0
                 swtext1                               1        1        3        2       0
-                maintext                             60       60       38        8       0
-                cstackBANK0                          40       40        7       40       1
-                cstackCOMMON                         70       70        B       70       1
-                bssBANK0                             47       47        4       40       1
-                bssCOMMON                            7B       7B        1       70       1
+                maintext                             5E       5E       36        8       0
+                cstackBANK0                          40       40        E       40       1
+                cstackCOMMON                         70       70        A       70       1
+                bssBANK0                             4E       4E        3       40       1
+                bssCOMMON                            7A       7A        2       70       1
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -61,24 +60,23 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                 B        B        8         0
                 intentry                              4        4        6         0
                 reset_vec                             0        0        1         0
-                text17                               98       98       31         0
-                text16                              11B      11B        B         0
-                text15                              141      141        8         0
-                text14                              139      139        8         0
-                text13                               C9       C9       19         0
-                text12                               F8       F8       16         0
-                text11                               E2       E2       16         0
-                text10                              10E      10E        D         0
-                text9                               150      150        7         0
-                text8                               126      126        A         0
-                text7                               130      130        9         0
-                text6                               167      167        5         0
-                text5                               162      162        5         0
-                text4                               15D      15D        5         0
-                text3                               149      149        7         0
-                text2                               157      157        6         0
-                text1                                13       13       4D         0
-                maintext                             60       60       38         0
+                text16                               94       94       30         0
+                text15                              165      165        B         0
+                text14                              18C      18C        8         0
+                text13                              184      184        8         0
+                text12                              105      105       19         0
+                text11                              135      135       17         0
+                text10                              11E      11E       17         0
+                text9                               14C      14C        D         0
+                text8                               19B      19B        7         0
+                text7                               17A      17A        A         0
+                text6                                EC       EC       19         0
+                text5                                C4       C4       28         0
+                text4                               170      170        A         0
+                text3                               159      159        C         0
+                text2                               194      194        7         0
+                text1                                13       13       4B         0
+                maintext                             5E       5E       36         0
 
         CLASS   STRCODE        
 
@@ -90,12 +88,12 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   ENTRY          
 
         CLASS   COMMON         
-                cstackCOMMON                         70       70        B         1
-                bssCOMMON                            7B       7B        1         1
+                cstackCOMMON                         70       70        A         1
+                bssCOMMON                            7A       7A        2         1
 
         CLASS   BANK0          
-                cstackBANK0                          40       40        7         1
-                bssBANK0                             47       47        4         1
+                cstackBANK0                          40       40        E         1
+                bssBANK0                             4E       4E        3         1
 
         CLASS   RAM            
 
@@ -120,48 +118,50 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000001  000001         0       0  CODE        2
                 swtext1                        000001  000003  000004         2       0  CONST       2
-                intentry                       000004  000168  00016C         8       0  CODE        2
-                cstackBANK0                    000040  00000B  00004B        40       1  BANK0       1
+                intentry                       000004  00019E  0001A2         8       0  CODE        2
+                cstackBANK0                    000040  000011  000051        40       1  BANK0       1
                 cstackCOMMON                   000070  00000C  00007C        70       1  COMMON      1
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            04B-06F            25           1
-        CODE             16C-3FF           294           2
+        BANK0            051-06F            1F           1
+        CODE             1A2-3FF           25E           2
         COMMON           07C-07D             2           1
         CONFIG           2007-2007             1           2
-        CONST            16C-3FF           100           2
+        CONST            1A2-3FF           100           2
         EEDATA           2100-217F            80           2
-        ENTRY            16C-3FF           100           2
+        ENTRY            1A2-3FF           100           2
         IDLOC            2000-2003             4           2
-        RAM              04B-06F            25           1
+        RAM              051-06F            1F           1
         SFR0             000-03F            40           1
         SFR1             080-0EF            70           1
-        STACK            04B-06F            25           1
-        STRCODE          16C-3FF           294           2
-        STRING           16C-3FF           100           2
+        STACK            051-06F            1F           1
+        STRCODE          1A2-3FF           25E           2
+        STRING           1A2-3FF           100           2
 
                                   Symbol Table
 
+?___wmul                   cstackCOMMON 072
 Delay10Us@i                cstackCOMMON 072
 DelayMs@Time               cstackCOMMON 075
 DelayMs@a                  cstackCOMMON 076
 DelayMs@b                  cstackCOMMON 078
-LED_Flickering1@i          cstackCOMMON 079
-LED_Flickering3@i          cstackCOMMON 079
-PL2                        maintext     090
-_Delay10Us                 text14       139
-_DelayMs                   text13       0C9
-_Enter_Deep_Sleep          text15       141
+LED_Flickering1@i          cstackBANK0  040
+LED_Flickering3@i          cstackBANK0  040
+PL2                        maintext     08C
+PL4                        text3        160
+_Delay10Us                 text13       184
+_DelayMs                   text12       105
+_Enter_Deep_Sleep          text14       18C
 _GIE                       (abs)        05F
 _INTCON                    (abs)        00B
 _IOCA2                     (abs)        4B2
 _IOCA5                     (abs)        4B5
-_ISR                       text17       098
-_LED_Flickering1           text12       0F8
-_LED_Flickering3           text11       0E2
+_ISR                       text16       094
+_LED_Flickering1           text11       135
+_LED_Flickering3           text10       11E
 _MSCON                     (abs)        01B
 _OPTION                    (abs)        081
 _OSCCON                    (abs)        08F
@@ -171,18 +171,18 @@ _PA5                       (abs)        02D
 _PAIE                      (abs)        05B
 _PAIF                      (abs)        058
 _PORTA                     (abs)        005
-_POWER_INITIAL             text10       10E
-_System_Reinit             text9        150
+_POWER_INITIAL             text9        14C
+_System_Reinit             text8        19B
 _T0CON0                    (abs)        01F
 _T0IE                      (abs)        05D
 _T0ON                      (abs)        0FB
-_TIMER0_INITIAL            text8        126
+_TIMER0_INITIAL            text7        17A
 _TMR0                      (abs)        001
 _TRISA                     (abs)        085
 _TRISA2                    (abs)        42A
 _TRISA5                    (abs)        42D
 _WPUA                      (abs)        095
-_Wakeup_INITIAL            text16       11B
+_Wakeup_INITIAL            text15       165
 __Habs1                    abs1         000
 __Hbank0                   bank0        000
 __Hbank1                   bank1        000
@@ -208,7 +208,7 @@ __Hram                     ram          000
 __Hreset_vec               reset_vec    001
 __Hsfr0                    sfr0         000
 __Hsfr1                    sfr1         000
-__Hspace_0                 (abs)        16C
+__Hspace_0                 (abs)        1A2
 __Hspace_1                 (abs)        07C
 __Hspace_2                 (abs)        000
 __Hspace_3                 (abs)        000
@@ -247,59 +247,62 @@ __Lspace_3                 (abs)        000
 __Lstack                   stack        000
 __Lstrings                 strings      000
 __Ltext                    text         000
-__S0                       (abs)        16C
+__S0                       (abs)        1A2
 __S1                       (abs)        07C
 __S2                       (abs)        000
 __S3                       (abs)        000
 ___int_sp                  stack        000
 ___latbits                 (abs)        000
 ___sp                      stack        000
-__end_ofPL2                maintext     098
-__end_of_Delay10Us         text14       141
-__end_of_DelayMs           text13       0E2
-__end_of_Enter_Deep_Sleep  text15       149
-__end_of_ISR               text17       0C9
-__end_of_LED_Flickering1   text12       10E
-__end_of_LED_Flickering3   text11       0F8
-__end_of_POWER_INITIAL     text10       11B
-__end_of_System_Reinit     text9        157
-__end_of_TIMER0_INITIAL    text8        130
-__end_of_Wakeup_INITIAL    text16       126
+___wmul                    text6        0EC
+___wmul@multiplicand       cstackCOMMON 074
+___wmul@multiplier         cstackCOMMON 072
+___wmul@product            cstackCOMMON 076
+__end_ofPL2                maintext     094
+__end_ofPL4                text3        165
+__end_of_Delay10Us         text13       18C
+__end_of_DelayMs           text12       11E
+__end_of_Enter_Deep_Sleep  text14       194
+__end_of_ISR               text16       0C4
+__end_of_LED_Flickering1   text11       14C
+__end_of_LED_Flickering3   text10       135
+__end_of_POWER_INITIAL     text9        159
+__end_of_System_Reinit     text8        1A2
+__end_of_TIMER0_INITIAL    text7        184
+__end_of_Wakeup_INITIAL    text15       170
+__end_of___wmul            text6        105
 __end_of__initialization   cinit        011
-__end_of_coding_1527       text1        060
-__end_of_coding_H_1527     text5        167
-__end_of_coding_L_1527     text4        162
-__end_of_coding_syn_1527   text2        15D
-__end_of_delay_124us       text3        150
-__end_of_delay_12us        text7        139
-__end_of_delay_4us         text6        16C
-__end_of_main              maintext     090
+__end_of_coding_1527       text1        05E
+__end_of_coding_H_1527     text4        17A
+__end_of_coding_L_1527     text3        160
+__end_of_coding_syn_1527   text2        19B
+__end_of_delay_us          text5        0EC
+__end_of_main              maintext     08C
 __initialization           cinit        00B
-__pbssBANK0                bssBANK0     047
-__pbssCOMMON               bssCOMMON    07B
+__pbssBANK0                bssBANK0     04E
+__pbssCOMMON               bssCOMMON    07A
 __pcstackBANK0             cstackBANK0  040
 __pcstackCOMMON            cstackCOMMON 070
 __pintentry                intentry     004
-__pmaintext                maintext     060
+__pmaintext                maintext     05E
 __pswtext1                 swtext1      001
 __ptext0                   text0        000
 __ptext1                   text1        013
-__ptext10                  text10       10E
-__ptext11                  text11       0E2
-__ptext12                  text12       0F8
-__ptext13                  text13       0C9
-__ptext14                  text14       139
-__ptext15                  text15       141
-__ptext16                  text16       11B
-__ptext17                  text17       098
-__ptext2                   text2        157
-__ptext3                   text3        149
-__ptext4                   text4        15D
-__ptext5                   text5        162
-__ptext6                   text6        167
-__ptext7                   text7        130
-__ptext8                   text8        126
-__ptext9                   text9        150
+__ptext10                  text10       11E
+__ptext11                  text11       135
+__ptext12                  text12       105
+__ptext13                  text13       184
+__ptext14                  text14       18C
+__ptext15                  text15       165
+__ptext16                  text16       094
+__ptext2                   text2        194
+__ptext3                   text3        159
+__ptext4                   text4        170
+__ptext5                   text5        0C4
+__ptext6                   text6        0EC
+__ptext7                   text7        17A
+__ptext8                   text8        19B
+__ptext9                   text9        14C
 __size_of_Delay10Us        (abs)        000
 __size_of_DelayMs          (abs)        000
 __size_of_Enter_Deep_Sleep (abs)        000
@@ -310,33 +313,30 @@ __size_of_POWER_INITIAL    (abs)        000
 __size_of_System_Reinit    (abs)        000
 __size_of_TIMER0_INITIAL   (abs)        000
 __size_of_Wakeup_INITIAL   (abs)        000
+__size_of___wmul           (abs)        000
 __size_of_coding_1527      (abs)        000
 __size_of_coding_H_1527    (abs)        000
 __size_of_coding_L_1527    (abs)        000
 __size_of_coding_syn_1527  (abs)        000
-__size_of_delay_124us      (abs)        000
-__size_of_delay_12us       (abs)        000
-__size_of_delay_4us        (abs)        000
+__size_of_delay_us         (abs)        000
 __size_of_main             (abs)        000
 _coding_1527               text1        013
-_coding_H_1527             text5        162
-_coding_L_1527             text4        15D
-_coding_syn_1527           text2        157
-_delay_124us               text3        149
-_delay_12us                text7        130
-_delay_4us                 text6        167
-_g_state                   bssCOMMON    07B
-_g_timer_2s                bssBANK0     047
-_g_timer_5s                bssBANK0     049
-_main                      maintext     060
+_coding_H_1527             text4        170
+_coding_L_1527             text3        159
+_coding_syn_1527           text2        194
+_delay_us                  text5        0C4
+_g_state                   bssBANK0     050
+_g_timer_2s                bssCOMMON    07A
+_g_timer_5s                bssBANK0     04E
+_main                      maintext     05E
 btemp                      (abs)        07E
-coding_1527@Addr_1527      cstackCOMMON 073
-coding_1527@Data           cstackCOMMON 077
-coding_1527@i              cstackBANK0  045
-coding_1527@j              cstackBANK0  040
-coding_1527@k              cstackBANK0  044
-delay_124us@i              cstackCOMMON 072
-delay_12us@i               cstackCOMMON 072
+coding_1527@Addr_1527      cstackBANK0  042
+coding_1527@Data           cstackBANK0  046
+coding_1527@i              cstackBANK0  04C
+coding_1527@j              cstackBANK0  047
+coding_1527@k              cstackBANK0  04B
+delay_us@j                 cstackBANK0  040
+delay_us@us                cstackCOMMON 078
 end_of_initialization      cinit        011
 interrupt_function         intentry     004
 intlevel0                  functab      000
@@ -345,7 +345,7 @@ intlevel2                  functab      000
 intlevel3                  functab      000
 intlevel4                  functab      000
 intlevel5                  functab      000
-main@i                     cstackBANK0  046
+main@i                     cstackBANK0  04D
 reset_vec                  reset_vec    000
 saved_w                    (abs)        07E
 stackhi                    (abs)        000
@@ -359,11 +359,11 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 302 in file "test_ft60e21x_PA_INT.C"
+		line 298 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               1    6[BANK0 ] unsigned char 
+  i               1   13[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -378,7 +378,7 @@ FUNCTION INFORMATION:
       Temps:          0       0
       Totals:         0       1
 Total ram usage:        1 bytes
- Hardware stack levels required when called:    4
+ Hardware stack levels required when called:    5
  This function calls:
 		_Enter_Deep_Sleep
 		_LED_Flickering1
@@ -394,14 +394,14 @@ Total ram usage:        1 bytes
 
  *************** function _coding_1527 *****************
  Defined at:
-		line 228 in file "test_ft60e21x_PA_INT.C"
+		line 224 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
-  Addr_1527       4    3[COMMON] unsigned long 
-  Data            1    7[COMMON] unsigned char 
+  Addr_1527       4    2[BANK0 ] unsigned long 
+  Data            1    6[BANK0 ] unsigned char 
  Auto vars:     Size  Location     Type
-  j               4    0[BANK0 ] unsigned long 
-  i               1    5[BANK0 ] unsigned char 
-  k               1    4[BANK0 ] unsigned char 
+  j               4    7[BANK0 ] unsigned long 
+  i               1   12[BANK0 ] unsigned char 
+  k               1   11[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -411,13 +411,13 @@ Total ram usage:        1 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMMON   BANK0
-      Params:         5       0
+      Params:         0       5
       Locals:         0       6
       Temps:          0       0
-      Totals:         5       6
+      Totals:         0      11
 Total ram usage:       11 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    3
+ Hardware stack levels required when called:    4
  This function calls:
 		_coding_H_1527
 		_coding_L_1527
@@ -429,7 +429,7 @@ Total ram usage:       11 bytes
 
  *************** function _coding_syn_1527 *****************
  Defined at:
-		line 202 in file "test_ft60e21x_PA_INT.C"
+		line 196 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -449,48 +449,17 @@ Total ram usage:       11 bytes
       Totals:         0       0
 Total ram usage:        0 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    2
+ Hardware stack levels required when called:    3
  This function calls:
-		_delay_124us
-		_delay_4us
+		_delay_us
  This function is called by:
 		_coding_1527
  This function uses a non-reentrant model
 
 
- *************** function _delay_124us *****************
- Defined at:
-		line 141 in file "test_ft60e21x_PA_INT.C"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-  i               1    2[COMMON] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         1       0
-      Temps:          0       0
-      Totals:         1       0
-Total ram usage:        1 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_coding_syn_1527
- This function uses a non-reentrant model
-
-
  *************** function _coding_L_1527 *****************
  Defined at:
-		line 210 in file "test_ft60e21x_PA_INT.C"
+		line 204 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -510,10 +479,9 @@ Total ram usage:        1 bytes
       Totals:         0       0
 Total ram usage:        0 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    2
+ Hardware stack levels required when called:    3
  This function calls:
-		_delay_12us
-		_delay_4us
+		_delay_us
  This function is called by:
 		_coding_1527
  This function uses a non-reentrant model
@@ -521,7 +489,7 @@ Total ram usage:        0 bytes
 
  *************** function _coding_H_1527 *****************
  Defined at:
-		line 218 in file "test_ft60e21x_PA_INT.C"
+		line 212 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -541,40 +509,39 @@ Total ram usage:        0 bytes
       Totals:         0       0
 Total ram usage:        0 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    2
+ Hardware stack levels required when called:    3
  This function calls:
-		_delay_12us
-		_delay_4us
+		_delay_us
  This function is called by:
 		_coding_1527
  This function uses a non-reentrant model
 
 
- *************** function _delay_4us *****************
+ *************** function _delay_us *****************
  Defined at:
-		line 128 in file "test_ft60e21x_PA_INT.C"
+		line 129 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
-		None
+  us              2    8[COMMON] unsigned int 
  Auto vars:     Size  Location     Type
-		None
+  j               2    0[BANK0 ] unsigned int 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
-		None
+		wreg, status,2, status,0, pclath, cstack
  Tracked objects:
 		On entry : 
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       0
+      Params:         2       0
+      Locals:         0       2
       Temps:          0       0
-      Totals:         0       0
-Total ram usage:        0 bytes
+      Totals:         2       2
+Total ram usage:        4 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    1
+ Hardware stack levels required when called:    2
  This function calls:
-		Nothing
+		___wmul
  This function is called by:
 		_coding_syn_1527
 		_coding_L_1527
@@ -582,15 +549,16 @@ Total ram usage:        0 bytes
  This function uses a non-reentrant model
 
 
- *************** function _delay_12us *****************
+ *************** function ___wmul *****************
  Defined at:
-		line 134 in file "test_ft60e21x_PA_INT.C"
+		line 15 in file "E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c"
  Parameters:    Size  Location     Type
-		None
+  multiplier      2    2[COMMON] unsigned int 
+  multiplicand    2    4[COMMON] unsigned int 
  Auto vars:     Size  Location     Type
-  i               1    2[COMMON] unsigned char 
+  product         2    6[COMMON] unsigned int 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+                  2    2[COMMON] unsigned int 
  Registers used:
 		wreg, status,2, status,0
  Tracked objects:
@@ -598,18 +566,17 @@ Total ram usage:        0 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         1       0
+      Params:         4       0
+      Locals:         2       0
       Temps:          0       0
-      Totals:         1       0
-Total ram usage:        1 bytes
+      Totals:         6       0
+Total ram usage:        6 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
 		Nothing
  This function is called by:
-		_coding_L_1527
-		_coding_H_1527
+		_delay_us
  This function uses a non-reentrant model
 
 
@@ -645,7 +612,7 @@ Total ram usage:        0 bytes
 
  *************** function _System_Reinit *****************
  Defined at:
-		line 272 in file "test_ft60e21x_PA_INT.C"
+		line 268 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -705,11 +672,11 @@ Total ram usage:        0 bytes
 
  *************** function _LED_Flickering3 *****************
  Defined at:
-		line 280 in file "test_ft60e21x_PA_INT.C"
+		line 276 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               2    9[COMMON] int 
+  i               2    0[BANK0 ] int 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -720,9 +687,9 @@ Total ram usage:        0 bytes
 		Unchanged: 
  Data sizes:     COMMON   BANK0
       Params:         0       0
-      Locals:         2       0
+      Locals:         0       2
       Temps:          0       0
-      Totals:         2       0
+      Totals:         0       2
 Total ram usage:        2 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    3
@@ -735,11 +702,11 @@ Total ram usage:        2 bytes
 
  *************** function _LED_Flickering1 *****************
  Defined at:
-		line 288 in file "test_ft60e21x_PA_INT.C"
+		line 284 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               2    9[COMMON] int 
+  i               2    0[BANK0 ] int 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -750,9 +717,9 @@ Total ram usage:        2 bytes
 		Unchanged: 
  Data sizes:     COMMON   BANK0
       Params:         0       0
-      Locals:         2       0
+      Locals:         0       2
       Temps:          0       0
-      Totals:         2       0
+      Totals:         0       2
 Total ram usage:        2 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    3
@@ -765,7 +732,7 @@ Total ram usage:        2 bytes
 
  *************** function _DelayMs *****************
  Defined at:
-		line 151 in file "test_ft60e21x_PA_INT.C"
+		line 145 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
   Time            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -828,7 +795,7 @@ Total ram usage:        1 bytes
 
  *************** function _Enter_Deep_Sleep *****************
  Defined at:
-		line 262 in file "test_ft60e21x_PA_INT.C"
+		line 258 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -858,7 +825,7 @@ Total ram usage:        0 bytes
 
  *************** function _Wakeup_INITIAL *****************
  Defined at:
-		line 184 in file "test_ft60e21x_PA_INT.C"
+		line 178 in file "test_ft60e21x_PA_INT.C"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -919,31 +886,35 @@ Total ram usage:        2 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-test_ft60e21x_PA_INT.C
-		_Enter_Deep_Sleep		CODE           	0141	0000	9
-		_ISR           		CODE           	0098	0000	50
-		_main          		CODE           	0060	0000	49
-		_LED_Flickering1		CODE           	00F8	0000	23
-		_LED_Flickering3		CODE           	00E2	0000	23
-		_DelayMs       		CODE           	00C9	0000	26
-		_POWER_INITIAL 		CODE           	010E	0000	14
-		_delay_12us    		CODE           	0130	0000	10
-		_delay_124us   		CODE           	0149	0000	8
-		_delay_4us     		CODE           	0167	0000	6
-		_coding_1527   		CODE           	0013	0000	78
-		_Wakeup_INITIAL		CODE           	011B	0000	12
-		_coding_H_1527 		CODE           	0162	0000	6
-		_coding_L_1527 		CODE           	015D	0000	6
-		_Delay10Us     		CODE           	0139	0000	9
-		_System_Reinit 		CODE           	0150	0000	8
-		_coding_syn_1527		CODE           	0157	0000	7
-		_TIMER0_INITIAL		CODE           	0126	0000	11
+E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
+		___wmul        		CODE           	00EC	0000	26
 
-test_ft60e21x_PA_INT.C estimated size: 355
+E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c estimated size: 26
+
+test_ft60e21x_PA_INT.C
+		_Enter_Deep_Sleep		CODE           	018C	0000	9
+		_ISR           		CODE           	0094	0000	49
+		_delay_us      		CODE           	00C4	0000	41
+		_main          		CODE           	005E	0000	47
+		_LED_Flickering1		CODE           	0135	0000	24
+		_LED_Flickering3		CODE           	011E	0000	24
+		_DelayMs       		CODE           	0105	0000	26
+		_POWER_INITIAL 		CODE           	014C	0000	14
+		_coding_1527   		CODE           	0013	0000	76
+		_Wakeup_INITIAL		CODE           	0165	0000	12
+		_coding_H_1527 		CODE           	0170	0000	11
+		_coding_L_1527 		CODE           	0159	0000	8
+		_Delay10Us     		CODE           	0184	0000	9
+		_System_Reinit 		CODE           	019B	0000	8
+		_coding_syn_1527		CODE           	0194	0000	8
+		_TIMER0_INITIAL		CODE           	017A	0000	11
+
+test_ft60e21x_PA_INT.C estimated size: 377
 
 shared
 		__initialization		CODE           	000B	0000	7
-		PL2            		CODE           	0090	0000	9
+		PL2            		CODE           	008C	0000	9
+		PL4            		CODE           	0160	0000	6
 
-shared estimated size: 16
+shared estimated size: 22
 

@@ -3,7 +3,13 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -L \"https://raw.githubusercontent.com/deedydas/Deedy-Resume/master/OpenFonts/deedy-resume-openfont.cls\" -o \"D:/information/circuit_board/nanjing_hosptial/Internship/deedy-resume-openfont.cls\" 2>&1)",
+      "Bash(BASE=\"https://raw.githubusercontent.com/deedydas/Deedy-Resume/master/OpenFonts/fonts\"\nDEST=\"D:/information/circuit_board/nanjing_hosptial/Internship/fonts\"\n\nfor f in Lato-Hai Lato-Lig Lato-LigIta Lato-Reg Lato-RegIta Lato-Bol; do\n  curl -sL \"$BASE/lato/$f.ttf\" -o \"$DEST/lato/$f.ttf\" && echo \"OK: $f\"\ndone\n\nfor f in Raleway-ExtraLight Raleway-Medium; do\n  curl -sL \"$BASE/raleway/$f.ttf\" -o \"$DEST/raleway/$f.ttf\" && echo \"OK: $f\"\ndone)",
+      "Bash(curl -v \"https://raw.githubusercontent.com/deedydas/Deedy-Resume/master/OpenFonts/fonts/lato/Lato-Hai.ttf\" -o \"D:/information/circuit_board/nanjing_hosptial/Internship/fonts/lato/Lato-Hai.ttf\" 2>&1 | tail -5)",
+      "Bash(powershell -Command \"\n\\\\$dest = 'D:/information/circuit_board/nanjing_hosptial/Internship/fonts/raleway'\n\\\\$urls = @{\n    'Raleway-ExtraLight.ttf' = 'https://github.com/impallari/Raleway/raw/master/fonts/ttf/Raleway-ExtraLight.ttf'\n    'Raleway-Medium.ttf'     = 'https://github.com/impallari/Raleway/raw/master/fonts/ttf/Raleway-Medium.ttf'\n}\nforeach \\(\\\\$name in \\\\$urls.Keys\\) {\n    \\\\$path = \\\\\"\\\\$dest/\\\\$name\\\\\"\n    try {\n        Invoke-WebRequest -Uri \\\\$urls[\\\\$name] -OutFile \\\\$path -TimeoutSec 30\n        \\\\$size = \\(Get-Item \\\\$path\\).Length\n        Write-Host \\\\\"OK: \\\\$name \\(\\\\$size bytes\\)\\\\\"\n    } catch {\n        Write-Host \\\\\"FAIL: \\\\$name - \\\\$_\\\\\"\n    }\n}\n\")",
+      "Bash(SRC=\"E:/LATEX_PDF/texlive/2025/texmf-dist/fonts/opentype/impallari/raleway\"\nDEST=\"D:/information/circuit_board/nanjing_hosptial/Internship/fonts/raleway\"\n\ncp \"$SRC/Raleway-ExtraLight.otf\" \"$DEST/Raleway-ExtraLight.ttf\"\ncp \"$SRC/Raleway-Medium.otf\" \"$DEST/Raleway-Medium.ttf\"\n\nls -la \"$DEST/\")"
     ]
   }
 }

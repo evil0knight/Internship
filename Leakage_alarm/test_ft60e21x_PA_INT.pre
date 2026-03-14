@@ -1040,28 +1040,18 @@ __nop();
 }
 }
 
-
-
-
-void delay_4us(void) {
-__nop(); __nop(); __nop(); __nop();
+# 129
+void delay_us(uint16_t us)
+{
+uint16_t j;
+us = us * 3;
+for(j=0;j<us;j++)
+{
+__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+}
 }
 
-
-
-void delay_12us(void) {
-unsigned char i;
-for(i=0; i<3; i++);
-__nop(); __nop();
-}
-
-
-void delay_124us(void) {
-unsigned char i;
-for(i=0; i<38; i++);
-}
-
-# 151
+# 145
 void DelayMs(unsigned char Time)
 {
 for(unsigned int a=0;a<Time;a++)
@@ -1073,7 +1063,7 @@ Delay10Us();
 }
 }
 
-# 167
+# 161
 void DelayS(unsigned char Time)
 {
 unsigned char a,b;
@@ -1086,7 +1076,7 @@ DelayMs(100);
 }
 }
 
-# 184
+# 178
 void Wakeup_INITIAL(void)
 {
 TRISA2 = 1;
@@ -1105,32 +1095,31 @@ IOCA5 = 1;
 PAIE = 1;
 }
 
-void coding_syn_1527(void) {
+void coding_syn_1527(void)
+{
 PA4=1;
-delay_4us();
+delay_us(4);
 PA4=0;
-delay_124us();
+delay_us(124);
 }
 
-
-void coding_L_1527(void) {
+void coding_L_1527(void)
+{
 PA4=1;
-delay_4us();
+delay_us(4);
 PA4=0;
-delay_12us();
+delay_us(12);
 }
 
-
-void coding_H_1527(void) {
+void coding_H_1527(void)
+{
 PA4=1;
-delay_12us();
+delay_us(12);
 PA4=0;
-delay_4us();
+delay_us(4);
 }
 
-
-
-
+# 224
 void coding_1527(uint32_t Addr_1527, uint8_t Data)
 {
 uint8_t i,k;
@@ -1200,7 +1189,7 @@ DelayMs(10);
 }
 }
 
-# 302
+# 298
 void main()
 {
 POWER_INITIAL();
@@ -1210,7 +1199,7 @@ T0IE = 1;
 while(1)
 {
 
-# 316
+# 312
 switch (g_state) {
 case STATE_PAIRING:
 
