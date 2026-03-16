@@ -1048,10 +1048,12 @@ us = us * 3;
 for(j=0;j<us;j++)
 {
 __nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
+__nop();__nop();__nop();__nop();__nop();__nop();__nop();__nop();
 }
 }
 
-# 145
+# 147
 void DelayMs(unsigned char Time)
 {
 for(unsigned int a=0;a<Time;a++)
@@ -1063,7 +1065,7 @@ Delay10Us();
 }
 }
 
-# 161
+# 163
 void DelayS(unsigned char Time)
 {
 unsigned char a,b;
@@ -1076,7 +1078,7 @@ DelayMs(100);
 }
 }
 
-# 178
+# 180
 void Wakeup_INITIAL(void)
 {
 TRISA2 = 1;
@@ -1119,7 +1121,38 @@ PA4=0;
 delay_us(4);
 }
 
-# 224
+
+void coding_rubbish_1527(void)
+{
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+PA4=1;
+delay_us(4);
+PA4=0;
+delay_us(4);
+}
+
+
+
+
 void coding_1527(uint32_t Addr_1527, uint8_t Data)
 {
 uint8_t i,k;
@@ -1128,6 +1161,8 @@ if((Addr_1527 > 0xfffff) || Data >15)
 return;
 
 GIE = 0;
+
+coding_rubbish_1527();
 
 coding_syn_1527();
 
@@ -1189,7 +1224,7 @@ DelayMs(10);
 }
 }
 
-# 298
+# 330
 void main()
 {
 POWER_INITIAL();
@@ -1199,7 +1234,7 @@ T0IE = 1;
 while(1)
 {
 
-# 312
+# 344
 switch (g_state) {
 case STATE_PAIRING:
 

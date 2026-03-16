@@ -157,7 +157,7 @@
 2. 在左侧树状图找到  **Electrical -> Clearance** ，双击它。
 3. 把右边的 **Minimum Clearance** 从默认的 **$10\text{mil}$** 改小（比如改成 **$6\text{mil}$** 或  **$0.2\text{mm}$** ）。
 4. 点击  **OK** 。
-5. **刷新显示** ：按下键盘  **T + M** ，绿叉就会消失。
+5. **刷新显示** ：按下键盘  **T + M** ，绿叉就会消失。(错误我怀疑AD13有问题，准备装17)
 
 ---
 
@@ -219,19 +219,89 @@ git remote -v
 
 ### 三、新建仓库时直接用 SSH（一劳永逸）
 
-以后在 GitHub 新建仓库后，复制「SSH 地址」而非 HTTPS 地址，本地克隆 / 关联时直接用：
+
+#### 第一步：初始化 Git 仓库（项目首次上传必做）
+
+在当前 Git Bash 终端执行，把本地文件夹变成 Git 可管理的仓库：
 
 bash
 
 运行
 
 ```
-# 克隆新建的 GitHub 仓库到本地（SSH 方式）
-git clone git@github.com:evil0knight/新仓库名.git
-
-# 进入克隆后的文件夹，直接开发、提交、推送即可，无需额外配置
-cd 新仓库名
+git init
 ```
+
+* 成功提示：`Initialized empty Git repository in D:/Intelligent_Agricultural_Equipment_Innovation_Competition/.git/`；
+* 若提示 `Reinitialized existing Git repository...`：说明之前初始化过，没关系，继续下一步。
+
+#### 第二步：关联 GitHub 新私有仓库（核心！替换成你的仓库 SSH 地址）
+
+1. 先去 GitHub 你的新私有仓库页面，点击 `Code` → 选 `SSH`，复制仓库地址（格式：`git@github.com:evil0knight/你的仓库名.git`）；
+2. 在终端执行（粘贴你复制的 SSH 地址）：
+
+bash
+
+运行
+
+```
+# 先删除可能存在的旧关联（避免报错）
+git remote rm origin
+
+# 关联你的新私有仓库（替换成自己的 SSH 地址）
+git remote add origin git@github.com:evil0knight/Intelligent_Agricultural_Equipment_Innovation_Competition.git
+```
+
+* 验证关联是否成功：执行 `git remote -v`，能看到仓库 SSH 地址就说明对了。
+
+#### 第三步：添加所有文件到 Git 暂存区
+
+把项目文件夹里的所有文件纳入 Git 管理：
+
+bash
+
+运行
+
+```
+git add .
+```
+
+* 无报错就是成功（如果有文件不想上传，可创建 `.gitignore` 文件排除）。
+
+#### 第四步：提交代码（必须写备注，描述本次提交内容）
+
+bash
+
+运行
+
+```
+git commit -m "首次上传农业设备竞赛项目代码"
+```
+
+* 成功提示：会显示 “多少文件被修改、多少行代码被添加”。
+
+#### 第五步：推送到 GitHub 私有仓库（最终上传）
+
+你的终端显示当前分支是 `master`，所以推送命令用 `master`：
+
+bash
+
+运行
+
+```
+git push -u origin master
+```
+
+* 首次推送加 `-u` 是绑定本地 `master` 分支和远程 `master` 分支，后续只需输 `git push` 即可。
+* 成功提示：会显示 “Counting objects...”“Writing objects...”，最后提示 `To github.com:...` 就说明上传成功了。
+
+---
+
+### 后续修改代码后，只需 3 步更新
+
+1. `git add .`（添加修改的文件）；
+2. `git commit -m "修改了XX功能/修复了XX问题"`（备注修改内容）；
+3. `git push`（直接推送，无需再输完整地址）。
 
 ### 四、验证 SSH 连接是否有效（出问题时排查）
 
@@ -255,8 +325,6 @@ ssh -T git@github.com
 3. **多账号区分** ：如果有多个 GitHub 账号，可配置 `~/.ssh/config` 文件区分密钥（新手暂时不用管）。
 
 ---
-
-
 
     一天完成了433+休眠唤醒+按钮唤醒之类的活，今天还学习了嵌入式的代码架构，AI在这方面不行：*在中断中，判断按钮，计时来决定是否进入某个状态机，然后主循环是SWITCHCASE结构，决定在某个状态机里做什么，或者做完进入下一个状态机，总之，代码架构一定要清晰并且自己喜欢，代码架构很重要*
 

@@ -25,27 +25,29 @@ STATE_SLEEP 2
 [v _Delay10Us Delay10Us `(v  1 e 1 0 ]
 "129
 [v _delay_us delay_us `(v  1 e 1 0 ]
-"145
+"147
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
-"178
+"180
 [v _Wakeup_INITIAL Wakeup_INITIAL `(v  1 e 1 0 ]
-"196
+"198
 [v _coding_syn_1527 coding_syn_1527 `(v  1 e 1 0 ]
-"204
+"206
 [v _coding_L_1527 coding_L_1527 `(v  1 e 1 0 ]
-"212
+"214
 [v _coding_H_1527 coding_H_1527 `(v  1 e 1 0 ]
-"224
+"223
+[v _coding_rubbish_1527 coding_rubbish_1527 `(v  1 e 1 0 ]
+"254
 [v _coding_1527 coding_1527 `(v  1 e 1 0 ]
-"258
+"290
 [v _Enter_Deep_Sleep Enter_Deep_Sleep `(v  1 e 1 0 ]
-"268
+"300
 [v _System_Reinit System_Reinit `(v  1 e 1 0 ]
-"276
+"308
 [v _LED_Flickering3 LED_Flickering3 `(v  1 e 1 0 ]
-"284
+"316
 [v _LED_Flickering1 LED_Flickering1 `(v  1 e 1 0 ]
-"298
+"330
 [v _main main `(v  1 e 1 0 ]
 "10 E:\FMDprogrammer\Compiler\data\include\FT60F21X.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -95,40 +97,45 @@ STATE_SLEEP 2
 [v _g_timer_5s g_timer_5s `VEui  1 e 2 0 ]
 "39
 [v _g_timer_2s g_timer_2s `VEui  1 e 2 0 ]
-"298
+"330
 [v _main main `(v  1 e 1 0 ]
 {
-"315
+"347
 [v main@i i `uc  1 a 1 13 ]
-"344
+"376
 } 0
-"224
+"254
 [v _coding_1527 coding_1527 `(v  1 e 1 0 ]
 {
-"227
+"257
 [v coding_1527@j j `ul  1 a 4 7 ]
-"226
+"256
 [v coding_1527@i i `uc  1 a 1 12 ]
 [v coding_1527@k k `uc  1 a 1 11 ]
-"224
+"254
 [v coding_1527@Addr_1527 Addr_1527 `ul  1 p 4 2 ]
 [v coding_1527@Data Data `uc  1 p 1 6 ]
-"255
+"287
 } 0
-"196
+"198
 [v _coding_syn_1527 coding_syn_1527 `(v  1 e 1 0 ]
 {
-"202
-} 0
 "204
+} 0
+"223
+[v _coding_rubbish_1527 coding_rubbish_1527 `(v  1 e 1 0 ]
+{
+"249
+} 0
+"206
 [v _coding_L_1527 coding_L_1527 `(v  1 e 1 0 ]
 {
-"210
-} 0
 "212
+} 0
+"214
 [v _coding_H_1527 coding_H_1527 `(v  1 e 1 0 ]
 {
-"218
+"220
 } 0
 "129
 [v _delay_us delay_us `(v  1 e 1 0 ]
@@ -137,7 +144,7 @@ STATE_SLEEP 2
 [v delay_us@j j `ui  1 a 2 0 ]
 "129
 [v delay_us@us us `ui  1 p 2 8 ]
-"137
+"139
 } 0
 "15 E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -154,43 +161,43 @@ STATE_SLEEP 2
 {
 "110
 } 0
-"268
+"300
 [v _System_Reinit System_Reinit `(v  1 e 1 0 ]
 {
-"275
+"307
 } 0
 "80
 [v _POWER_INITIAL POWER_INITIAL `(v  1 e 1 0 ]
 {
 "90
 } 0
-"276
+"308
 [v _LED_Flickering3 LED_Flickering3 `(v  1 e 1 0 ]
 {
-"278
+"310
 [v LED_Flickering3@i i `i  1 a 2 0 ]
-"283
+"315
 } 0
-"284
+"316
 [v _LED_Flickering1 LED_Flickering1 `(v  1 e 1 0 ]
 {
-"286
+"318
 [v LED_Flickering1@i i `i  1 a 2 0 ]
-"291
+"323
 } 0
-"145
+"147
 [v _DelayMs DelayMs `(v  1 e 1 0 ]
 {
 [v DelayMs@Time Time `uc  1 a 1 wreg ]
-"149
+"151
 [v DelayMs@b b `uc  1 a 1 8 ]
-"147
+"149
 [v DelayMs@a a `ui  1 a 2 6 ]
-"145
-[v DelayMs@Time Time `uc  1 a 1 wreg ]
 "147
+[v DelayMs@Time Time `uc  1 a 1 wreg ]
+"149
 [v DelayMs@Time Time `uc  1 a 1 5 ]
-"154
+"156
 } 0
 "117
 [v _Delay10Us Delay10Us `(v  1 e 1 0 ]
@@ -199,15 +206,15 @@ STATE_SLEEP 2
 [v Delay10Us@i i `uc  1 a 1 2 ]
 "123
 } 0
-"258
+"290
 [v _Enter_Deep_Sleep Enter_Deep_Sleep `(v  1 e 1 0 ]
 {
-"267
+"299
 } 0
-"178
+"180
 [v _Wakeup_INITIAL Wakeup_INITIAL `(v  1 e 1 0 ]
 {
-"194
+"196
 } 0
 "46
 [v _ISR ISR `II(v  1 e 1 0 ]

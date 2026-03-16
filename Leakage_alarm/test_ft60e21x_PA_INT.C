@@ -133,6 +133,8 @@ void delay_us(uint16_t us)
 	for(j=0;j<us;j++)
 	{
 		NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();
+		NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();
+		NOP();NOP();NOP();NOP();NOP();NOP();NOP();NOP();
 	}
 }
 
@@ -217,6 +219,34 @@ void coding_H_1527(void)
   delay_us(4);
 }
 
+//垃圾波，用来唤醒接收端，不然读不到同步码
+void coding_rubbish_1527(void)
+{
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+	DATAOUT_HIGH; 
+  	delay_us(4);  
+  	DATAOUT_LOW;
+	delay_us(4);
+}
 
 //完整的1527编码
 //输入参数：uint32_t addr   20位地址码
@@ -229,6 +259,8 @@ void coding_1527(uint32_t Addr_1527, uint8_t Data)
     return;
     
 	GIE = 0;
+	//垃圾波唤醒
+	coding_rubbish_1527();
   //同步码
   coding_syn_1527(); 
   //地址码
