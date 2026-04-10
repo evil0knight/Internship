@@ -1121,33 +1121,15 @@ PA4=0;
 delay_us(4);
 }
 
-
-void coding_rubbish_1527(void)
+void coding_preamble_1527(void)
 {
+uint8_t i;
+for(i = 0; i < 10; i++) {
 PA4=1;
 delay_us(4);
 PA4=0;
-delay_us(4);
-PA4=1;
-delay_us(4);
-PA4=0;
-delay_us(4);
-PA4=1;
-delay_us(4);
-PA4=0;
-delay_us(4);
-PA4=1;
-delay_us(4);
-PA4=0;
-delay_us(4);
-PA4=1;
-delay_us(4);
-PA4=0;
-delay_us(4);
-PA4=1;
-delay_us(4);
-PA4=0;
-delay_us(4);
+delay_us(20);
+}
 }
 
 
@@ -1162,7 +1144,7 @@ return;
 
 GIE = 0;
 
-coding_rubbish_1527();
+
 
 coding_syn_1527();
 
@@ -1185,6 +1167,9 @@ coding_H_1527();
 else
 coding_L_1527();
 }
+PA4=1;
+delay_us(4);
+PA4=0;
 GIE = 1;
 }
 
@@ -1224,7 +1209,7 @@ DelayMs(10);
 }
 }
 
-# 330
+# 315
 void main()
 {
 POWER_INITIAL();
@@ -1234,13 +1219,14 @@ T0IE = 1;
 while(1)
 {
 
-# 344
+# 329
 switch (g_state) {
 case STATE_PAIRING:
 
 for(uint8_t i=0; i<3; i++)
 {
 
+coding_preamble_1527();
 coding_1527(0x12345, 0x01);
 
 
@@ -1251,6 +1237,8 @@ g_state = STATE_WAKEUP;
 break;
 case STATE_SLEEP:
 
+GIE = 0;
+coding_preamble_1527();
 coding_1527(0x12345, 0x02);
 PA3=0;
 

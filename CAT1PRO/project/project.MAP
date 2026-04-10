@@ -1,0 +1,894 @@
+
+Á¬½ÓÆ÷¡¡°æ±¾8.8.0.230825
+Input Object File: D:\zpw\±Ï\2362A\project\PROJECT.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\STARTUP1_L.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\KEY.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\SYSTEM_CLOCK.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\TIMER0.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\UART.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\DATA.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\DELAY.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\LCD.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\EC11.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\EEPROM.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\UART1_WIFI.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\MCU_API.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\PROTOCOL.OBJ
+Input Object File: D:\zpw\±Ï\2362A\project\SYSTEM.OBJ
+
+Input Library File: F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB
+Input Library File: F:\HT-IDE3000V8.x\LIB\v3_lmrmc.lib
+
+
+     Bank    Start     End      Length     Class    AvgIns    Name
+     00h     0000h     0001h    0002h      CODE               @code (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     0002h     0003h    0002h      CODE               @crom (D:\zpw\±Ï\2362A\project\PROTOCOL.OBJ)
+     00h     0004h     000fh    000ch      CODE               _UART0_433MHz_SendByte (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0014h     0017h    0004h      CODE               @Interrupt_TIM0_code (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0018h     003ah    0023h      CODE               @start (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     003ch     003fh    0004h      CODE               @Interrupt_UART_code (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0040h     006ah    002bh      CODE               _Interrupt_TIM0 (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0075h     00aeh    003ah      CODE               _Interrupt_UART (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     00b3h     00cbh    0019h      CODE               @crom (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     00h     00cch     00dbh    0010h      CODE               _CROM2PROM (CROM2PROM)
+     00h     00dch     00ebh    0010h      CODE               _UART0_433MHz_SendString (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00ech     01ebh    0100h      CODE               _UART0_Transmit_Data (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     01ech     0228h    003dh      CODE               _UART0_433MHz_Receive_Process (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0229h     024fh    0027h      CODE               _LCD_Show_Power (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0250h     0267h    0018h      CODE               _LCD_Power_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0268h     0279h    0012h      CODE               _UART0_433MHz_ATW (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     027ah     0297h    001eh      CODE               _AT_PWR (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0298h     02b9h    0022h      CODE               _UART0_433MHz_AT_PB (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     02bah     02d5h    001ch      CODE               _UART0_433MHz_AT_BW (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     02d6h     0317h    0042h      CODE               _UART0_433MHz_AT_SF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0318h     0360h    0049h      CODE               _UART0_433MHz_AT_Mode (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0361h     038ch    002ch      CODE               _UART0_433MHz_AT_FEQ (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     038dh     03b0h    0024h      CODE               _UART0_433MHz_AT_Baudrate (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     03b1h     04c4h    0114h      CODE               _UART0_433MHz_AT_Adr (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     04c5h     0544h    0080h      CODE               _UART0_433MHz_Pairing_Code (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0545h     0550h    000ch      CODE               _LCD_Show_WIFI (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0551h     057ah    002ah      CODE               _LCD_WIFI_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     057bh     0586h    000ch      CODE               _LCD_Show_Bind (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0587h     05b0h    002ah      CODE               _LCD_Bind_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     05b1h     05b9h    0009h      CODE               _Send_Time (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     05bah     05cbh    0012h      CODE               _Handle_MIN (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     05cch     05ddh    0012h      CODE               _Handle_ADD (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     05deh     05fah    001dh      CODE               _Key_Handle (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     05fbh     0625h    002bh      CODE               _Key_Read (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     0626h     073dh    0118h      CODE               _Key_Check (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     073eh     0746h    0009h      CODE               _Send_Motor (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0747h     0761h    001bh      CODE               _Handle_EC11_MIN (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0762h     0773h    0012h      CODE               _Handle_EC11_ADD (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0774h     07d4h    0061h      CODE               _EC11_Handle (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     07d5h     07e3h    000fh      CODE               _LCD_Minute_Low_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     07e4h     0862h    007fh      CODE               _LCD_Minute_Low_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0863h     0871h    000fh      CODE               _LCD_Minute_High_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0872h     08f0h    007fh      CODE               _LCD_Minute_High_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     08f1h     08ffh    000fh      CODE               _LCD_Hour_Low_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0900h     097eh    007fh      CODE               _LCD_Hour_Low_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     097fh     098dh    000fh      CODE               _LCD_Hour_High_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     098eh     0a0ch    007fh      CODE               _LCD_Hour_High_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0a0dh     0a25h    0019h      CODE               _builtin_holtek_divmodqi4_isr00 (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0a26h     0a7ch    0057h      CODE               _LCD_Show_Time (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0a7dh     0ab3h    0037h      CODE               _builtin_holtek_divmodhi4_isr00 (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0ab4h     0b84h    00d1h      CODE               _LCD_Show_Angle (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0b85h     0d67h    01e3h      CODE               _LCD_Init (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0d68h     0d94h    002dh      CODE               _EC11_Init (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     0d95h     0da1h    000dh      CODE               _Key_Init (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     0da2h     0db9h    0018h      CODE               _Timer0_Init (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0dbah     0de7h    002eh      CODE               _UART1_Init (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0de8h     0e1ah    0033h      CODE               _UART0_Init (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0e1bh     0e2bh    0011h      CODE               _EEPROM_ReadByte (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0e2ch     0e47h    001ch      CODE               _EEPROM_ReadBytes (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0e48h     0e56h    000fh      CODE               _EEPROM_Read_Master_Address (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0e57h     0e64h    000eh      CODE               _Data_Init (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0e65h     0e78h    0014h      CODE               _EEPROM_WriteByte (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0e79h     0e99h    0021h      CODE               _EEPROM_WriteBytes (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0e9ah     0ea8h    000fh      CODE               _System_Clock_Init (D:\zpw\±Ï\2362A\project\SYSTEM_CLOCK.OBJ)
+     00h     0ea9h     0eddh    0035h      CODE               _main (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     0edeh     0eedh    0010h      CODE               _UART0_Clear_Receive_BUF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0eeeh     0f23h    0036h      CODE               _UART0_Receive_Data (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0f24h     0f6ch    0049h      CODE               _uart_receive_input (D:\zpw\±Ï\2362A\project\MCU_API.OBJ)
+     00h     0f6dh     0f79h    000dh      CODE               _UART0_433MHz_Pairing_Code_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0f7ah     0f86h    000dh      CODE               _LCD_Power_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0f87h     0f93h    000dh      CODE               _LCD_WIFI_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0f94h     0fa0h    000dh      CODE               _LCD_Bind_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0fa1h     0fadh    000dh      CODE               _Key_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0faeh     0feah    003dh      CODE               @ROMDATA_BASE (D:\zpw\±Ï\2362A\project\STARTUP1_L.OBJ)
+     00h     0080h     0080h    0001h      DATA     301       @data_ra (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0081h     0081h    0001h      DATA     262       @data_rb (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0082h     0082h    0001h      DATA     183       @data_rc (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0083h     0083h    0001h      DATA     99        @data_rd (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0084h     0084h    0001h      DATA     79        @data_re (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0085h     0085h    0001h      DATA     65        @data_rf (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0086h     0086h    0001h      DATA     53        @data_rg (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0087h     0087h    0001h      DATA     12        @data_rh (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0088h     0088h    0001h      DATA     15        @data_ra14 (isr:ra~rh)
+     00h     0089h     0089h    0001h      DATA     2         @data_r114 (isr:ra~rh)
+     00h     008ah     008ah    0001h      DATA     2         @data_r214 (isr:ra~rh)
+     00h     008bh     008bh    0001h      DATA     2         @data_r13c (isr:ra~rh)
+     00h     008ch     008ch    0001h      DATA     2         @data_r23c (isr:ra~rh)
+     00h     008dh     008dh    0001h      DATA     16        @data_ra3c (isr:ra~rh)
+     00h     008eh     008eh    0001h      DATA     11        @data_rb3c (isr:ra~rh)
+     00h     008fh     008fh    0001h      DATA     5         @data_rd3c (isr:ra~rh)
+     00h     0090h     0090h    0001h      DATA     5         @data_re3c (isr:ra~rh)
+     00h     0091h     0091h    0001h      DATA     8         @data_rc3c (isr:ra~rh)
+     00h     0092h     0092h    0001h      DATA     2         @data_rf3c (isr:ra~rh)
+     00h     0093h     0093h    0001h      DATA     2         @data_rg3c (isr:ra~rh)
+     00h     00b8h     00b8h    0001h      DATA     8         @HCCINIT_UART0_433MHz_CNT (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00b9h     00c1h    0009h      DATA     6.1111    @HCCINIT_data (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     00c2h     00c2h    0001h      DATA     6         @HCCINIT_UART0_Receive_BUF_Length (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00c3h     00c4h    0002h      DATA     6         @HCCINIT___rx_in_1175 (D:\zpw\±Ï\2362A\project\MCU_API.OBJ)
+     00h     00c5h     00c6h    0002h      DATA     4         @HCCINIT_Master_Send_Interval_CNT (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00c7h     00c7h    0001h      DATA     4         @HCCINIT_MASTER_SEND_FLAG (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00c8h     00c8h    0001h      DATA     4         @HCCINIT_MASTER_SEND_CNT (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00c9h     00c9h    0001h      DATA     4         @HCCINIT_UART0_433MHz_Pairing_Code_Flag (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00cah     00cah    0001h      DATA     4         @HCCINIT_UART0_Receive_Start_Flag (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00cbh     00cbh    0001h      DATA     4         @HCCINIT_write (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00cch     00cch    0001h      DATA     3         @HCCINIT___Key_Count_3466 (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00cdh     00cdh    0001h      DATA     3         @HCCINIT_UART0_433MHz_Pairing_Code_Count (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00ceh     00ceh    0001h      DATA     3         @HCCINIT_UART0_433MHz_Pairing_Code_Running_Flag (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00cfh     00cfh    0001h      DATA     3         @HCCINIT_LCD_Power_Check_Count (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d0h     00d0h    0001h      DATA     3         @HCCINIT_LCD_Power_Check_Running_Flag (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d1h     00d1h    0001h      DATA     3         @HCCINIT_LCD_WIFI_Check_Count (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d2h     00d2h    0001h      DATA     3         @HCCINIT_LCD_WIFI_Check_Running_Flag (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d3h     00d3h    0001h      DATA     3         @HCCINIT_LCD_Bind_Check_Count (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d4h     00d4h    0001h      DATA     3         @HCCINIT_LCD_Bind_Check_Running_Flag (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d5h     00d5h    0001h      DATA     3         @HCCINIT_Key_Check_Running_Flag (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     00d6h     00d6h    0001h      DATA     3         @HCCINIT_UART0_Receive_Finish_Flag (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00d7h     00d7h    0001h      DATA     3         @HCCINIT___WIFI_Count_3588 (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00d8h     00d8h    0001h      DATA     3         @HCCINIT___Bind_Count_3577 (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00d9h     00d9h    0001h      DATA     3         @HCCINIT_flash_status (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00dah     00dbh    0002h      DATA     3         @HCCINIT_current_value (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00dch     00dch    0001h      DATA     3         @HCCINIT_last_result (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00ddh     00e1h    0005h      DATA     2         @HCCINIT_Key_Report_CNT (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     00e2h     00e2h    0001h      DATA     2         @HCCINIT___Current_WIFI_State_3589 (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00e3h     00e3h    0001h      DATA     2         @HCCINIT___Current_Bind_State_3578 (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00e4h     00e4h    0001h      DATA     2         @HCCINIT_current_result (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00e5h     00e5h    0001h      DATA     2         @HCCINIT_UART1_WIFI_Config_Flag (D:\zpw\±Ï\2362A\project\UART1_WIFI.OBJ)
+     00h     00e6h     00e6h    0001h      DATA     2         @HCCINIT___mcu_reset_state_1097 (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     00h     00e7h     00f0h    000ah      DATA     1.9       @HCCINIT_UART0_Transmit_BUF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00f1h     00f1h    0001h      DATA     1         @HCCINIT_read (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00f2h     00f5h    0004h      DATA     1         @HCCINIT_Reverse (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00f6h     00f9h    0004h      DATA     1         @HCCINIT_Forward (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00fah     00fbh    0002h      DATA     0         @HCCINIT_a (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     00fch     00ffh    0004h      DATA     0         @HCCINIT_record (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     01h     0080h     0089h    000ah      DATA     0.8       @HCCINIT_UART0_Receive_BUF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     01h     008ah     008eh    0005h      DATA     0         @HCCINIT_Long_Press_SINGLE_REPORT_CNT (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     01h     008fh     0093h    0005h      DATA     0         @HCCINIT_Debounce (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     01h     0094h     0098h    0005h      DATA     0         @HCCINIT_LONG_PRESS_INTERVAL_REPORT_CNT (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     01h     0099h     00a7h    000fh      DATA     0         @HCCINIT_Key (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     01h     00a8h     00a8h    0001h      DATA     7         @HCCINIT0_stop_update_flag (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00a9h     00aah    0002h      DATA     7         @HCCINIT0_rx_buf_out (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00abh     00ach    0002h      DATA     7         @HCCINIT0_rx_buf_in (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00adh     00adh    0001h      DATA     3         @HCCINIT0_wifi_work_state (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00aeh     00aeh    0001h      DATA     3         @HCCINIT0_set_wifimode_flag (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00afh     00afh    0001h      DATA     3         @HCCINIT0_reset_wifi_flag (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00b0h     00e6h    0037h      DATA     0.1090    @HCCINIT0_wifi_uart_tx_buf (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00e7h     00fdh    0017h      DATA     0         @HCCINIT0_wifi_uart_rx_buf (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+     01h     00feh     00feh    0001h      DATA     2         @data_r314 (isr:ra~rh)
+     01h     00ffh     00ffh    0001h      DATA     2         @data_r414 (isr:ra~rh)
+     02h     0080h     00f7h    0078h      DATA     1         @HCCINIT0_angles (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     02h     00f8h     00f8h    0001h      DATA     2         @data_r514 (isr:ra~rh)
+     02h     00f9h     00f9h    0001h      DATA     2         @data_r614 (isr:ra~rh)
+     02h     00fah     00fah    0001h      DATA     2         @data_r714 (isr:ra~rh)
+     02h     00fbh     00fbh    0001h      DATA     2         @data_r33c (isr:ra~rh)
+     02h     00fch     00fch    0001h      DATA     2         @data_r43c (isr:ra~rh)
+     02h     00fdh     00fdh    0001h      DATA     2         @data_r53c (isr:ra~rh)
+     02h     00feh     00feh    0001h      DATA     2         @data_r63c (isr:ra~rh)
+     02h     00ffh     00ffh    0001h      DATA     2         @data_r73c (isr:ra~rh)
+     03h     0080h     009eh    001fh      DATA     0         @HCCINIT0_wifi_data_process_buf (D:\zpw\±Ï\2362A\project\SYSTEM.OBJ)
+
+     Local Sections
+
+     Bank    Start     End      Length     Class    AvgIns    Name
+     00h     00b8h     00b8h    0000h      LOCAL    0         @dummy (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     00b8h     00b8h    0000h      LOCAL    0         _main (D:\zpw\±Ï\2362A\project\PROJECT.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _System_Clock_Init (D:\zpw\±Ï\2362A\project\SYSTEM_CLOCK.OBJ)
+     00h     0099h     009fh    0007h      LOCAL    2.7143    _EEPROM_WriteBytes (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Crom2Prom (CROM2PROM)
+     00h     0097h     0098h    0002h      LOCAL    1.5       _EEPROM_WriteByte (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     00a1h     00a1h    0000h      LOCAL    0         _Data_Init (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     009fh     00a0h    0002h      LOCAL    2         _EEPROM_Read_Master_Address (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0098h     009eh    0007h      LOCAL    2.5714    _EEPROM_ReadBytes (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _EEPROM_ReadByte (D:\zpw\±Ï\2362A\project\EEPROM.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _UART0_Init (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _UART1_Init (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Timer0_Init (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Key_Init (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _EC11_Init (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Init (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     009fh     00a5h    0007h      LOCAL    4.4286    _LCD_Show_Angle (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     009eh    0008h      LOCAL    6.625     _builtin_holtek_divmodhi4_isr00 (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     00a1h    0006h      LOCAL    2         _LCD_Show_Time (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     009bh    0005h      LOCAL    7         _builtin_holtek_divmodqi4_isr00 (F:\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Hour_High_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    7         _LCD_Hour_High_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    7         _LCD_Hour_Low_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Hour_Low_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    7         _LCD_Minute_High_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Minute_High_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    7         _LCD_Minute_Low_Show (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Minute_Low_Clear (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00a2h     00a2h    0001h      LOCAL    6         _EC11_Handle (D:\zpw\±Ï\2362A\project\EC11.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Handle_EC11_ADD (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Send_Time (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     009ch     009fh    0004h      LOCAL    5.75      _UART0_Transmit_Data (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0098h     009bh    0004h      LOCAL    12        _UART0_433MHz_SendString (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _UART0_433MHz_SendByte (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     00a0h     00a1h    0002h      LOCAL    3         _Handle_EC11_MIN (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Send_Motor (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0098h     009eh    0007h      LOCAL    10        _Key_Check (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _Key_Read (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Key_Handle (D:\zpw\±Ï\2362A\project\KEY.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Handle_ADD (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     00a0h     00a0h    0000h      LOCAL    0         _Handle_MIN (D:\zpw\±Ï\2362A\project\DATA.OBJ)
+     00h     0098h     0098h    0001h      LOCAL    7         _LCD_Bind_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _LCD_Show_Bind (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0098h     0098h    0001h      LOCAL    7         _LCD_WIFI_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _LCD_Show_WIFI (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00b8h     00b8h    0000h      LOCAL    0         _UART0_433MHz_Pairing_Code (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00b7h    001ch      LOCAL    1.7857    _UART0_433MHz_AT_Adr (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a9h    000eh      LOCAL    0.9285    _UART0_433MHz_AT_Baudrate (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00adh    0012h      LOCAL    1         _UART0_433MHz_AT_FEQ (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00b2h    0017h      LOCAL    1.0435    _UART0_433MHz_AT_Mode (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a6h    000bh      LOCAL    2.0909    _UART0_433MHz_AT_SF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a5h    000ah      LOCAL    0.9       _UART0_433MHz_AT_BW (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a8h    000dh      LOCAL    0.9230    _UART0_433MHz_AT_PB (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a6h    000bh      LOCAL    1         _AT_PWR (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     009ch     00a0h    0005h      LOCAL    1         _UART0_433MHz_ATW (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0098h     0098h    0000h      LOCAL    0         _LCD_Power_Check (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     0097h     0097h    0001h      LOCAL    1         _LCD_Show_Power (D:\zpw\±Ï\2362A\project\LCD.OBJ)
+     00h     00a0h     00a0h    0001h      LOCAL    4         _UART0_433MHz_Receive_Process (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         @dummy20 (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Interrupt_TIM0 (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Key_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Bind_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_WIFI_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _LCD_Power_Check_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _UART0_433MHz_Pairing_Code_Timer (D:\zpw\±Ï\2362A\project\TIMER0.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         @dummy60 (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0097h     0097h    0000h      LOCAL    0         _Interrupt_UART (D:\zpw\±Ï\2362A\project\UART.OBJ)
+     00h     0094h     0096h    0003h      LOCAL    0.6666    _uart_receive_input (D:\zpw\±Ï\2362A\project\MCU_API.OBJ)
+     00h     0094h     0094h    0001h      LOCAL    3         _UART0_Receive_Data (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+     00h     0094h     0094h    0000h      LOCAL    0         _UART0_Clear_Receive_BUF (D:\zpw\±Ï\2362A\project\UART0_433MHZ.OBJ)
+
+     Public Symbols Information
+     Address            Public by Name
+     027ah              _AT_PWR
+     00cdh              _Crom2Prom
+     00cch              _Crom2PromNext
+     0e57h              _Data_Init
+     018fh              _Debounce
+     0774h              _EC11_Handle
+     0d68h              _EC11_Init
+     0e1bh              _EEPROM_ReadByte
+     0e2ch              _EEPROM_ReadBytes
+     0e48h              _EEPROM_Read_Master_Address
+     0e65h              _EEPROM_WriteByte
+     0e79h              _EEPROM_WriteBytes
+     00f6h              _Forward
+     05cch              _Handle_ADD
+     0762h              _Handle_EC11_ADD
+     0747h              _Handle_EC11_MIN
+     05bah              _Handle_MIN
+     0040h              _Interrupt_TIM0
+     0075h              _Interrupt_UART
+     0199h              _Key
+     0626h              _Key_Check
+     00d5h              _Key_Check_Running_Flag
+     05deh              _Key_Handle
+     0d95h              _Key_Init
+     05fbh              _Key_Read
+     00ddh              _Key_Report_CNT
+     0fa1h              _Key_Timer
+     0587h              _LCD_Bind_Check
+     00d3h              _LCD_Bind_Check_Count
+     00d4h              _LCD_Bind_Check_Running_Flag
+     0f94h              _LCD_Bind_Check_Timer
+     097fh              _LCD_Hour_High_Clear
+     098eh              _LCD_Hour_High_Show
+     08f1h              _LCD_Hour_Low_Clear
+     0900h              _LCD_Hour_Low_Show
+     0b85h              _LCD_Init
+     0863h              _LCD_Minute_High_Clear
+     0872h              _LCD_Minute_High_Show
+     07d5h              _LCD_Minute_Low_Clear
+     07e4h              _LCD_Minute_Low_Show
+     0250h              _LCD_Power_Check
+     00cfh              _LCD_Power_Check_Count
+     00d0h              _LCD_Power_Check_Running_Flag
+     0f7ah              _LCD_Power_Check_Timer
+     0ab4h              _LCD_Show_Angle
+     057bh              _LCD_Show_Bind
+     0229h              _LCD_Show_Power
+     0a26h              _LCD_Show_Time
+     0545h              _LCD_Show_WIFI
+     0551h              _LCD_WIFI_Check
+     00d1h              _LCD_WIFI_Check_Count
+     00d2h              _LCD_WIFI_Check_Running_Flag
+     0f87h              _LCD_WIFI_Check_Timer
+     0194h              _LONG_PRESS_INTERVAL_REPORT_CNT
+     018ah              _Long_Press_SINGLE_REPORT_CNT
+     00c8h              _MASTER_SEND_CNT
+     00c7h              _MASTER_SEND_FLAG
+     00c5h              _Master_Send_Interval_CNT
+     00f2h              _Reverse
+     073eh              _Send_Motor
+     05b1h              _Send_Time
+     0e9ah              _System_Clock_Init
+     0da2h              _Timer0_Init
+     0268h              _UART0_433MHz_ATW
+     03b1h              _UART0_433MHz_AT_Adr
+     00b3h              _UART0_433MHz_AT_Adr_2
+     02bah              _UART0_433MHz_AT_BW
+     038dh              _UART0_433MHz_AT_Baudrate
+     0361h              _UART0_433MHz_AT_FEQ
+     0318h              _UART0_433MHz_AT_Mode
+     0298h              _UART0_433MHz_AT_PB
+     02d6h              _UART0_433MHz_AT_SF
+     00b8h              _UART0_433MHz_CNT
+     04c5h              _UART0_433MHz_Pairing_Code
+     00cdh              _UART0_433MHz_Pairing_Code_Count
+     00c9h              _UART0_433MHz_Pairing_Code_Flag
+     00ceh              _UART0_433MHz_Pairing_Code_Running_Flag
+     0f6dh              _UART0_433MHz_Pairing_Code_Timer
+     01ech              _UART0_433MHz_Receive_Process
+     0004h              _UART0_433MHz_SendByte
+     00dch              _UART0_433MHz_SendString
+     0edeh              _UART0_Clear_Receive_BUF
+     0de8h              _UART0_Init
+     0180h              _UART0_Receive_BUF
+     00c2h              _UART0_Receive_BUF_Length
+     0eeeh              _UART0_Receive_Data
+     00d6h              _UART0_Receive_Finish_Flag
+     00cah              _UART0_Receive_Start_Flag
+     00e7h              _UART0_Transmit_BUF
+     00ech              _UART0_Transmit_Data
+     0dbah              _UART1_Init
+     00e5h              _UART1_WIFI_Config_Flag
+     00fah              _a
+     0280h              _angles
+     0a7dh              _builtin_holtek_divmodhi4_isr00
+     0a86h              _builtin_holtek_udivmodhi4_isr00
+     0a0dh              _builtin_holtek_udivmodqi4_isr00
+     00e4h              _current_result
+     00b9h              _data
+     0002h              _download_cmd
+     00dch              _last_result
+     0ea9h              _main
+     00f1h              _read
+     00fch              _record
+     01afh              _reset_wifi_flag
+     01abh              _rx_buf_in
+     01a9h              _rx_buf_out
+     01aeh              _set_wifimode_flag
+     01a8h              _stop_update_flag
+     0f24h              _uart_receive_input
+     0380h              _wifi_data_process_buf
+     01e7h              _wifi_uart_rx_buf
+     01b0h              _wifi_uart_tx_buf
+     01adh              _wifi_work_state
+     00cbh              _write
+     0089h              r114
+     008bh              r13c
+     008ah              r214
+     008ch              r23c
+     01feh              r314
+     02fbh              r33c
+     01ffh              r414
+     02fch              r43c
+     02f8h              r514
+     02fdh              r53c
+     02f9h              r614
+     02feh              r63c
+     02fah              r714
+     02ffh              r73c
+     0080h              ra
+     0088h              ra14
+     008dh              ra3c
+     0081h              rb
+     008eh              rb3c
+     0082h              rc
+     0091h              rc3c
+     0083h              rd
+     008fh              rd3c
+     0084h              re
+     0090h              re3c
+     0085h              rf
+     0092h              rf3c
+     0086h              rg
+     0093h              rg3c
+     0087h              rh
+     0faeh              startup_value_1
+
+     Address            Public by Value
+     0002h              _download_cmd
+     0004h              _UART0_433MHz_SendByte
+     0040h              _Interrupt_TIM0
+     0075h              _Interrupt_UART
+     0080h              ra
+     0081h              rb
+     0082h              rc
+     0083h              rd
+     0084h              re
+     0085h              rf
+     0086h              rg
+     0087h              rh
+     0088h              ra14
+     0089h              r114
+     008ah              r214
+     008bh              r13c
+     008ch              r23c
+     008dh              ra3c
+     008eh              rb3c
+     008fh              rd3c
+     0090h              re3c
+     0091h              rc3c
+     0092h              rf3c
+     0093h              rg3c
+     00b3h              _UART0_433MHz_AT_Adr_2
+     00b8h              _UART0_433MHz_CNT
+     00b9h              _data
+     00c2h              _UART0_Receive_BUF_Length
+     00c5h              _Master_Send_Interval_CNT
+     00c7h              _MASTER_SEND_FLAG
+     00c8h              _MASTER_SEND_CNT
+     00c9h              _UART0_433MHz_Pairing_Code_Flag
+     00cah              _UART0_Receive_Start_Flag
+     00cbh              _write
+     00cch              _Crom2PromNext
+     00cdh              _UART0_433MHz_Pairing_Code_Count
+     00cdh              _Crom2Prom
+     00ceh              _UART0_433MHz_Pairing_Code_Running_Flag
+     00cfh              _LCD_Power_Check_Count
+     00d0h              _LCD_Power_Check_Running_Flag
+     00d1h              _LCD_WIFI_Check_Count
+     00d2h              _LCD_WIFI_Check_Running_Flag
+     00d3h              _LCD_Bind_Check_Count
+     00d4h              _LCD_Bind_Check_Running_Flag
+     00d5h              _Key_Check_Running_Flag
+     00d6h              _UART0_Receive_Finish_Flag
+     00dch              _last_result
+     00dch              _UART0_433MHz_SendString
+     00ddh              _Key_Report_CNT
+     00e4h              _current_result
+     00e5h              _UART1_WIFI_Config_Flag
+     00e7h              _UART0_Transmit_BUF
+     00ech              _UART0_Transmit_Data
+     00f1h              _read
+     00f2h              _Reverse
+     00f6h              _Forward
+     00fah              _a
+     00fch              _record
+     0180h              _UART0_Receive_BUF
+     018ah              _Long_Press_SINGLE_REPORT_CNT
+     018fh              _Debounce
+     0194h              _LONG_PRESS_INTERVAL_REPORT_CNT
+     0199h              _Key
+     01a8h              _stop_update_flag
+     01a9h              _rx_buf_out
+     01abh              _rx_buf_in
+     01adh              _wifi_work_state
+     01aeh              _set_wifimode_flag
+     01afh              _reset_wifi_flag
+     01b0h              _wifi_uart_tx_buf
+     01e7h              _wifi_uart_rx_buf
+     01ech              _UART0_433MHz_Receive_Process
+     01feh              r314
+     01ffh              r414
+     0229h              _LCD_Show_Power
+     0250h              _LCD_Power_Check
+     0268h              _UART0_433MHz_ATW
+     027ah              _AT_PWR
+     0280h              _angles
+     0298h              _UART0_433MHz_AT_PB
+     02bah              _UART0_433MHz_AT_BW
+     02d6h              _UART0_433MHz_AT_SF
+     02f8h              r514
+     02f9h              r614
+     02fah              r714
+     02fbh              r33c
+     02fch              r43c
+     02fdh              r53c
+     02feh              r63c
+     02ffh              r73c
+     0318h              _UART0_433MHz_AT_Mode
+     0361h              _UART0_433MHz_AT_FEQ
+     0380h              _wifi_data_process_buf
+     038dh              _UART0_433MHz_AT_Baudrate
+     03b1h              _UART0_433MHz_AT_Adr
+     04c5h              _UART0_433MHz_Pairing_Code
+     0545h              _LCD_Show_WIFI
+     0551h              _LCD_WIFI_Check
+     057bh              _LCD_Show_Bind
+     0587h              _LCD_Bind_Check
+     05b1h              _Send_Time
+     05bah              _Handle_MIN
+     05cch              _Handle_ADD
+     05deh              _Key_Handle
+     05fbh              _Key_Read
+     0626h              _Key_Check
+     073eh              _Send_Motor
+     0747h              _Handle_EC11_MIN
+     0762h              _Handle_EC11_ADD
+     0774h              _EC11_Handle
+     07d5h              _LCD_Minute_Low_Clear
+     07e4h              _LCD_Minute_Low_Show
+     0863h              _LCD_Minute_High_Clear
+     0872h              _LCD_Minute_High_Show
+     08f1h              _LCD_Hour_Low_Clear
+     0900h              _LCD_Hour_Low_Show
+     097fh              _LCD_Hour_High_Clear
+     098eh              _LCD_Hour_High_Show
+     0a0dh              _builtin_holtek_udivmodqi4_isr00
+     0a26h              _LCD_Show_Time
+     0a7dh              _builtin_holtek_divmodhi4_isr00
+     0a86h              _builtin_holtek_udivmodhi4_isr00
+     0ab4h              _LCD_Show_Angle
+     0b85h              _LCD_Init
+     0d68h              _EC11_Init
+     0d95h              _Key_Init
+     0da2h              _Timer0_Init
+     0dbah              _UART1_Init
+     0de8h              _UART0_Init
+     0e1bh              _EEPROM_ReadByte
+     0e2ch              _EEPROM_ReadBytes
+     0e48h              _EEPROM_Read_Master_Address
+     0e57h              _Data_Init
+     0e65h              _EEPROM_WriteByte
+     0e79h              _EEPROM_WriteBytes
+     0e9ah              _System_Clock_Init
+     0ea9h              _main
+     0edeh              _UART0_Clear_Receive_BUF
+     0eeeh              _UART0_Receive_Data
+     0f24h              _uart_receive_input
+     0f6dh              _UART0_433MHz_Pairing_Code_Timer
+     0f7ah              _LCD_Power_Check_Timer
+     0f87h              _LCD_WIFI_Check_Timer
+     0f94h              _LCD_Bind_Check_Timer
+     0fa1h              _Key_Timer
+     0faeh              startup_value_1
+
+
+ROM Usage Statistics
+    Bank      Size      Used     Percentage
+     00h       2000h     0fd8h    49%
+     01h       2000h     0000h    0%
+     Total     4000h     0fd8h    24%
+
+RAM Usage Statistics
+    Bank      Size      Used     Percentage
+     00h       0080h     0080h    100%
+     01h       0080h     0080h    100%
+     02h       0080h     0080h    100%
+     03h       0080h     001fh    24%
+     04h       0080h     0000h    0%
+     05h       0080h     0000h    0%
+     06h       0080h     0000h    0%
+     07h       0080h     0000h    0%
+     08h       0080h     0000h    0%
+     09h       0080h     0000h    0%
+     0ah       0080h     0000h    0%
+     0bh       0080h     0000h    0%
+     0ch       0080h     0000h    0%
+     0dh       0080h     0000h    0%
+     0eh       0080h     0000h    0%
+     0fh       0080h     0000h    0%
+     Total     0800h     019fh    20%
+
+Use Stack Count
+_main: 6
+_Interrupt_TIM0: 1
+_Interrupt_UART: 2
+_UART0_433MHz_AT_WT: 2
+_UART0_433MHz_ATL: 2
+_UART0_433MHz_Init: 3
+_LCD_Clear_Time: 1
+_LCD_Time_Flash: 1
+_my_strcpy: 1
+_my_strcmp: 1
+_mcu_dp_raw_update: 3
+_mcu_dp_string_update: 3
+_mcu_dp_enum_update: 3
+_mcu_dp_fault_update: 3
+_mcu_get_dp_download_enum: 1
+_uart_receive_buff_input: 1
+_wifi_uart_service: 6
+_mcu_reset_wifi: 3
+_mcu_set_wifi_mode: 3
+
+Call Tree
+    @dummy
+        _main (0)
+            _System_Clock_Init (1)
+            _EEPROM_WriteBytes (1)
+                _Crom2Prom (2)
+                _EEPROM_WriteByte (2)
+            _Data_Init (1)
+                _EEPROM_Read_Master_Address (2)
+                    _EEPROM_ReadBytes (3)
+                        _EEPROM_ReadByte (4)
+            _UART0_Init (1)
+            _UART1_Init (1)
+            _Timer0_Init (1)
+            _Key_Init (1)
+            _EC11_Init (1)
+            _LCD_Init (1)
+            _LCD_Show_Angle (1)
+                _builtin_holtek_divmodhi4_isr00 (2)
+                _Crom2Prom (2)
+                _Crom2Prom (2)
+            _LCD_Show_Time (1)
+                _builtin_holtek_divmodqi4_isr00 (2)
+                _LCD_Hour_High_Clear (2)
+                _LCD_Hour_High_Show (2)
+                    _LCD_Hour_High_Clear (3)
+                _LCD_Hour_Low_Show (2)
+                    _LCD_Hour_Low_Clear (3)
+                _LCD_Minute_High_Show (2)
+                    _LCD_Minute_High_Clear (3)
+                _LCD_Minute_Low_Show (2)
+                    _LCD_Minute_Low_Clear (3)
+            _EC11_Handle (1)
+                _Crom2Prom (2)
+                _Handle_EC11_ADD (2)
+                    _Send_Time (3)
+                        _UART0_Transmit_Data (4)
+                            _UART0_433MHz_SendString (5)
+                                _Crom2Prom (6)
+                                _UART0_433MHz_SendByte (6)
+                _Handle_EC11_MIN (2)
+                    _Send_Time (3)
+                        _UART0_Transmit_Data (4)
+                            _UART0_433MHz_SendString (5)
+                                _Crom2Prom (6)
+                                _UART0_433MHz_SendByte (6)
+                    _Send_Motor (3)
+                        _UART0_Transmit_Data (4)
+                            _UART0_433MHz_SendString (5)
+                                _Crom2Prom (6)
+                                _UART0_433MHz_SendByte (6)
+            _Key_Check (1)
+                _Crom2Prom (2)
+                _Key_Read (2)
+            _Key_Handle (1)
+                _Handle_ADD (2)
+                    _Send_Time (3)
+                        _UART0_Transmit_Data (4)
+                            _UART0_433MHz_SendString (5)
+                                _Crom2Prom (6)
+                                _UART0_433MHz_SendByte (6)
+                _Handle_MIN (2)
+                    _Send_Time (3)
+                        _UART0_Transmit_Data (4)
+                            _UART0_433MHz_SendString (5)
+                                _Crom2Prom (6)
+                                _UART0_433MHz_SendByte (6)
+            _LCD_Bind_Check (1)
+                _LCD_Show_Bind (2)
+            _LCD_WIFI_Check (1)
+                _LCD_Show_WIFI (2)
+            _UART0_433MHz_Pairing_Code (1)
+                _UART0_433MHz_AT_Adr (2)
+                    _Crom2Prom (3)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_Transmit_Data (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_Baudrate (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_FEQ (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_Mode (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_SF (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_BW (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_AT_PB (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _AT_PWR (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+                _UART0_433MHz_ATW (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+            _LCD_Power_Check (1)
+                _LCD_Show_Power (2)
+            _UART0_433MHz_Receive_Process (1)
+                _UART0_Transmit_Data (2)
+                    _UART0_433MHz_SendString (3)
+                        _Crom2Prom (4)
+                        _UART0_433MHz_SendByte (4)
+    @dummy20
+        _Interrupt_TIM0 (0)
+            _Key_Timer (1)
+            _LCD_Bind_Check_Timer (1)
+            _LCD_WIFI_Check_Timer (1)
+            _LCD_Power_Check_Timer (1)
+            _UART0_433MHz_Pairing_Code_Timer (1)
+    @dummy60
+        _Interrupt_UART (0)
+            _uart_receive_input (1)
+            _UART0_Receive_Data (1)
+                _UART0_Clear_Receive_BUF (2)
+    _UART0_433MHz_AT_WT
+        _UART0_433MHz_SendString (0)
+            _Crom2Prom (1)
+            _UART0_433MHz_SendByte (1)
+    _UART0_433MHz_ATL
+        _UART0_433MHz_SendString (0)
+            _Crom2Prom (1)
+            _UART0_433MHz_SendByte (1)
+    _UART0_433MHz_Init
+        _UART0_433MHz_AT_Baudrate (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _Delay_ms (0)
+        _UART0_433MHz_AT_FEQ (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_AT_Adr (0)
+            _Crom2Prom (1)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_AT_Mode (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_AT_SF (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_AT_BW (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_AT_PB (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _AT_PWR (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+        _UART0_433MHz_ATW (0)
+            _UART0_433MHz_SendString (1)
+                _Crom2Prom (2)
+                _UART0_433MHz_SendByte (2)
+    _LCD_Clear_Time
+        _LCD_Hour_High_Clear (0)
+        _LCD_Hour_Low_Clear (0)
+        _LCD_Minute_High_Clear (0)
+    _LCD_Time_Flash
+        _Crom2Prom (0)
+        _Crom2Prom (0)
+    _my_strcpy
+        _Crom2Prom (0)
+    _my_strcmp
+        _Crom2Prom (0)
+    _mcu_dp_raw_update
+        _set_wifi_uart_byte (0)
+        _set_wifi_uart_buffer (0)
+            _my_memcpy (1)
+                _Crom2Prom (2)
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+    _mcu_dp_string_update
+        _set_wifi_uart_byte (0)
+        _set_wifi_uart_buffer (0)
+            _my_memcpy (1)
+                _Crom2Prom (2)
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+    _mcu_dp_enum_update
+        _set_wifi_uart_byte (0)
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+    _mcu_dp_fault_update
+        _set_wifi_uart_byte (0)
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+    _mcu_get_dp_download_enum
+        _Crom2Prom (0)
+    _uart_receive_buff_input
+        _Crom2Prom (0)
+        _uart_receive_input (0)
+    _wifi_uart_service
+        _with_data_rxbuff (0)
+        _take_byte_rxbuff (0)
+            _Crom2Prom (1)
+        _Crom2Prom (0)
+        _my_memcpy (0)
+            _Crom2Prom (1)
+        _get_check_sum (0)
+            _Crom2Prom (1)
+        _data_handle (0)
+            _Crom2Prom (1)
+            _all_data_update (1)
+                _mcu_dp_bool_update (2)
+                    _set_wifi_uart_byte (3)
+                    _wifi_uart_write_frame (3)
+                        _Crom2Prom (4)
+                        _uart_transmit_output (4)
+                            _UART1_WIFI_SendByte (5)
+                _mcu_dp_value_update (2)
+                    _set_wifi_uart_byte (3)
+                    _wifi_uart_write_frame (3)
+                        _Crom2Prom (4)
+                        _uart_transmit_output (4)
+                            _UART1_WIFI_SendByte (5)
+            _set_wifi_uart_byte (1)
+            _my_strlen (1)
+                _Crom2Prom (2)
+            _set_wifi_uart_buffer (1)
+                _my_memcpy (2)
+                    _Crom2Prom (3)
+            _wifi_uart_write_frame (1)
+                _Crom2Prom (2)
+                _uart_transmit_output (2)
+                    _UART1_WIFI_SendByte (3)
+            _get_download_cmd_total (1)
+            _dp_download_handle (1)
+                _mcu_get_dp_download_bool (2)
+                    _Crom2Prom (3)
+                _mcu_dp_bool_update (2)
+                    _set_wifi_uart_byte (3)
+                    _wifi_uart_write_frame (3)
+                        _Crom2Prom (4)
+                        _uart_transmit_output (4)
+                            _UART1_WIFI_SendByte (5)
+                _mcu_get_dp_download_value (2)
+                    _byte_to_int (3)
+                        _Crom2Prom (4)
+                _mcu_dp_value_update (2)
+                    _set_wifi_uart_byte (3)
+                    _wifi_uart_write_frame (3)
+                        _Crom2Prom (4)
+                        _uart_transmit_output (4)
+                            _UART1_WIFI_SendByte (5)
+    _mcu_reset_wifi
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+    _mcu_set_wifi_mode
+        _set_wifi_uart_byte (0)
+        _wifi_uart_write_frame (0)
+            _Crom2Prom (1)
+            _uart_transmit_output (1)
+                _UART1_WIFI_SendByte (2)
+
+HLINK : ³ÌÐòµÄ¿ªÊ¼Ö´ÐÐµãÔÚ³ÌÐò¶Î'@code'£¨µØÖ·0£©¡£¶¨ÒåÔÚ'D:\zpw\±Ï\2362A\project\PROJECT.OBJ' ÎÄ¼þÖÐ
+
+´íÎó×ÜÊý : 0  ¾¯¸æ×ÜÊý : 0

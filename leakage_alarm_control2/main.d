@@ -1,0 +1,1 @@
+ main.d  main.p1:  main.c 4_HAL/../config/sys_config.h 3_Driver/uart/uart_wifi.h 3_Driver/rf433/rf433.h 3_Driver/led/led_driver.h 4_HAL/hal.h 4_HAL/hal_gpio.h 1_App/app.h

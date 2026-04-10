@@ -1,0 +1,1 @@
+ app.d  app.p1:  1_App/app.c 1_App/../4_HAL/hal.h 1_App/app.h 1_App/../4_HAL/hal_gpio.h 1_App/../config/sys_config.h 1_App/../3_Driver/uart/uart_wifi.h 1_App/../3_Driver/rf433/rf433.h 1_App/../3_Driver/led/led_driver.h 1_App/../4_HAL/hal_eeprom.h 4_hal/hal.h 1_App/../3_Driver/motor/motor_driver.h

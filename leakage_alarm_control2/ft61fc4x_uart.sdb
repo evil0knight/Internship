@@ -1,0 +1,786 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC RSC14 RSC14E SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip FT61F14X ]
+[d frameptr 6 ]
+"189 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[e E2516 . `uc
+MOTOR_ST_UNKNOWN 0
+MOTOR_ST_OPENED 1
+MOTOR_ST_CLOSED 2
+MOTOR_ST_OPENING 3
+MOTOR_ST_CLOSING 4
+MOTOR_ST_JAMMED 5
+]
+"8 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[e E2442 . `uc
+MOTOR_ST_UNKNOWN 0
+MOTOR_ST_OPENED 1
+MOTOR_ST_CLOSED 2
+MOTOR_ST_OPENING 3
+MOTOR_ST_CLOSING 4
+MOTOR_ST_JAMMED 5
+]
+"26 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[e E2471 . `uc
+MOTOR_ST_UNKNOWN 0
+MOTOR_ST_OPENED 1
+MOTOR_ST_CLOSED 2
+MOTOR_ST_OPENING 3
+MOTOR_ST_CLOSING 4
+MOTOR_ST_JAMMED 5
+]
+"31
+[e E8 . `uc
+EV_NONE 0
+EV_START 1
+EV_WIFI_OPEN 2
+EV_WIFI_CLOSE 3
+EV_WIFI_RESET 4
+EV_433_LEAK 5
+EV_CUTOFF 6
+EV_MOTOR_OVER 7
+EV_LONG_KEY 8
+EV_SHORT_KEY 9
+EV_433_DUIMA 10
+EV_TIM_5S_OVER 11
+EV_TIM_10S_OVER 12
+]
+"32
+[e E1 . `uc
+STATE_IDLE 0
+STATE_RUNNING 1
+STATE_ERROR 2
+STATE_MOTOR_RUN 3
+STATE_433_DUIMA 4
+]
+"41 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app_input.c
+[e E10 . `uc
+EV_NONE 0
+EV_START 1
+EV_WIFI_OPEN 2
+EV_WIFI_CLOSE 3
+EV_WIFI_RESET 4
+EV_433_LEAK 5
+EV_CUTOFF 6
+EV_MOTOR_OVER 7
+EV_LONG_KEY 8
+EV_SHORT_KEY 9
+EV_433_DUIMA 10
+EV_TIM_5S_OVER 11
+EV_TIM_10S_OVER 12
+]
+"55
+[e E3 . `uc
+STATE_IDLE 0
+STATE_RUNNING 1
+STATE_ERROR 2
+STATE_MOTOR_RUN 3
+STATE_433_DUIMA 4
+]
+"43 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _act_start_running act_start_running `(v  1 s 1 act_start_running ]
+"44
+[v _act_motor_open act_motor_open `(v  1 s 1 act_motor_open ]
+"45
+[v _act_motor_close act_motor_close `(v  1 s 1 act_motor_close ]
+"46
+[v _act_motor_stop act_motor_stop `(v  1 s 1 act_motor_stop ]
+"48
+[v _act_error_recover act_error_recover `(v  1 s 1 act_error_recover ]
+"49
+[v _act_duima_start act_duima_start `(v  1 s 1 act_duima_start ]
+"50
+[v _act_duima_error act_duima_error `(v  1 s 1 act_duima_error ]
+"52
+[v _act_motor_toggle act_motor_toggle `(v  1 s 1 act_motor_toggle ]
+"64
+[v _act_save_duima act_save_duima `(v  1 s 1 act_save_duima ]
+"76
+[v _on_motor_jammed on_motor_jammed `(v  1 s 1 on_motor_jammed ]
+"83
+[v _on_motor_arrived on_motor_arrived `(v  1 s 1 on_motor_arrived ]
+"132
+[v _parse_wifi_frame parse_wifi_frame `(v  1 s 1 parse_wifi_frame ]
+"158
+[v _parse_rf433 parse_rf433 `(v  1 s 1 parse_rf433 ]
+"187
+[v _App_Init App_Init `(v  1 e 1 0 ]
+"210
+[v _App_Run App_Run `(v  1 e 1 0 ]
+"35 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app_input.c
+[v _App_Input_1ms App_Input_1ms `(v  1 e 1 0 ]
+"4 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v _LED_Init LED_Init `(v  1 e 1 0 ]
+"15
+[v _LED_On LED_On `(v  1 e 1 0 ]
+"22
+[v _LED_Off LED_Off `(v  1 e 1 0 ]
+"29
+[v _LED_StartBlink LED_StartBlink `(v  1 e 1 0 ]
+[v i1_LED_StartBlink LED_StartBlink `(v  1 e 1 0 ]
+"37
+[v _LED_Process_1ms LED_Process_1ms `(v  1 e 1 0 ]
+"5 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Init Motor_Init `(v  1 e 1 0 ]
+"19
+[v _Motor_Open Motor_Open `(v  1 e 1 0 ]
+"28
+[v _Motor_Close Motor_Close `(v  1 e 1 0 ]
+"37
+[v _Motor_Arrived Motor_Arrived `(v  1 e 1 0 ]
+"49
+[v _Motor_Stop_And_Clear Motor_Stop_And_Clear `(v  1 e 1 0 ]
+[v i1_Motor_Stop_And_Clear Motor_Stop_And_Clear `(v  1 e 1 0 ]
+"57
+[v _Motor_Timer_Task Motor_Timer_Task `(v  1 e 1 0 ]
+"41 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\rf433\rf433.c
+[v _RF433_Init RF433_Init `(v  1 e 1 0 ]
+"68
+[v _set_bit set_bit `(v  1 s 1 set_bit ]
+"76
+[v _save_code save_code `(v  1 s 1 save_code ]
+"86
+[v _RF433_ISR RF433_ISR `(v  1 e 1 0 ]
+"12 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\uart\uart_wifi.c
+[v _UART_WiFi_Init UART_WiFi_Init `(v  1 e 1 0 ]
+"34
+[v _UART_WiFi_ISR UART_WiFi_ISR `(v  1 e 1 0 ]
+"22 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_eeprom.c
+[v _Unlock_Flash Unlock_Flash `(v  1 s 1 Unlock_Flash ]
+"43
+[v _hal_eeprom_read hal_eeprom_read `(uc  1 e 1 0 ]
+"74
+[v _hal_eeprom_write hal_eeprom_write `(v  1 e 1 0 ]
+"39 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_gpio_init hal_gpio_init `(v  1 e 1 0 ]
+"76
+[v _hal_tim4_init hal_tim4_init `(v  1 e 1 0 ]
+"97
+[v _hal_led1_on hal_led1_on `(v  1 e 1 0 ]
+"105
+[v _hal_led1_off hal_led1_off `(v  1 e 1 0 ]
+[v i1_hal_led1_off hal_led1_off `(v  1 e 1 0 ]
+"113
+[v _hal_led1_tog hal_led1_tog `(v  1 e 1 0 ]
+"121
+[v _hal_led2_on hal_led2_on `(v  1 e 1 0 ]
+"129
+[v _hal_led2_off hal_led2_off `(v  1 e 1 0 ]
+[v i1_hal_led2_off hal_led2_off `(v  1 e 1 0 ]
+"137
+[v _hal_led2_tog hal_led2_tog `(v  1 e 1 0 ]
+"147
+[v _hal_motor_open hal_motor_open `(v  1 e 1 0 ]
+"155
+[v _hal_motor_close hal_motor_close `(v  1 e 1 0 ]
+"163
+[v _hal_motor_stop hal_motor_stop `(v  1 e 1 0 ]
+[v i1_hal_motor_stop hal_motor_stop `(v  1 e 1 0 ]
+"173
+[v _user_isr user_isr `(v  1 s 1 user_isr ]
+"203
+[v _ISR ISR `II(v  1 e 1 0 ]
+"62 E:\FMDprogrammer\Compiler\data\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 E:\FMDprogrammer\Compiler\data\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"15 E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"28 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\main.c
+[v _main main `(v  1 e 1 0 ]
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+"26 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _g_motor g_motor `S3792  1 e 13 0 ]
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+"27
+[v _g_led1 g_led1 `S3816  1 e 12 0 ]
+"28
+[v _g_led2 g_led2 `S3816  1 e 12 0 ]
+"31
+[v _g_event g_event `VEE8  1 e 1 0 ]
+"32
+[v _g_state g_state `E1  1 e 1 0 ]
+"33
+[v _g_power_cut g_power_cut `b  1 e 0 0 ]
+"36
+[v _g_pairedCode g_pairedCode `[3]uc  1 s 3 g_pairedCode ]
+[s S13437 . 5 `E1 1 current 1 0 `E8 1 event 1 1 `E1 1 next 1 2 `*.37(v 1 action 2 3 ]
+"94
+[v _transitions transitions `DC[15]S13437  1 s 75 transitions ]
+"21 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app_input.c
+[v _s_keyHoldMs s_keyHoldMs `ui  1 s 2 s_keyHoldMs ]
+"24
+[v _s_keyLast s_keyLast `uc  1 s 1 s_keyLast ]
+"27
+[v _s_duimaTimer s_duimaTimer `ui  1 s 2 s_duimaTimer ]
+"11 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\rf433\rf433.c
+[v _flag flag `uc  1 s 1 flag ]
+"23
+[v _a_code1 a_code1 `uc  1 s 1 a_code1 ]
+"24
+[v _a_code2 a_code2 `uc  1 s 1 a_code2 ]
+"25
+[v _a_code3 a_code3 `uc  1 s 1 a_code3 ]
+"26
+[v _hh_w hh_w `uc  1 s 1 hh_w ]
+"27
+[v _ll_w ll_w `uc  1 s 1 ll_w ]
+"28
+[v _t_code1 t_code1 `uc  1 s 1 t_code1 ]
+"29
+[v _t_code2 t_code2 `uc  1 s 1 t_code2 ]
+"30
+[v _t_code3 t_code3 `uc  1 s 1 t_code3 ]
+"31
+[v _ma_x ma_x `uc  1 s 1 ma_x ]
+"32
+[v _pre_cnt pre_cnt `uc  1 s 1 pre_cnt ]
+"35
+[v _s s `ui  1 s 2 s ]
+"38
+[v _rf_data rf_data `VE[3]uc  1 e 3 0 ]
+"39
+[v _rf_data_ready rf_data_ready `VEuc  1 e 1 0 ]
+"4 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\uart\uart_wifi.c
+[v _rx_buf rx_buf `VE[10]uc  1 e 10 0 ]
+"5
+[v _rx_len rx_len `VEuc  1 e 1 0 ]
+"6
+[v _rx_flag rx_flag `VEuc  1 e 1 0 ]
+"8
+[v _tx_buf tx_buf `[11]uc  1 s 11 tx_buf ]
+"9
+[v _tx_total tx_total `uc  1 s 1 tx_total ]
+"10
+[v _tx_idx tx_idx `uc  1 s 1 tx_idx ]
+"27 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _g_timer_ms g_timer_ms `VEui  1 e 2 0 ]
+"30
+[v _W_TMP W_TMP `VEuc  1 e 1 @112 ]
+"31
+[v _BSR_TMP BSR_TMP `VEuc  1 e 1 @113 ]
+"59 E:\FMDprogrammer\Compiler\data\include\FT61F14X.h
+[v _BSREG BSREG `VEuc  1 e 1 @8 ]
+"97
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"101
+[v _EEIF EEIF `VEb  1 e 0 @90 ]
+"106
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"123
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"134
+[v _PA0 PA0 `VEb  1 e 0 @96 ]
+"135
+[v _PA1 PA1 `VEb  1 e 0 @97 ]
+"136
+[v _PA2 PA2 `VEb  1 e 0 @98 ]
+"138
+[v _PA4 PA4 `VEb  1 e 0 @100 ]
+"168
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+"179
+[v _PB0 PB0 `VEb  1 e 0 @104 ]
+"180
+[v _PB1 PB1 `VEb  1 e 0 @105 ]
+"181
+[v _PB2 PB2 `VEb  1 e 0 @106 ]
+"185
+[v _PB6 PB6 `VEb  1 e 0 @110 ]
+"186
+[v _PB7 PB7 `VEb  1 e 0 @111 ]
+"213
+[v _PORTC PORTC `VEuc  1 e 1 @14 ]
+"262
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"289
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"316
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"353
+[v _CKOCON CKOCON `VEuc  1 e 1 @149 ]
+"475
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"506
+[v _PCKEN PCKEN `VEuc  1 e 1 @154 ]
+"718
+[v _TIM4CR1 TIM4CR1 `VEuc  1 e 1 @273 ]
+"743
+[v _TIM4IER TIM4IER `VEuc  1 e 1 @274 ]
+"745
+[v _T4UIE T4UIE `VEb  1 e 0 @2192 ]
+"755
+[v _TIM4SR TIM4SR `VEuc  1 e 1 @275 ]
+"757
+[v _T4UIF T4UIF `VEb  1 e 0 @2200 ]
+"768
+[v _TIM4EGR TIM4EGR `VEuc  1 e 1 @276 ]
+"781
+[v _TIM4CNTR TIM4CNTR `VEuc  1 e 1 @277 ]
+"786
+[v _TIM4PSCR TIM4PSCR `VEuc  1 e 1 @278 ]
+"806
+[v _TIM4ARR TIM4ARR `VEuc  1 e 1 @279 ]
+"821
+[v _PSRC0 PSRC0 `VEuc  1 e 1 @282 ]
+"826
+[v _PSRC1 PSRC1 `VEuc  1 e 1 @283 ]
+"831
+[v _PSRC2 PSRC2 `VEuc  1 e 1 @284 ]
+"869
+[v _WPUA WPUA `VEuc  1 e 1 @396 ]
+"873
+[v _WPUB WPUB `VEuc  1 e 1 @397 ]
+"877
+[v _WPUC WPUC `VEuc  1 e 1 @398 ]
+"881
+[v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
+"906
+[v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
+"928
+[v _EECON1 EECON1 `VEuc  1 e 1 @405 ]
+"930
+[v _RD RD `VEb  1 e 0 @3240 ]
+"931
+[v _WR WR `VEb  1 e 0 @3241 ]
+"932
+[v _WREN WREN `VEb  1 e 0 @3242 ]
+"935
+[v _CFGS CFGS `VEb  1 e 0 @3246 ]
+"936
+[v _EEPGD EEPGD `VEb  1 e 0 @3247 ]
+"962
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
+"966
+[v _ANSELA ANSELA `VEuc  1 e 1 @407 ]
+"1001
+[v _PSINK0 PSINK0 `VEuc  1 e 1 @410 ]
+"1005
+[v _PSINK1 PSINK1 `VEuc  1 e 1 @411 ]
+"1008
+[v _PSINK2 PSINK2 `VEuc  1 e 1 @412 ]
+"1043
+[v _WPDA WPDA `VEuc  1 e 1 @524 ]
+"1070
+[v _WPDB WPDB `VEuc  1 e 1 @525 ]
+"1096
+[v _WPDC WPDC `VEuc  1 e 1 @526 ]
+"1111
+[v _TIM1CR1 TIM1CR1 `VEuc  1 e 1 @529 ]
+"1217
+[v _TIM1IER TIM1IER `VEuc  1 e 1 @533 ]
+"1219
+[v _T1UIE T1UIE `VEb  1 e 0 @4264 ]
+"1243
+[v _TIM1SR1 TIM1SR1 `VEuc  1 e 1 @534 ]
+"1245
+[v _T1UIF T1UIF `VEb  1 e 0 @4272 ]
+"1611
+[v _TIM1ARRH TIM1ARRH `VEuc  1 e 1 @656 ]
+"1615
+[v _TIM1ARRL TIM1ARRL `VEuc  1 e 1 @657 ]
+"2082
+[v _TCKSRC TCKSRC `VEuc  1 e 1 @799 ]
+"2264
+[v _URDATAL URDATAL `VEuc  1 e 1 @1164 ]
+"2283
+[v _URIER URIER `VEuc  1 e 1 @1166 ]
+"2285
+[v _URRXNE URRXNE `VEb  1 e 0 @9328 ]
+"2289
+[v _TCEN TCEN `VEb  1 e 0 @9333 ]
+"2305
+[v _URLCR URLCR `VEuc  1 e 1 @1167 ]
+"2343
+[v _URMCR URMCR `VEuc  1 e 1 @1169 ]
+"2368
+[v _RXNEF RXNEF `VEb  1 e 0 @9360 ]
+"2416
+[v _URDLL URDLL `VEuc  1 e 1 @1172 ]
+"2421
+[v _URDLH URDLH `VEuc  1 e 1 @1173 ]
+"2568
+[v _TCF TCF `VEb  1 e 0 @9440 ]
+"28 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"41
+} 0
+"76 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_tim4_init hal_tim4_init `(v  1 e 1 0 ]
+{
+"87
+} 0
+"39
+[v _hal_gpio_init hal_gpio_init `(v  1 e 1 0 ]
+{
+"67
+} 0
+"12 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\uart\uart_wifi.c
+[v _UART_WiFi_Init UART_WiFi_Init `(v  1 e 1 0 ]
+{
+"22
+} 0
+"41 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\rf433\rf433.c
+[v _RF433_Init RF433_Init `(v  1 e 1 0 ]
+{
+"65
+} 0
+"210 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _App_Run App_Run `(v  1 e 1 0 ]
+{
+"212
+[v App_Run@i i `uc  1 a 1 9 ]
+"213
+[v App_Run@ev ev `E8  1 a 1 8 ]
+"240
+} 0
+"132
+[v _parse_wifi_frame parse_wifi_frame `(v  1 s 1 parse_wifi_frame ]
+{
+"148
+} 0
+"158
+[v _parse_rf433 parse_rf433 `(v  1 s 1 parse_rf433 ]
+{
+"160
+[v parse_rf433@cmd cmd `uc  1 a 1 2 ]
+"177
+} 0
+"64
+[v _act_save_duima act_save_duima `(v  1 s 1 act_save_duima ]
+{
+"74
+} 0
+"52
+[v _act_motor_toggle act_motor_toggle `(v  1 s 1 act_motor_toggle ]
+{
+"62
+} 0
+"50
+[v _act_duima_error act_duima_error `(v  1 s 1 act_duima_error ]
+{
+} 0
+"49
+[v _act_duima_start act_duima_start `(v  1 s 1 act_duima_start ]
+{
+} 0
+"48
+[v _act_error_recover act_error_recover `(v  1 s 1 act_error_recover ]
+{
+} 0
+"46
+[v _act_motor_stop act_motor_stop `(v  1 s 1 act_motor_stop ]
+{
+} 0
+"45
+[v _act_motor_close act_motor_close `(v  1 s 1 act_motor_close ]
+{
+} 0
+"44
+[v _act_motor_open act_motor_open `(v  1 s 1 act_motor_open ]
+{
+} 0
+"43
+[v _act_start_running act_start_running `(v  1 s 1 act_start_running ]
+{
+} 0
+"74 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_eeprom.c
+[v _hal_eeprom_write hal_eeprom_write `(v  1 e 1 0 ]
+{
+[v hal_eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v hal_eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v hal_eeprom_write@data data `uc  1 p 1 0 ]
+[v hal_eeprom_write@addr addr `uc  1 a 1 1 ]
+"98
+} 0
+"22
+[v _Unlock_Flash Unlock_Flash `(v  1 s 1 Unlock_Flash ]
+{
+"35
+} 0
+"49 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Stop_And_Clear Motor_Stop_And_Clear `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 wreg ]
+"51
+"49
+[v Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 2 ]
+"55
+} 0
+"19
+[v _Motor_Open Motor_Open `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Open@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Open@motor motor `*.4S3792  1 a 1 wreg ]
+"21
+"19
+[v Motor_Open@motor motor `*.4S3792  1 a 1 2 ]
+"26
+} 0
+"147 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_motor_open hal_motor_open `(v  1 e 1 0 ]
+{
+} 0
+"28 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Close Motor_Close `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Close@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Close@motor motor `*.4S3792  1 a 1 wreg ]
+"30
+"28
+[v Motor_Close@motor motor `*.4S3792  1 a 1 2 ]
+"35
+} 0
+"155 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_motor_close hal_motor_close `(v  1 e 1 0 ]
+{
+} 0
+"15 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v _LED_On LED_On `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v LED_On@led led `*.4S3816  1 a 1 wreg ]
+[v LED_On@led led `*.4S3816  1 a 1 wreg ]
+"17
+"15
+[v LED_On@led led `*.4S3816  1 a 1 2 ]
+"20
+} 0
+"97 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_led1_on hal_led1_on `(v  1 e 1 0 ]
+{
+} 0
+"121
+[v _hal_led2_on hal_led2_on `(v  1 e 1 0 ]
+{
+} 0
+"29 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v _LED_StartBlink LED_StartBlink `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v LED_StartBlink@led led `*.4S3816  1 a 1 wreg ]
+[v LED_StartBlink@led led `*.4S3816  1 a 1 wreg ]
+[v LED_StartBlink@total_ms total_ms `ui  1 p 2 0 ]
+[v LED_StartBlink@interval_ms interval_ms `ui  1 p 2 2 ]
+"31
+"29
+[v LED_StartBlink@led led `*.4S3816  1 a 1 4 ]
+"35
+} 0
+"22
+[v _LED_Off LED_Off `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v LED_Off@led led `*.4S3816  1 a 1 wreg ]
+[v LED_Off@led led `*.4S3816  1 a 1 wreg ]
+"24
+"22
+[v LED_Off@led led `*.4S3816  1 a 1 2 ]
+"27
+} 0
+"15 E:\FMDprogrammer\Compiler\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"187 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _App_Init App_Init `(v  1 e 1 0 ]
+{
+"202
+} 0
+"43 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_eeprom.c
+[v _hal_eeprom_read hal_eeprom_read `(uc  1 e 1 0 ]
+{
+[v hal_eeprom_read@addr addr `uc  1 a 1 wreg ]
+"45
+[v hal_eeprom_read@data data `uc  1 a 1 1 ]
+"43
+[v hal_eeprom_read@addr addr `uc  1 a 1 wreg ]
+[v hal_eeprom_read@addr addr `uc  1 a 1 0 ]
+"65
+} 0
+"5 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Init Motor_Init `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Init@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Init@motor motor `*.4S3792  1 a 1 wreg ]
+"6
+[v Motor_Init@hw_open hw_open `*.37(v  1 p 2 0 ]
+[v Motor_Init@hw_close hw_close `*.37(v  1 p 2 2 ]
+[v Motor_Init@hw_stop hw_stop `*.37(v  1 p 2 4 ]
+"7
+[v Motor_Init@on_error on_error `*.37(v  1 p 2 6 ]
+[v Motor_Init@on_arrived on_arrived `*.37(v  1 p 2 8 ]
+"9
+"5
+[v Motor_Init@motor motor `*.4S3792  1 a 1 12 ]
+"17
+} 0
+"163 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_motor_stop hal_motor_stop `(v  1 e 1 0 ]
+{
+} 0
+"4 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v _LED_Init LED_Init `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v LED_Init@led led `*.4S3816  1 a 1 wreg ]
+[v LED_Init@led led `*.4S3816  1 a 1 wreg ]
+[v LED_Init@on on `*.37(v  1 p 2 0 ]
+[v LED_Init@off off `*.37(v  1 p 2 2 ]
+[v LED_Init@toggle toggle `*.37(v  1 p 2 4 ]
+"6
+"4
+[v LED_Init@led led `*.4S3816  1 a 1 8 ]
+"13
+} 0
+"105 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v _hal_led1_off hal_led1_off `(v  1 e 1 0 ]
+{
+} 0
+"129
+[v _hal_led2_off hal_led2_off `(v  1 e 1 0 ]
+{
+} 0
+"203
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"210
+} 0
+"173
+[v _user_isr user_isr `(v  1 s 1 user_isr ]
+{
+"195
+} 0
+"34 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\uart\uart_wifi.c
+[v _UART_WiFi_ISR UART_WiFi_ISR `(v  1 e 1 0 ]
+{
+"38
+[v UART_WiFi_ISR@byte byte `uc  1 a 1 0 ]
+"54
+} 0
+"86 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\rf433\rf433.c
+[v _RF433_ISR RF433_ISR `(v  1 e 1 0 ]
+{
+"157
+} 0
+"68
+[v _set_bit set_bit `(v  1 s 1 set_bit ]
+{
+[v set_bit@bit_idx bit_idx `uc  1 a 1 wreg ]
+"70
+[v set_bit@mask mask `uc  1 a 1 4 ]
+"68
+[v set_bit@bit_idx bit_idx `uc  1 a 1 wreg ]
+"70
+[v set_bit@bit_idx bit_idx `uc  1 a 1 5 ]
+"74
+} 0
+"76
+[v _save_code save_code `(v  1 s 1 save_code ]
+{
+"84
+} 0
+"57 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Timer_Task Motor_Timer_Task `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Timer_Task@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Timer_Task@motor motor `*.4S3792  1 a 1 wreg ]
+"60
+"57
+[v Motor_Timer_Task@motor motor `*.4S3792  1 a 1 7 ]
+"71
+} 0
+"49
+[v i1_Motor_Stop_And_Clear Motor_Stop_And_Clear `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v i1Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 wreg ]
+[v i1Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 wreg ]
+"51
+"49
+[v i1Motor_Stop_And_Clear@motor motor `*.4S3792  1 a 1 2 ]
+"55
+} 0
+"76 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _on_motor_jammed on_motor_jammed `(v  1 s 1 on_motor_jammed ]
+{
+"81
+} 0
+"29 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v i1_LED_StartBlink LED_StartBlink `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v i1LED_StartBlink@led led `*.4S3816  1 a 1 wreg ]
+[v i1LED_StartBlink@led led `*.4S3816  1 a 1 wreg ]
+[v i1LED_StartBlink@total_ms total_ms `ui  1 p 2 0 ]
+[v i1LED_StartBlink@interval_ms interval_ms `ui  1 p 2 2 ]
+"31
+"29
+[v i1LED_StartBlink@led led `*.4S3816  1 a 1 4 ]
+"35
+} 0
+"37 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\motor\motor_driver.c
+[v _Motor_Arrived Motor_Arrived `(v  1 e 1 0 ]
+{
+[s S3792 . 13 `E2516 1 current_state 1 0 `ui 1 running_ms 2 1 `*.37(v 1 hw_open 2 3 `*.37(v 1 hw_close 2 5 `*.37(v 1 hw_stop 2 7 `*.37(v 1 on_jammed_error 2 9 `*.37(v 1 on_arrived 2 11 ]
+[v Motor_Arrived@motor motor `*.4S3792  1 a 1 wreg ]
+[v Motor_Arrived@motor motor `*.4S3792  1 a 1 wreg ]
+"39
+"37
+[v Motor_Arrived@motor motor `*.4S3792  1 a 1 2 ]
+"47
+} 0
+"163 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v i1_hal_motor_stop hal_motor_stop `(v  1 e 1 0 ]
+{
+} 0
+"83 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app.c
+[v _on_motor_arrived on_motor_arrived `(v  1 s 1 on_motor_arrived ]
+{
+} 0
+"37 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\3_Driver\led\led_driver.c
+[v _LED_Process_1ms LED_Process_1ms `(v  1 e 1 0 ]
+{
+[s S3816 . 12 `ui 1 remain_blink_ms 2 0 `ui 1 toggle_tick 2 2 `ui 1 blink_interval_ms 2 4 `*.37(v 1 hw_on 2 6 `*.37(v 1 hw_off 2 8 `*.37(v 1 hw_toggle 2 10 ]
+[v LED_Process_1ms@led led `*.4S3816  1 a 1 wreg ]
+[v LED_Process_1ms@led led `*.4S3816  1 a 1 wreg ]
+"39
+"37
+[v LED_Process_1ms@led led `*.4S3816  1 a 1 4 ]
+"53
+} 0
+"105 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\4_HAL\hal_gpio.c
+[v i1_hal_led1_off hal_led1_off `(v  1 e 1 0 ]
+{
+} 0
+"129
+[v i1_hal_led2_off hal_led2_off `(v  1 e 1 0 ]
+{
+} 0
+"113
+[v _hal_led1_tog hal_led1_tog `(v  1 e 1 0 ]
+{
+} 0
+"137
+[v _hal_led2_tog hal_led2_tog `(v  1 e 1 0 ]
+{
+} 0
+"35 D:\information\circuit_board\nanjing_hosptial\Internship\leakage_alarm_control2\1_App\app_input.c
+[v _App_Input_1ms App_Input_1ms `(v  1 e 1 0 ]
+{
+"70
+} 0

@@ -1,0 +1,1 @@
+                                  hal_eeprom.d  hal_eeprom.p1:  4_HAL/hal_eeprom.c 4_HAL/hal_eeprom.h 4_HAL/hal.h
